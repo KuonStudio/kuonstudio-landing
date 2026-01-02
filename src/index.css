@@ -434,68 +434,45 @@ textarea:focus {
 .hero-glitch {
   position: relative;
   cursor: default;
-  transition: color 0.1s;
 }
 
 .hero-glitch:hover {
   color: #FF003C !important;
-  animation: cyberpunk-shake 0.3s infinite;
-  text-shadow:
-    2px 0 #FF003C,
-    -2px 0 #00FFFF,
-    0 0 10px #FF003C;
-}
-
-@keyframes cyberpunk-shake {
-  0% {
-    transform: translate(0, 0) skewX(0deg);
-  }
-  10% {
-    transform: translate(-2px, 0) skewX(-5deg);
-  }
-  20% {
-    transform: translate(2px, 0) skewX(5deg);
-  }
-  30% {
-    transform: translate(-1px, 0) skewX(-3deg);
-  }
-  40% {
-    transform: translate(1px, 0) skewX(3deg);
-  }
-  50% {
-    transform: translate(-2px, 0) skewX(-2deg);
-  }
-  60% {
-    transform: translate(2px, 0) skewX(2deg);
-  }
-  70% {
-    transform: translate(-1px, 0) skewX(-1deg);
-  }
-  80% {
-    transform: translate(1px, 0) skewX(1deg);
-  }
-  90% {
-    transform: translate(-1px, 0) skewX(0deg);
-  }
-  100% {
-    transform: translate(0, 0) skewX(0deg);
-  }
+  animation: glitch-anim 0.2s infinite;
+  opacity: 1 !important;
 }
 
 /* Japanese Text Cyberpunk Glitch */
 .japan-glitch {
   position: relative;
   cursor: default;
-  transition: color 0.1s;
 }
 
 .japan-glitch:hover {
   color: #FF003C !important;
-  animation: cyberpunk-shake 0.3s infinite;
-  text-shadow:
-    2px 0 #FF003C,
-    -2px 0 #00FFFF,
-    0 0 10px #FF003C;
+  animation: glitch-anim 0.2s infinite;
+  opacity: 1 !important;
+}
+
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* Continuous Navbar Glitch - Performance Optimized */
