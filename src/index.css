@@ -434,8 +434,6 @@ textarea:focus {
 .hero-glitch {
   position: relative;
   cursor: default;
-  transition: none !important;
-  animation-duration: 0s !important;
 }
 
 .hero-glitch::before,
@@ -451,34 +449,32 @@ textarea:focus {
 }
 
 .hero-glitch::before {
-  color: #00FFFF; /* Cyan layer - shifts left */
+  color: #8b0000; /* Blood red layer */
 }
 
 .hero-glitch::after {
-  color: #FF00FF; /* Magenta layer - shifts right */
+  color: #00cccc; /* Cyan layer - subtle */
 }
 
 .hero-glitch:hover {
-  color: #FFFFFF !important;
-  opacity: 1 !important;
+  color: #8b0000 !important;
+  text-shadow: 0 0 6px rgba(139, 0, 0, 0.5);
 }
 
 .hero-glitch:hover::before {
-  opacity: 1;
-  animation: slice-tear-left 0.3s steps(6) infinite;
+  opacity: 0.5;
+  animation: slice-tear-red 0.2s steps(4) infinite;
 }
 
 .hero-glitch:hover::after {
-  opacity: 1;
-  animation: slice-tear-right 0.3s steps(6) infinite;
+  opacity: 0.3;
+  animation: slice-tear-cyan 0.2s steps(4) infinite;
 }
 
 /* Horizontal Scanline Tearing Effect - Japanese Text */
 .japan-glitch {
   position: relative;
   cursor: default;
-  transition: none !important;
-  animation-duration: 0s !important;
 }
 
 .japan-glitch::before,
@@ -494,89 +490,65 @@ textarea:focus {
 }
 
 .japan-glitch::before {
-  color: #00FFFF; /* Cyan layer - shifts left */
+  color: #8b0000; /* Blood red layer */
 }
 
 .japan-glitch::after {
-  color: #FF00FF; /* Magenta layer - shifts right */
+  color: #00cccc; /* Cyan layer - subtle */
 }
 
 .japan-glitch:hover {
-  color: #FF003C !important;
-  opacity: 1 !important;
+  color: #8b0000 !important;
+  text-shadow: 0 0 4px rgba(139, 0, 0, 0.4);
 }
 
 .japan-glitch:hover::before {
-  opacity: 1;
-  animation: slice-tear-left 0.3s steps(6) infinite;
+  opacity: 0.4;
+  animation: slice-tear-red 0.15s steps(3) infinite;
 }
 
 .japan-glitch:hover::after {
-  opacity: 1;
-  animation: slice-tear-right 0.3s steps(6) infinite;
+  opacity: 0.25;
+  animation: slice-tear-cyan 0.15s steps(3) infinite;
 }
 
-/* Scanline Tearing - Left Shift (Cyan Layer) */
-@keyframes slice-tear-left {
+/* Scanline Tearing - Red Layer (shifts left) */
+@keyframes slice-tear-red {
   0% {
-    clip-path: inset(0 0 0 0);
-    transform: translateX(0);
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    transform: translateX(-1.5px);
   }
-  16% {
-    clip-path: inset(10% 0 75% 0);
-    transform: translateX(-3px);
+  33% {
+    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
+    transform: translateX(1.5px);
   }
-  32% {
-    clip-path: inset(25% 0 60% 0);
-    transform: translateX(-2px);
-  }
-  48% {
-    clip-path: inset(40% 0 45% 0);
-    transform: translateX(-4px);
-  }
-  64% {
-    clip-path: inset(55% 0 30% 0);
-    transform: translateX(-2px);
-  }
-  80% {
-    clip-path: inset(70% 0 15% 0);
-    transform: translateX(-3px);
+  66% {
+    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
+    transform: translateX(-1px);
   }
   100% {
-    clip-path: inset(85% 0 5% 0);
-    transform: translateX(-2px);
+    clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%);
+    transform: translateX(1px);
   }
 }
 
-/* Scanline Tearing - Right Shift (Magenta Layer) */
-@keyframes slice-tear-right {
+/* Scanline Tearing - Cyan Layer (shifts right) */
+@keyframes slice-tear-cyan {
   0% {
-    clip-path: inset(0 0 0 0);
-    transform: translateX(0);
+    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
+    transform: translateX(1.5px);
   }
-  16% {
-    clip-path: inset(5% 0 80% 0);
-    transform: translateX(3px);
+  33% {
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    transform: translateX(-1px);
   }
-  32% {
-    clip-path: inset(20% 0 65% 0);
-    transform: translateX(2px);
-  }
-  48% {
-    clip-path: inset(35% 0 50% 0);
-    transform: translateX(4px);
-  }
-  64% {
-    clip-path: inset(50% 0 35% 0);
-    transform: translateX(2px);
-  }
-  80% {
-    clip-path: inset(65% 0 20% 0);
-    transform: translateX(3px);
+  66% {
+    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
+    transform: translateX(1px);
   }
   100% {
-    clip-path: inset(80% 0 10% 0);
-    transform: translateX(2px);
+    clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%);
+    transform: translateX(-1.5px);
   }
 }
 
