@@ -60,7 +60,13 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Space Mono', monospace;
-    cursor: none;
+  }
+
+  /* Custom cursor only on non-touch devices */
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
