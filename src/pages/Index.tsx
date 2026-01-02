@@ -3,8 +3,9 @@ import CustomCursor from '@/components/CustomCursor';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import LabsSection from '@/components/LabsSection';
+import VisionSection from '@/components/VisionSection';
 import MarqueeSection from '@/components/MarqueeSection';
-import CTASection from '@/components/CTASection';
+import AccessSection from '@/components/AccessSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -27,8 +28,9 @@ const Index = () => {
       <main>
         <HeroSection />
         <LabsSection />
+        <VisionSection />
         <MarqueeSection />
-        <CTASection />
+        <AccessSection />
       </main>
       
       {/* Footer */}
