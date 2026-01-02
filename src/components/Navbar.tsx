@@ -13,7 +13,6 @@ const Navbar = () => {
 
   const navLinks = [
     { label: 'PROTOCOLS', href: '#protocols' },
-    { label: 'VISION', href: '#vision' },
     { label: 'ACCESS', href: '#access' },
   ];
 

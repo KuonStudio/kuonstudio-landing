@@ -5,45 +5,45 @@ interface Agent {
   description: string;
   status: string;
   statusColor: string;
-  specs: {
+  metrics: {
     latency: string;
-    core: string;
     uptime: string;
+    threats: string;
   };
 }
 
 const agents: Agent[] = [
   {
     name: 'GUARDIAN',
-    description: 'Reputation Defense Protocol.',
+    description: 'Automated reputation management and crisis aversion. It never sleeps.',
     status: 'ONLINE',
     statusColor: 'text-accent',
-    specs: {
+    metrics: {
       latency: '12ms',
-      core: 'GoLang',
-      uptime: '99.97%',
+      uptime: '99.99%',
+      threats: '0',
     },
   },
   {
     name: 'SENTINEL',
-    description: 'Market Watcher & Scraper.',
+    description: '24/7 Market data scraping and competitor tracking. It sees everything.',
     status: 'DEPLOYED',
     statusColor: 'text-foreground',
-    specs: {
+    metrics: {
       latency: '8ms',
-      core: 'Python',
-      uptime: '99.99%',
+      uptime: '99.97%',
+      threats: '3 BLOCKED',
     },
   },
   {
     name: 'ORACLE',
-    description: 'Predictive Logic Engine.',
+    description: 'Data-driven logic engines for forecasting trends. It knows before you do.',
     status: 'CLASSIFIED',
     statusColor: 'text-muted-foreground',
-    specs: {
+    metrics: {
       latency: '???',
-      core: 'Rust',
       uptime: '???',
+      threats: 'REDACTED',
     },
   },
 ];
@@ -57,10 +57,10 @@ const LabsSection = () => {
         {/* Section header */}
         <div className="mb-16">
           <h2 className="font-sans font-bold text-3xl md:text-5xl tracking-tight">
-            ACTIVE AGENTS
+            OPERATIONAL CAPABILITIES
           </h2>
           <p className="mt-2 font-mono text-sm text-muted-foreground tracking-widest">
-            // エージェント
+            // プロトコル
           </p>
         </div>
 
@@ -69,7 +69,7 @@ const LabsSection = () => {
           {agents.map((agent, index) => (
             <div
               key={agent.name}
-              className="agent-card relative p-8 bg-card/50 backdrop-blur-sm min-h-[280px] flex flex-col"
+              className="agent-card relative p-8 bg-card/50 backdrop-blur-sm min-h-[300px] flex flex-col"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               data-hover
@@ -77,7 +77,7 @@ const LabsSection = () => {
               {/* Status indicator */}
               <div className="absolute top-4 right-4">
                 <span className={`font-mono text-[10px] tracking-widest ${agent.statusColor}`}>
-                  {agent.status}
+                  [{agent.status}]
                 </span>
               </div>
 
@@ -87,27 +87,23 @@ const LabsSection = () => {
               </h3>
 
               {/* Description */}
-              <p className="font-mono text-sm text-muted-foreground mb-auto">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed mb-auto">
                 {agent.description}
               </p>
 
-              {/* Technical specs - show on hover */}
+              {/* System Metrics - show on hover */}
               <div
-                className={`mt-6 pt-6 border-t border-border/30 space-y-2 transition-opacity duration-300 ${
-                  hoveredIndex === index ? 'opacity-100' : 'opacity-0'
+                className={`mt-6 pt-6 border-t border-border/30 transition-all duration-300 ${
+                  hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                 }`}
               >
-                <div className="flex justify-between font-mono text-xs">
-                  <span className="text-muted-foreground">Latency:</span>
-                  <span className="text-accent">{agent.specs.latency}</span>
-                </div>
-                <div className="flex justify-between font-mono text-xs">
-                  <span className="text-muted-foreground">Core:</span>
-                  <span>{agent.specs.core}</span>
-                </div>
-                <div className="flex justify-between font-mono text-xs">
-                  <span className="text-muted-foreground">Uptime:</span>
-                  <span>{agent.specs.uptime}</span>
+                <p className="font-mono text-[10px] text-accent tracking-widest mb-3">
+                  SYSTEM METRICS
+                </p>
+                <div className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-xs text-accent">
+                  <span>LATENCY: {agent.metrics.latency}</span>
+                  <span>UPTIME: {agent.metrics.uptime}</span>
+                  <span>THREATS: {agent.metrics.threats}</span>
                 </div>
               </div>
 

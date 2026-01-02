@@ -2,7 +2,7 @@ const MarqueeSection = () => {
   const text = "AUTONOMOUS INTELLIGENCE +++ KUON STUDIOS +++ PERPETUAL CODE +++ ";
   
   return (
-    <section id="vision" className="py-24 overflow-hidden border-y border-border/20">
+    <section className="py-24 overflow-hidden border-y border-border/20">
       <div className="relative">
         <div className="flex whitespace-nowrap animate-marquee">
           {/* Duplicate text for seamless loop */}
