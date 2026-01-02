@@ -430,57 +430,121 @@ textarea:focus {
   background-color: hsl(var(--accent));
 }
 
-/* Cyberpunk Glitch Effect - Hero Title */
+/* Digital Distortion Effect - Hero Title */
 .hero-glitch {
   position: relative;
   cursor: default;
-  transition: none !important; /* ABSOLUTE NO TRANSITIONS - INSTANT SNAP BACK */
+  transition: none !important;
+  animation-duration: 0s !important; /* Kill any inherited animations on hover out */
 }
 
 .hero-glitch:hover {
-  color: #FF003C !important;
-  animation: electronic-hack 0.1s steps(4) infinite;
+  color: #FFFFFF !important;
+  animation: digital-distortion 0.15s steps(10) infinite !important;
+  animation-delay: 0s !important;
   opacity: 1 !important;
 }
 
-/* Japanese Text Cyberpunk Glitch */
+/* Digital Distortion Effect - Japanese Text */
 .japan-glitch {
   position: relative;
   cursor: default;
-  transition: none !important; /* ABSOLUTE NO TRANSITIONS - INSTANT SNAP BACK */
+  transition: none !important;
+  animation-duration: 0s !important; /* Kill any inherited animations on hover out */
 }
 
 .japan-glitch:hover {
   color: #FF003C !important;
-  animation: electronic-hack 0.1s steps(4) infinite;
+  animation: digital-distortion 0.15s steps(10) infinite !important;
+  animation-delay: 0s !important;
   opacity: 1 !important;
 }
 
-/* Sharp Electronic Hacker Animation - Like TRANSMIT DATA button */
-@keyframes electronic-hack {
+/* Digital Distortion - Corrupted Video Feed Effect */
+@keyframes digital-distortion {
   0% {
     transform: translate(0, 0) skewX(0deg);
-    text-shadow: 2px 0 #FF003C, -2px 0 #00FFFF;
+    text-shadow: 2px 0 #00FFFF, -2px 0 #FF00FF;
+  }
+  5% {
+    transform: translate(-5px, 0) skewX(-25deg);
+    text-shadow: 4px 0 #00FFFF, -4px 0 #FF00FF;
+  }
+  10% {
+    transform: translate(5px, 0) skewX(25deg);
+    text-shadow: -3px 0 #FF00FF, 3px 0 #00FFFF;
+  }
+  15% {
+    transform: translate(-4px, 0) skewX(-20deg);
+    text-shadow: 5px 0 #00FFFF, -5px 0 #FF00FF;
   }
   20% {
-    transform: translate(-4px, 1px) skewX(-20deg);
-    text-shadow: 3px 0 #FF003C, -3px 0 #00FFFF;
+    transform: translate(4px, 0) skewX(20deg);
+    text-shadow: -4px 0 #FF00FF, 4px 0 #00FFFF;
+  }
+  25% {
+    transform: translate(-6px, 0) skewX(-30deg);
+    text-shadow: 3px 0 #00FFFF, -3px 0 #FF00FF;
+  }
+  30% {
+    transform: translate(6px, 0) skewX(30deg);
+    text-shadow: -5px 0 #FF00FF, 5px 0 #00FFFF;
+  }
+  35% {
+    transform: translate(-3px, 0) skewX(-15deg);
+    text-shadow: 4px 0 #00FFFF, -4px 0 #FF00FF;
   }
   40% {
-    transform: translate(4px, -1px) skewX(20deg);
-    text-shadow: -2px 0 #FF003C, 2px 0 #00FFFF;
+    transform: translate(3px, 0) skewX(15deg);
+    text-shadow: -3px 0 #FF00FF, 3px 0 #00FFFF;
+  }
+  45% {
+    transform: translate(-5px, 0) skewX(-22deg);
+    text-shadow: 5px 0 #00FFFF, -5px 0 #FF00FF;
+  }
+  50% {
+    transform: translate(5px, 0) skewX(22deg);
+    text-shadow: -4px 0 #FF00FF, 4px 0 #00FFFF;
+  }
+  55% {
+    transform: translate(-4px, 0) skewX(-18deg);
+    text-shadow: 3px 0 #00FFFF, -3px 0 #FF00FF;
   }
   60% {
-    transform: translate(-3px, 1px) skewX(-15deg);
-    text-shadow: 2px 0 #00FFFF, -2px 0 #FF003C;
+    transform: translate(4px, 0) skewX(18deg);
+    text-shadow: -5px 0 #FF00FF, 5px 0 #00FFFF;
+  }
+  65% {
+    transform: translate(-6px, 0) skewX(-28deg);
+    text-shadow: 4px 0 #00FFFF, -4px 0 #FF00FF;
+  }
+  70% {
+    transform: translate(6px, 0) skewX(28deg);
+    text-shadow: -3px 0 #FF00FF, 3px 0 #00FFFF;
+  }
+  75% {
+    transform: translate(-3px, 0) skewX(-12deg);
+    text-shadow: 5px 0 #00FFFF, -5px 0 #FF00FF;
   }
   80% {
-    transform: translate(3px, -1px) skewX(15deg);
-    text-shadow: -3px 0 #00FFFF, 3px 0 #FF003C;
+    transform: translate(3px, 0) skewX(12deg);
+    text-shadow: -4px 0 #FF00FF, 4px 0 #00FFFF;
+  }
+  85% {
+    transform: translate(-5px, 0) skewX(-20deg);
+    text-shadow: 3px 0 #00FFFF, -3px 0 #FF00FF;
+  }
+  90% {
+    transform: translate(5px, 0) skewX(20deg);
+    text-shadow: -5px 0 #FF00FF, 5px 0 #00FFFF;
+  }
+  95% {
+    transform: translate(-2px, 0) skewX(-10deg);
+    text-shadow: 4px 0 #00FFFF, -4px 0 #FF00FF;
   }
   100% {
     transform: translate(0, 0) skewX(0deg);
-    text-shadow: 2px 0 #FF003C, -2px 0 #00FFFF;
+    text-shadow: 2px 0 #00FFFF, -2px 0 #FF00FF;
   }
 }
 
