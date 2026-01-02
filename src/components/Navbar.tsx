@@ -42,7 +42,7 @@ const Navbar = () => {
         }`}
       >
         <div className="px-6 md:px-8 py-4 flex items-center justify-between gap-8 md:gap-16 lg:gap-24 flex-nowrap">
-          <a href="#" className="font-sans font-bold text-lg md:text-xl tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap" data-hover>
+          <a href="#" className="font-display font-bold text-lg md:text-xl tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap uppercase" data-hover>
             KUON STUDIOS
           </a>
           
@@ -87,7 +87,7 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               onClick={handleLinkClick}
-              className={`font-sans font-bold text-4xl tracking-widest text-foreground hover:text-accent transition-all duration-300 ${
+              className={`font-display font-bold text-4xl tracking-widest text-foreground hover:text-accent transition-all duration-300 uppercase ${
                 menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: menuOpen ? `${index * 100}ms` : '0ms' }}

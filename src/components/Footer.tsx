@@ -5,11 +5,11 @@ const Footer = () => {
         {/* Massive typographic lockup */}
         <div className="mb-12 md:mb-16 group" data-hover>
           {/* KUON - Extra large */}
-          <h2 className="font-sans font-extrabold text-[clamp(3rem,18vw,15rem)] tracking-[0.1em] md:tracking-[0.15em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500">
+          <h2 className="font-display font-black text-[clamp(3rem,18vw,15rem)] tracking-[0.1em] md:tracking-[0.15em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 uppercase">
             KUON
           </h2>
           {/* STUDIOS - Stretched to match width */}
-          <p className="font-sans font-bold text-[clamp(1rem,6vw,5rem)] tracking-[0.8em] md:tracking-[1.2em] lg:tracking-[1.5em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 -mt-1 md:-mt-4">
+          <p className="font-display font-bold text-[clamp(1rem,6vw,5rem)] tracking-[0.8em] md:tracking-[1.2em] lg:tracking-[1.5em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 -mt-1 md:-mt-4 uppercase">
             STUDIOS
           </p>
         </div>

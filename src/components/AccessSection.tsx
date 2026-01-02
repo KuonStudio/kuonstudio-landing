@@ -40,7 +40,7 @@ const AccessSection = () => {
             </p>
 
             {/* Main headline */}
-            <h2 className="font-sans font-extrabold text-[clamp(1.75rem,6vw,3rem)] tracking-tight mb-6 md:mb-8">
+            <h2 className="font-display font-black text-[clamp(1.75rem,6vw,3rem)] tracking-tight mb-6 md:mb-8 uppercase">
               INITIATE UPLINK
             </h2>
 

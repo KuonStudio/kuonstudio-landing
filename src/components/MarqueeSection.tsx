@@ -9,7 +9,7 @@ const MarqueeSection = () => {
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="font-sans font-bold text-[clamp(2rem,8vw,6rem)] text-outline tracking-tight mx-4"
+              className="font-display font-bold text-[clamp(2rem,8vw,6rem)] text-outline tracking-tight mx-4 uppercase"
             >
               {text}
             </span>

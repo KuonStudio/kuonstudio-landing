@@ -8,7 +8,7 @@ const VisionSection = () => {
         </p>
 
         {/* Main headline */}
-        <h2 className="font-sans font-extrabold text-[clamp(1.75rem,6vw,4.5rem)] tracking-tight mb-10 md:mb-16 opacity-0 animate-fade-up animation-delay-100">
+        <h2 className="font-display font-black text-[clamp(1.75rem,6vw,4.5rem)] tracking-tight mb-10 md:mb-16 opacity-0 animate-fade-up animation-delay-100 uppercase">
           THE ERA OF AUTONOMY.
         </h2>
 
@@ -16,10 +16,10 @@ const VisionSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24">
           {/* Left - Key quote */}
           <div className="relative">
-            <blockquote className="font-sans font-bold text-[clamp(1.5rem,5vw,3.5rem)] leading-tight text-foreground/90 opacity-0 animate-fade-up animation-delay-200">
+            <blockquote className="font-display font-bold text-[clamp(1.5rem,5vw,3.5rem)] leading-tight text-foreground/90 opacity-0 animate-fade-up animation-delay-200 uppercase">
               "FLESH DECAYS.
               <br />
-              <span className="text-accent">CODE ENDURES.</span>"
+              <span className="text-accent">CODE ENDURES."</span>
             </blockquote>
             
             {/* Decorative line */}
