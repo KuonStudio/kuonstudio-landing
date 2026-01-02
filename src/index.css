@@ -388,84 +388,156 @@ textarea:focus {
   background-color: hsl(var(--accent));
 }
 
-/* Hero title hover effect - menacing red glitch */
-.hero-title {
-  @apply transition-all duration-300;
+/* Cyberpunk Glitch Effect - Hero Title */
+.hero-glitch {
+  position: relative;
   cursor: default;
 }
 
-.hero-title:hover {
+.hero-glitch::before,
+.hero-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-glitch::before {
+  color: hsl(0 100% 50%);
+  z-index: -1;
+}
+
+.hero-glitch::after {
+  color: hsl(180 100% 50%);
+  z-index: -1;
+}
+
+.hero-glitch:hover {
+  animation: glitch-main 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   color: hsl(0 100% 60%);
   text-shadow: 
     0 0 10px hsl(0 100% 50% / 0.8),
-    0 0 20px hsl(0 100% 50% / 0.5),
-    2px 0 hsl(0 100% 50%),
-    -2px 0 hsl(120 100% 50% / 0.3);
-  animation: hero-breach 0.3s ease-out;
+    0 0 20px hsl(0 100% 50% / 0.4),
+    0 0 40px hsl(0 100% 50% / 0.2);
 }
 
-@keyframes hero-breach {
-  0%, 100% {
-    transform: translate(0);
-  }
-  10% {
-    transform: translate(-2px, 1px) skewX(1deg);
-  }
-  20% {
-    transform: translate(2px, -1px) skewX(-1deg);
-  }
-  30% {
-    transform: translate(-1px, 0);
-  }
-  40% {
-    transform: translate(1px, 1px) skewX(0.5deg);
-  }
-  50% {
-    transform: translate(-1px, -1px) skewX(-0.5deg);
-  }
-  60% {
-    transform: translate(2px, 0);
-  }
-  70% {
-    transform: translate(-2px, 1px);
-  }
-  80% {
-    transform: translate(1px, -1px);
-  }
-  90% {
-    transform: translate(-1px, 0);
-  }
+.hero-glitch:hover::before {
+  opacity: 0.8;
+  animation: glitch-red 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-/* Japanese text subtle red glitch effect */
-.japan-text {
-  @apply transition-all duration-300;
+.hero-glitch:hover::after {
+  opacity: 0.6;
+  animation: glitch-cyan 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes glitch-main {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-3px, 2px); }
+  20% { transform: translate(3px, -2px); }
+  30% { transform: translate(-2px, 0); }
+  40% { transform: translate(2px, 2px); }
+  50% { transform: translate(-1px, -1px); }
+  60% { transform: translate(3px, 1px); }
+  70% { transform: translate(-2px, -2px); }
+  80% { transform: translate(1px, 2px); }
+  90% { transform: translate(-1px, -1px); }
+}
+
+@keyframes glitch-red {
+  0%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+  10% { transform: translate(-4px, 0); clip-path: inset(10% 0 85% 0); }
+  20% { transform: translate(4px, 0); clip-path: inset(30% 0 60% 0); }
+  30% { transform: translate(-3px, 0); clip-path: inset(50% 0 40% 0); }
+  40% { transform: translate(3px, 0); clip-path: inset(70% 0 20% 0); }
+  50% { transform: translate(-2px, 0); clip-path: inset(20% 0 70% 0); }
+  60% { transform: translate(4px, 0); clip-path: inset(80% 0 10% 0); }
+  70% { transform: translate(-4px, 0); clip-path: inset(5% 0 90% 0); }
+  80% { transform: translate(2px, 0); clip-path: inset(40% 0 50% 0); }
+  90% { transform: translate(-2px, 0); clip-path: inset(60% 0 30% 0); }
+}
+
+@keyframes glitch-cyan {
+  0%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+  10% { transform: translate(4px, 0); clip-path: inset(85% 0 10% 0); }
+  20% { transform: translate(-4px, 0); clip-path: inset(60% 0 30% 0); }
+  30% { transform: translate(3px, 0); clip-path: inset(40% 0 50% 0); }
+  40% { transform: translate(-3px, 0); clip-path: inset(20% 0 70% 0); }
+  50% { transform: translate(2px, 0); clip-path: inset(70% 0 20% 0); }
+  60% { transform: translate(-4px, 0); clip-path: inset(10% 0 80% 0); }
+  70% { transform: translate(4px, 0); clip-path: inset(90% 0 5% 0); }
+  80% { transform: translate(-2px, 0); clip-path: inset(50% 0 40% 0); }
+  90% { transform: translate(2px, 0); clip-path: inset(30% 0 60% 0); }
+}
+
+/* Japanese Text Cyberpunk Glitch */
+.japan-glitch {
+  position: relative;
   cursor: default;
 }
 
-.japan-text:hover {
-  color: hsl(0 100% 60%);
-  text-shadow: 
-    0 0 10px hsl(0 100% 50% / 0.6),
-    1px 0 hsl(0 100% 50%),
-    -1px 0 hsl(120 100% 50% / 0.2);
-  animation: japan-glitch 0.4s ease-out;
+.japan-glitch::before,
+.japan-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
 }
 
-@keyframes japan-glitch {
-  0%, 100% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-1px, 0.5px);
-  }
-  40% {
-    transform: translate(1px, -0.5px);
-  }
-  60% {
-    transform: translate(-0.5px, 0);
-  }
-  80% {
-    transform: translate(0.5px, 0.5px);
-  }
+.japan-glitch::before {
+  color: hsl(0 100% 50%);
+  z-index: -1;
+}
+
+.japan-glitch::after {
+  color: hsl(120 100% 50%);
+  z-index: -1;
+}
+
+.japan-glitch:hover {
+  animation: japan-main 0.5s ease-in-out both;
+  text-shadow: 
+    0 0 8px hsl(0 100% 50% / 0.8),
+    0 0 16px hsl(0 100% 50% / 0.4);
+}
+
+.japan-glitch:hover::before {
+  opacity: 0.7;
+  animation: japan-red 0.5s steps(2) both;
+}
+
+.japan-glitch:hover::after {
+  opacity: 0.5;
+  animation: japan-green 0.5s steps(3) both;
+}
+
+@keyframes japan-main {
+  0%, 100% { transform: translate(0) skewX(0); }
+  15% { transform: translate(-2px, 1px) skewX(2deg); }
+  30% { transform: translate(2px, -1px) skewX(-1deg); }
+  45% { transform: translate(-1px, 0) skewX(1deg); }
+  60% { transform: translate(1px, 1px) skewX(-0.5deg); }
+  75% { transform: translate(-1px, -1px) skewX(0.5deg); }
+  90% { transform: translate(1px, 0); }
+}
+
+@keyframes japan-red {
+  0%, 100% { transform: translate(0); }
+  25% { transform: translate(-3px, 0); }
+  50% { transform: translate(3px, 0); }
+  75% { transform: translate(-2px, 0); }
+}
+
+@keyframes japan-green {
+  0%, 100% { transform: translate(0); }
+  33% { transform: translate(3px, 0); }
+  66% { transform: translate(-3px, 0); }
 }
