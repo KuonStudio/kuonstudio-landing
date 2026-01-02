@@ -12,9 +12,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: 'WORK', href: '#work' },
-    { label: 'PHILOSOPHY', href: '#philosophy' },
-    { label: 'CONTACT', href: '#contact' },
+    { label: 'PROTOCOLS', href: '#protocols' },
+    { label: 'VISION', href: '#vision' },
+    { label: 'ACCESS', href: '#access' },
   ];
 
   return (
@@ -23,20 +23,20 @@ const Navbar = () => {
         scrolled ? 'glass' : 'bg-transparent'
       }`}
     >
-      <div className="px-6 py-3 flex items-center justify-between gap-12 md:gap-20">
-        <a href="#" className="font-sans font-bold text-xl tracking-wider" data-hover>
-          KUON
+      <div className="px-8 py-4 flex items-center justify-between gap-16 md:gap-24">
+        <a href="#" className="font-sans font-bold text-xl tracking-[0.3em]" data-hover>
+          KUON STUDIOS
         </a>
         
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="font-mono text-xs tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-300"
+              className="font-mono text-xs tracking-widest text-muted-foreground hover:text-accent transition-colors duration-300"
               data-hover
             >
-              {link.label}
+              [ {link.label} ]
             </a>
           ))}
         </div>

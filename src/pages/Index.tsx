@@ -2,15 +2,14 @@ import { useEffect } from 'react';
 import CustomCursor from '@/components/CustomCursor';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import PhilosophySection from '@/components/PhilosophySection';
-import WorksSection from '@/components/WorksSection';
-import TechStackSection from '@/components/TechStackSection';
+import LabsSection from '@/components/LabsSection';
+import MarqueeSection from '@/components/MarqueeSection';
+import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
-    // Update document title
-    document.title = 'Kuon Studio | Engineering Eternity';
+    document.title = 'Kuon Studios | We Forge Intelligence';
   }, []);
 
   return (
@@ -27,9 +26,9 @@ const Index = () => {
       {/* Main content */}
       <main>
         <HeroSection />
-        <PhilosophySection />
-        <WorksSection />
-        <TechStackSection />
+        <LabsSection />
+        <MarqueeSection />
+        <CTASection />
       </main>
       
       {/* Footer */}
