@@ -434,73 +434,53 @@ textarea:focus {
 .hero-glitch {
   position: relative;
   cursor: default;
-  transition: none; /* NO exit animation - instant snap back */
+  transition: none !important; /* ABSOLUTE NO TRANSITIONS - INSTANT SNAP BACK */
 }
 
 .hero-glitch:hover {
-  color: #FF0055 !important;
-  animation: hacker-glitch 0.15s infinite;
+  color: #FF003C !important;
+  animation: electronic-hack 0.1s steps(4) infinite;
   opacity: 1 !important;
-  text-shadow:
-    2px 0 #FF0055,
-    -2px 0 #00FFFF,
-    4px 0 #FF0055,
-    -4px 0 #0000FF,
-    0 0 15px #FF0055;
 }
 
 /* Japanese Text Cyberpunk Glitch */
 .japan-glitch {
   position: relative;
   cursor: default;
-  transition: none; /* NO exit animation - instant snap back */
+  transition: none !important; /* ABSOLUTE NO TRANSITIONS - INSTANT SNAP BACK */
 }
 
 .japan-glitch:hover {
-  color: #FF0055 !important;
-  animation: hacker-glitch 0.15s infinite;
+  color: #FF003C !important;
+  animation: electronic-hack 0.1s steps(4) infinite;
   opacity: 1 !important;
-  text-shadow:
-    2px 0 #FF0055,
-    -2px 0 #00FFFF,
-    4px 0 #FF0055,
-    -4px 0 #0000FF,
-    0 0 15px #FF0055;
 }
 
-@keyframes hacker-glitch {
+/* Sharp Electronic Hacker Animation - Like TRANSMIT DATA button */
+@keyframes electronic-hack {
   0% {
     transform: translate(0, 0) skewX(0deg);
-  }
-  10% {
-    transform: translate(-5px, 2px) skewX(-15deg);
+    text-shadow: 2px 0 #FF003C, -2px 0 #00FFFF;
   }
   20% {
-    transform: translate(5px, -2px) skewX(15deg);
-  }
-  30% {
-    transform: translate(-4px, 3px) skewX(-12deg);
+    transform: translate(-4px, 1px) skewX(-20deg);
+    text-shadow: 3px 0 #FF003C, -3px 0 #00FFFF;
   }
   40% {
-    transform: translate(4px, -3px) skewX(12deg);
-  }
-  50% {
-    transform: translate(-6px, 1px) skewX(-10deg);
+    transform: translate(4px, -1px) skewX(20deg);
+    text-shadow: -2px 0 #FF003C, 2px 0 #00FFFF;
   }
   60% {
-    transform: translate(6px, -1px) skewX(10deg);
-  }
-  70% {
-    transform: translate(-5px, 2px) skewX(-18deg);
+    transform: translate(-3px, 1px) skewX(-15deg);
+    text-shadow: 2px 0 #00FFFF, -2px 0 #FF003C;
   }
   80% {
-    transform: translate(5px, -2px) skewX(18deg);
-  }
-  90% {
-    transform: translate(-3px, 3px) skewX(-8deg);
+    transform: translate(3px, -1px) skewX(15deg);
+    text-shadow: -3px 0 #00FFFF, 3px 0 #FF003C;
   }
   100% {
     transform: translate(0, 0) skewX(0deg);
+    text-shadow: 2px 0 #FF003C, -2px 0 #00FFFF;
   }
 }
 
