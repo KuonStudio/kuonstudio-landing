@@ -446,29 +446,35 @@ textarea:focus {
   height: 100%;
   opacity: 0;
   pointer-events: none;
+  background: transparent;
 }
 
 .hero-glitch::before {
-  color: #8b0000; /* Blood red layer */
+  color: #8b0000;
+  text-shadow: 1px 0 rgba(139, 0, 0, 0.25);
 }
 
 .hero-glitch::after {
-  color: #00cccc; /* Cyan layer - subtle */
+  color: #003333;
+  text-shadow: -1px 0 rgba(0, 51, 51, 0.15);
 }
 
 .hero-glitch:hover {
   color: #8b0000 !important;
-  text-shadow: 0 0 6px rgba(139, 0, 0, 0.5);
+  text-shadow: 
+    0 0 3px rgba(139, 0, 0, 0.3),
+    0 0 6px rgba(139, 0, 0, 0.15);
+  animation: hero-main-shake 0.4s ease-in-out;
 }
 
 .hero-glitch:hover::before {
-  opacity: 0.5;
-  animation: slice-tear-red 0.2s steps(4) infinite;
+  opacity: 0.3;
+  animation: scanline-slice-1 0.3s steps(3) infinite;
 }
 
 .hero-glitch:hover::after {
-  opacity: 0.3;
-  animation: slice-tear-cyan 0.2s steps(4) infinite;
+  opacity: 0.15;
+  animation: scanline-slice-2 0.3s steps(3) infinite;
 }
 
 /* Horizontal Scanline Tearing Effect - Japanese Text */
@@ -490,65 +496,81 @@ textarea:focus {
 }
 
 .japan-glitch::before {
-  color: #8b0000; /* Blood red layer */
+  color: #8b0000;
+  text-shadow: 0.5px 0 rgba(139, 0, 0, 0.2);
 }
 
 .japan-glitch::after {
-  color: #00cccc; /* Cyan layer - subtle */
+  color: #003333;
+  text-shadow: -0.5px 0 rgba(0, 51, 51, 0.1);
 }
 
 .japan-glitch:hover {
   color: #8b0000 !important;
-  text-shadow: 0 0 4px rgba(139, 0, 0, 0.4);
+  text-shadow: 0 0 2px rgba(139, 0, 0, 0.25);
+  animation: japan-main-shake 0.25s ease-in-out infinite;
 }
 
 .japan-glitch:hover::before {
-  opacity: 0.4;
-  animation: slice-tear-red 0.15s steps(3) infinite;
+  opacity: 0.25;
+  animation: scanline-slice-1 0.2s steps(2) infinite;
 }
 
 .japan-glitch:hover::after {
-  opacity: 0.25;
-  animation: slice-tear-cyan 0.15s steps(3) infinite;
+  opacity: 0.12;
+  animation: scanline-slice-2 0.2s steps(2) infinite;
 }
 
-/* Scanline Tearing - Red Layer (shifts left) */
-@keyframes slice-tear-red {
+/* Main text subtle shake */
+@keyframes hero-main-shake {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-0.4px, 0); }
+  40% { transform: translate(0.4px, 0); }
+  60% { transform: translate(-0.2px, 0); }
+  80% { transform: translate(0.2px, 0); }
+}
+
+@keyframes japan-main-shake {
+  0%, 100% { transform: translate(0); }
+  50% { transform: translate(0.2px, 0); }
+}
+
+/* Scanline Slice - Horizontal bands with subtle skew */
+@keyframes scanline-slice-1 {
   0% {
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    transform: translateX(-1.5px);
+    clip-path: polygon(0 0, 100% 0, 100% 28%, 0 28%);
+    transform: translateX(-0.8px) skewX(-0.3deg);
   }
   33% {
-    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
-    transform: translateX(1.5px);
+    clip-path: polygon(0 36%, 100% 36%, 100% 64%, 0 64%);
+    transform: translateX(0.8px) skewX(0.2deg);
   }
   66% {
-    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
-    transform: translateX(-1px);
+    clip-path: polygon(0 72%, 100% 72%, 100% 100%, 0 100%);
+    transform: translateX(-0.4px) skewX(-0.15deg);
   }
   100% {
-    clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%);
-    transform: translateX(1px);
+    clip-path: polygon(0 18%, 100% 18%, 100% 46%, 0 46%);
+    transform: translateX(0.4px) skewX(0.1deg);
   }
 }
 
-/* Scanline Tearing - Cyan Layer (shifts right) */
-@keyframes slice-tear-cyan {
+@keyframes scanline-slice-2 {
   0% {
-    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
-    transform: translateX(1.5px);
+    clip-path: polygon(0 72%, 100% 72%, 100% 100%, 0 100%);
+    transform: translateX(0.8px) skewX(0.2deg);
   }
   33% {
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    transform: translateX(-1px);
+    clip-path: polygon(0 0, 100% 0, 100% 28%, 0 28%);
+    transform: translateX(-0.4px) skewX(-0.15deg);
   }
   66% {
-    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
-    transform: translateX(1px);
+    clip-path: polygon(0 36%, 100% 36%, 100% 64%, 0 64%);
+    transform: translateX(0.4px) skewX(0.08deg);
   }
   100% {
-    clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%);
-    transform: translateX(-1.5px);
+    clip-path: polygon(0 54%, 100% 54%, 100% 82%, 0 82%);
+    transform: translateX(-0.8px) skewX(-0.2deg);
   }
 }
 
