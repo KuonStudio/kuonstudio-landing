@@ -16,7 +16,7 @@ const AccessSection = () => {
   };
 
   return (
-    <section id="access" className="py-32 px-6">
+    <section id="access" className="py-20 md:py-32 px-5 md:px-6">
       <div className="max-w-2xl mx-auto">
         {/* Terminal header */}
         <div className="terminal-container border border-border/50 bg-card/30 backdrop-blur-sm">
@@ -33,14 +33,14 @@ const AccessSection = () => {
           </div>
 
           {/* Terminal content */}
-          <div className="p-8">
+          <div className="p-5 md:p-8">
             {/* Section label */}
             <p className="font-mono text-sm text-accent tracking-widest mb-4">
               [ ACCESS TERMINAL ]
             </p>
 
             {/* Main headline */}
-            <h2 className="font-sans font-extrabold text-4xl md:text-5xl tracking-tight mb-8">
+            <h2 className="font-sans font-extrabold text-[clamp(1.75rem,6vw,3rem)] tracking-tight mb-6 md:mb-8">
               INITIATE UPLINK
             </h2>
 
@@ -56,7 +56,7 @@ const AccessSection = () => {
                   value={formData.codename}
                   onChange={(e) => setFormData({ ...formData, codename: e.target.value })}
                   required
-                  className="w-full bg-background border border-border/50 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors"
+                  className="w-full bg-background border border-border/50 px-4 py-3 min-h-[48px] font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors"
                   placeholder="Enter identifier..."
                   data-hover
                 />
@@ -72,7 +72,7 @@ const AccessSection = () => {
                   value={formData.signal}
                   onChange={(e) => setFormData({ ...formData, signal: e.target.value })}
                   required
-                  className="w-full bg-background border border-border/50 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors"
+                  className="w-full bg-background border border-border/50 px-4 py-3 min-h-[48px] font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors"
                   placeholder="your@frequency.com"
                   data-hover
                 />
@@ -97,7 +97,7 @@ const AccessSection = () => {
               {/* Submit button */}
               <button
                 type="submit"
-                className="btn-red-outline w-full mt-4"
+                className="btn-red-outline w-full mt-4 min-h-[48px]"
                 data-hover
               >
                 TRANSMIT DATA
