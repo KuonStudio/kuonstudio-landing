@@ -19,7 +19,7 @@ const AccessSection = () => {
     <section id="access" className="py-20 md:py-32 px-5 md:px-6">
       <div className="max-w-2xl mx-auto">
         {/* Terminal header */}
-        <div className="terminal-container border border-border/50 bg-card/30 backdrop-blur-sm">
+        <div className="glass-container border border-border/50 bg-card/30 backdrop-blur-sm">
           {/* Terminal title bar */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-card/50">
             <div className="flex gap-1.5">
@@ -97,7 +97,7 @@ const AccessSection = () => {
               {/* Submit button */}
               <button
                 type="submit"
-                className="btn-red-outline w-full mt-4 min-h-[48px]"
+                className="btn-primary-action w-full mt-4 min-h-[48px]"
                 data-hover
               >
                 TRANSMIT DATA
