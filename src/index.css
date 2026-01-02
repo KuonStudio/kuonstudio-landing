@@ -434,44 +434,73 @@ textarea:focus {
 .hero-glitch {
   position: relative;
   cursor: default;
+  transition: none; /* NO exit animation - instant snap back */
 }
 
 .hero-glitch:hover {
-  color: #FF003C !important;
-  animation: glitch-anim 0.2s infinite;
+  color: #FF0055 !important;
+  animation: hacker-glitch 0.15s infinite;
   opacity: 1 !important;
+  text-shadow:
+    2px 0 #FF0055,
+    -2px 0 #00FFFF,
+    4px 0 #FF0055,
+    -4px 0 #0000FF,
+    0 0 15px #FF0055;
 }
 
 /* Japanese Text Cyberpunk Glitch */
 .japan-glitch {
   position: relative;
   cursor: default;
+  transition: none; /* NO exit animation - instant snap back */
 }
 
 .japan-glitch:hover {
-  color: #FF003C !important;
-  animation: glitch-anim 0.2s infinite;
+  color: #FF0055 !important;
+  animation: hacker-glitch 0.15s infinite;
   opacity: 1 !important;
+  text-shadow:
+    2px 0 #FF0055,
+    -2px 0 #00FFFF,
+    4px 0 #FF0055,
+    -4px 0 #0000FF,
+    0 0 15px #FF0055;
 }
 
-@keyframes glitch-anim {
+@keyframes hacker-glitch {
   0% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) skewX(0deg);
+  }
+  10% {
+    transform: translate(-5px, 2px) skewX(-15deg);
   }
   20% {
-    transform: translate(-2px, 2px);
+    transform: translate(5px, -2px) skewX(15deg);
+  }
+  30% {
+    transform: translate(-4px, 3px) skewX(-12deg);
   }
   40% {
-    transform: translate(-2px, -2px);
+    transform: translate(4px, -3px) skewX(12deg);
+  }
+  50% {
+    transform: translate(-6px, 1px) skewX(-10deg);
   }
   60% {
-    transform: translate(2px, 2px);
+    transform: translate(6px, -1px) skewX(10deg);
+  }
+  70% {
+    transform: translate(-5px, 2px) skewX(-18deg);
   }
   80% {
-    transform: translate(2px, -2px);
+    transform: translate(5px, -2px) skewX(18deg);
+  }
+  90% {
+    transform: translate(-3px, 3px) skewX(-8deg);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) skewX(0deg);
   }
 }
 
