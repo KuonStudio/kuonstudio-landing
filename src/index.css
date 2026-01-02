@@ -458,17 +458,18 @@ textarea:focus {
 
 .hero-glitch:hover {
   color: #8b0000 !important;
-  text-shadow: 0 0 6px rgba(139, 0, 0, 0.5);
+  text-shadow: 0 0 8px rgba(139, 0, 0, 0.4);
 }
 
 .hero-glitch:hover::before {
-  opacity: 0.5;
-  animation: slice-tear-red 0.2s steps(4) infinite;
+  opacity: 1;
+  animation: slice-tear-red 0.8s linear infinite;
 }
 
 .hero-glitch:hover::after {
-  opacity: 0.3;
-  animation: slice-tear-cyan 0.2s steps(4) infinite;
+  opacity: 1;
+  animation: slice-tear-cyan 0.8s linear infinite;
+  animation-delay: -0.4s;
 }
 
 /* Horizontal Scanline Tearing Effect - Japanese Text */
@@ -499,56 +500,135 @@ textarea:focus {
 
 .japan-glitch:hover {
   color: #8b0000 !important;
-  text-shadow: 0 0 4px rgba(139, 0, 0, 0.4);
+  text-shadow: 0 0 6px rgba(139, 0, 0, 0.35);
 }
 
 .japan-glitch:hover::before {
-  opacity: 0.4;
-  animation: slice-tear-red 0.15s steps(3) infinite;
+  opacity: 1;
+  animation: slice-tear-red 0.6s linear infinite;
 }
 
 .japan-glitch:hover::after {
-  opacity: 0.25;
-  animation: slice-tear-cyan 0.15s steps(3) infinite;
+  opacity: 1;
+  animation: slice-tear-cyan 0.6s linear infinite;
+  animation-delay: -0.3s;
 }
 
-/* Scanline Tearing - Red Layer (shifts left) */
+/* Soft Horizontal Scanline Tearing - Game-style Digital Distortion */
 @keyframes slice-tear-red {
-  0% {
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    transform: translateX(-1.5px);
+  0%, 100% {
+    clip-path: inset(0 0 80% 0);
+    transform: translateX(0) skewX(0deg);
+    opacity: 0.3;
   }
-  33% {
-    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
-    transform: translateX(1.5px);
+  8% {
+    clip-path: inset(15% 0 70% 0);
+    transform: translateX(-2px) skewX(-0.5deg);
+    opacity: 0.5;
   }
-  66% {
-    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
-    transform: translateX(-1px);
+  16% {
+    clip-path: inset(35% 0 50% 0);
+    transform: translateX(1.5px) skewX(0.3deg);
+    opacity: 0.4;
   }
-  100% {
-    clip-path: polygon(0 20%, 100% 20%, 100% 50%, 0 50%);
-    transform: translateX(1px);
+  24% {
+    clip-path: inset(50% 0 35% 0);
+    transform: translateX(-1px) skewX(-0.2deg);
+    opacity: 0.35;
+  }
+  32% {
+    clip-path: inset(65% 0 20% 0);
+    transform: translateX(2px) skewX(0.4deg);
+    opacity: 0.45;
+  }
+  40% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translateX(-1.5px) skewX(-0.3deg);
+    opacity: 0.3;
+  }
+  48% {
+    clip-path: inset(25% 0 60% 0);
+    transform: translateX(1px) skewX(0.2deg);
+    opacity: 0.4;
+  }
+  56% {
+    clip-path: inset(45% 0 40% 0);
+    transform: translateX(-2px) skewX(-0.4deg);
+    opacity: 0.5;
+  }
+  64% {
+    clip-path: inset(10% 0 75% 0);
+    transform: translateX(1.5px) skewX(0.3deg);
+    opacity: 0.35;
+  }
+  72% {
+    clip-path: inset(70% 0 15% 0);
+    transform: translateX(-1px) skewX(-0.2deg);
+    opacity: 0.4;
+  }
+  80% {
+    clip-path: inset(55% 0 30% 0);
+    transform: translateX(2px) skewX(0.5deg);
+    opacity: 0.45;
+  }
+  88% {
+    clip-path: inset(30% 0 55% 0);
+    transform: translateX(-1.5px) skewX(-0.3deg);
+    opacity: 0.35;
   }
 }
 
-/* Scanline Tearing - Cyan Layer (shifts right) */
+/* Soft Scanline Tearing - Cyan Layer (offset timing) */
 @keyframes slice-tear-cyan {
-  0% {
-    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
-    transform: translateX(1.5px);
+  0%, 100% {
+    clip-path: inset(70% 0 15% 0);
+    transform: translateX(0) skewX(0deg);
+    opacity: 0.2;
   }
-  33% {
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    transform: translateX(-1px);
+  10% {
+    clip-path: inset(55% 0 30% 0);
+    transform: translateX(1.5px) skewX(0.3deg);
+    opacity: 0.35;
   }
-  66% {
-    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
-    transform: translateX(1px);
+  20% {
+    clip-path: inset(20% 0 65% 0);
+    transform: translateX(-1px) skewX(-0.2deg);
+    opacity: 0.25;
   }
-  100% {
-    clip-path: polygon(0 50%, 100% 50%, 100% 80%, 0 80%);
-    transform: translateX(-1.5px);
+  30% {
+    clip-path: inset(40% 0 45% 0);
+    transform: translateX(2px) skewX(0.4deg);
+    opacity: 0.3;
+  }
+  40% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translateX(-1.5px) skewX(-0.3deg);
+    opacity: 0.25;
+  }
+  50% {
+    clip-path: inset(75% 0 10% 0);
+    transform: translateX(1px) skewX(0.2deg);
+    opacity: 0.35;
+  }
+  60% {
+    clip-path: inset(35% 0 50% 0);
+    transform: translateX(-2px) skewX(-0.4deg);
+    opacity: 0.3;
+  }
+  70% {
+    clip-path: inset(60% 0 25% 0);
+    transform: translateX(1.5px) skewX(0.3deg);
+    opacity: 0.25;
+  }
+  80% {
+    clip-path: inset(15% 0 70% 0);
+    transform: translateX(-1px) skewX(-0.2deg);
+    opacity: 0.3;
+  }
+  90% {
+    clip-path: inset(45% 0 40% 0);
+    transform: translateX(2px) skewX(0.5deg);
+    opacity: 0.35;
   }
 }
 
