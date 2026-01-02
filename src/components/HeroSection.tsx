@@ -26,19 +26,19 @@ const HeroSection = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-5">
         {/* Main headline */}
-        <h1 className="font-sans font-extrabold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none opacity-0 animate-fade-up">
+        <h1 className="font-sans font-extrabold text-[clamp(2rem,8vw,6rem)] tracking-tight leading-[1.1] opacity-0 animate-fade-up">
           WE FORGE INTELLIGENCE.
         </h1>
         
         {/* Japanese subtitle - Blood Red */}
-        <p className="mt-8 text-2xl md:text-4xl text-accent tracking-[0.2em] opacity-0 animate-fade-up animation-delay-100 font-sans">
+        <p className="mt-6 md:mt-8 text-[clamp(1.25rem,4vw,2.5rem)] text-accent tracking-[0.2em] opacity-0 animate-fade-up animation-delay-100 font-sans">
           久遠スタジオ
         </p>
         
         {/* Description */}
-        <div className="mt-12 max-w-xl mx-auto opacity-0 animate-fade-up animation-delay-200">
+        <div className="mt-8 md:mt-12 max-w-xl mx-auto opacity-0 animate-fade-up animation-delay-200">
           <p className="font-mono text-sm md:text-base text-muted-foreground leading-relaxed tracking-wide">
             Kuon Studios is a research facility for Autonomous Agentic AI. 
             We automate the complex, defend the reputation, and predict the unseen.

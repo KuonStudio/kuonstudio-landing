@@ -52,11 +52,11 @@ const LabsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="protocols" className="py-32 px-6">
+    <section id="protocols" className="py-20 md:py-32 px-5 md:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="mb-16">
-          <h2 className="font-sans font-bold text-3xl md:text-5xl tracking-tight">
+        <div className="mb-10 md:mb-16">
+          <h2 className="font-sans font-bold text-[clamp(1.5rem,5vw,3rem)] tracking-tight">
             OPERATIONAL CAPABILITIES
           </h2>
           <p className="mt-2 font-mono text-sm text-muted-foreground tracking-widest">
@@ -64,14 +64,15 @@ const LabsSection = () => {
           </p>
         </div>
 
-        {/* Agent cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Agent cards - single column on mobile, 3 columns on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {agents.map((agent, index) => (
             <div
               key={agent.name}
-              className="agent-card relative p-8 bg-card/50 backdrop-blur-sm min-h-[300px] flex flex-col"
+              className="agent-card relative p-6 md:p-8 bg-card/50 backdrop-blur-sm min-h-[260px] md:min-h-[300px] flex flex-col"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onTouchStart={() => setHoveredIndex(index)}
               data-hover
             >
               {/* Status indicator */}

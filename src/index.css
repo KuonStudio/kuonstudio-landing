@@ -235,3 +235,30 @@
 .wireframe-glow {
   filter: drop-shadow(0 0 20px hsl(var(--accent) / 0.3));
 }
+
+/* Mobile menu icon */
+.menu-icon {
+  @apply relative w-6 h-6 flex flex-col justify-center items-center;
+}
+
+.menu-line {
+  @apply absolute w-5 h-px bg-foreground transition-all duration-300;
+}
+
+.menu-line:first-child {
+  transform: translateY(-4px);
+}
+
+.menu-line:last-child {
+  transform: translateY(4px);
+}
+
+.menu-icon.open .menu-line:first-child {
+  transform: translateY(0) rotate(45deg);
+  background-color: hsl(var(--accent));
+}
+
+.menu-icon.open .menu-line:last-child {
+  transform: translateY(0) rotate(-45deg);
+  background-color: hsl(var(--accent));
+}
