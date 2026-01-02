@@ -392,6 +392,7 @@ textarea:focus {
 .hero-glitch {
   position: relative;
   cursor: default;
+  display: inline-block;
 }
 
 .hero-glitch::before,
@@ -404,80 +405,152 @@ textarea:focus {
   height: 100%;
   opacity: 0;
   pointer-events: none;
+  will-change: transform;
 }
 
 .hero-glitch::before {
   color: #FF003C;
-  z-index: -1;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
 .hero-glitch::after {
-  color: hsl(180 100% 50%);
-  z-index: -1;
+  color: #00FFFF;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
 .hero-glitch:hover {
-  animation: glitch-main 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  color: #FF003C;
+  color: #FF003C !important;
+  animation: glitch-skew 0.6s infinite;
   text-shadow:
-    0 0 10px rgba(255, 0, 60, 0.8),
-    0 0 20px rgba(255, 0, 60, 0.4),
-    0 0 40px rgba(255, 0, 60, 0.2);
+    2px 0 0 rgba(255, 0, 60, 0.5),
+    -2px 0 0 rgba(0, 255, 255, 0.5);
 }
 
 .hero-glitch:hover::before {
-  opacity: 0.8;
-  animation: glitch-red 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  opacity: 0.9;
+  animation: glitch-anim-1 0.6s infinite;
 }
 
 .hero-glitch:hover::after {
-  opacity: 0.6;
-  animation: glitch-cyan 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  opacity: 0.9;
+  animation: glitch-anim-2 0.6s infinite;
 }
 
-@keyframes glitch-main {
-  0%, 100% { transform: translate(0); }
-  10% { transform: translate(-3px, 2px); }
-  20% { transform: translate(3px, -2px); }
-  30% { transform: translate(-2px, 0); }
-  40% { transform: translate(2px, 2px); }
-  50% { transform: translate(-1px, -1px); }
-  60% { transform: translate(3px, 1px); }
-  70% { transform: translate(-2px, -2px); }
-  80% { transform: translate(1px, 2px); }
-  90% { transform: translate(-1px, -1px); }
+@keyframes glitch-skew {
+  0% { transform: skewX(0deg); }
+  10% { transform: skewX(2deg); }
+  20% { transform: skewX(-2deg); }
+  30% { transform: skewX(1deg); }
+  40% { transform: skewX(-1deg); }
+  50% { transform: skewX(0deg); }
+  60% { transform: skewX(1deg); }
+  70% { transform: skewX(-1deg); }
+  80% { transform: skewX(2deg); }
+  90% { transform: skewX(-2deg); }
+  100% { transform: skewX(0deg); }
 }
 
-@keyframes glitch-red {
-  0%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); }
-  10% { transform: translate(-4px, 0); clip-path: inset(10% 0 85% 0); }
-  20% { transform: translate(4px, 0); clip-path: inset(30% 0 60% 0); }
-  30% { transform: translate(-3px, 0); clip-path: inset(50% 0 40% 0); }
-  40% { transform: translate(3px, 0); clip-path: inset(70% 0 20% 0); }
-  50% { transform: translate(-2px, 0); clip-path: inset(20% 0 70% 0); }
-  60% { transform: translate(4px, 0); clip-path: inset(80% 0 10% 0); }
-  70% { transform: translate(-4px, 0); clip-path: inset(5% 0 90% 0); }
-  80% { transform: translate(2px, 0); clip-path: inset(40% 0 50% 0); }
-  90% { transform: translate(-2px, 0); clip-path: inset(60% 0 30% 0); }
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 0);
+  }
+  10% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(2px, 0);
+  }
+  20% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-2px, 0);
+  }
+  30% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(3px, 0);
+  }
+  40% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-3px, 0);
+  }
+  50% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(2px, 0);
+  }
+  60% {
+    clip-path: inset(45% 0 40% 0);
+    transform: translate(-2px, 0);
+  }
+  70% {
+    clip-path: inset(41% 0 1% 0);
+    transform: translate(3px, 0);
+  }
+  80% {
+    clip-path: inset(2% 0 98% 0);
+    transform: translate(-3px, 0);
+  }
+  90% {
+    clip-path: inset(33% 0 13% 0);
+    transform: translate(2px, 0);
+  }
+  100% {
+    clip-path: inset(91% 0 8% 0);
+    transform: translate(0);
+  }
 }
 
-@keyframes glitch-cyan {
-  0%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); }
-  10% { transform: translate(4px, 0); clip-path: inset(85% 0 10% 0); }
-  20% { transform: translate(-4px, 0); clip-path: inset(60% 0 30% 0); }
-  30% { transform: translate(3px, 0); clip-path: inset(40% 0 50% 0); }
-  40% { transform: translate(-3px, 0); clip-path: inset(20% 0 70% 0); }
-  50% { transform: translate(2px, 0); clip-path: inset(70% 0 20% 0); }
-  60% { transform: translate(-4px, 0); clip-path: inset(10% 0 80% 0); }
-  70% { transform: translate(4px, 0); clip-path: inset(90% 0 5% 0); }
-  80% { transform: translate(-2px, 0); clip-path: inset(50% 0 40% 0); }
-  90% { transform: translate(2px, 0); clip-path: inset(30% 0 60% 0); }
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(65% 0 31% 0);
+    transform: translate(2px, 0);
+  }
+  10% {
+    clip-path: inset(45% 0 40% 0);
+    transform: translate(-2px, 0);
+  }
+  20% {
+    clip-path: inset(14% 0 15% 0);
+    transform: translate(2px, 0);
+  }
+  30% {
+    clip-path: inset(63% 0 5% 0);
+    transform: translate(-3px, 0);
+  }
+  40% {
+    clip-path: inset(22% 0 3% 0);
+    transform: translate(3px, 0);
+  }
+  50% {
+    clip-path: inset(10% 0 85% 0);
+    transform: translate(-2px, 0);
+  }
+  60% {
+    clip-path: inset(76% 0 5% 0);
+    transform: translate(2px, 0);
+  }
+  70% {
+    clip-path: inset(31% 0 65% 0);
+    transform: translate(-3px, 0);
+  }
+  80% {
+    clip-path: inset(55% 0 23% 0);
+    transform: translate(3px, 0);
+  }
+  90% {
+    clip-path: inset(87% 0 10% 0);
+    transform: translate(-2px, 0);
+  }
+  100% {
+    clip-path: inset(82% 0 6% 0);
+    transform: translate(0);
+  }
 }
 
 /* Japanese Text Cyberpunk Glitch */
 .japan-glitch {
   position: relative;
   cursor: default;
+  display: inline-block;
 }
 
 .japan-glitch::before,
@@ -490,55 +563,137 @@ textarea:focus {
   height: 100%;
   opacity: 0;
   pointer-events: none;
+  will-change: transform;
 }
 
 .japan-glitch::before {
   color: #FF003C;
-  z-index: -1;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
 .japan-glitch::after {
-  color: hsl(120 100% 50%);
-  z-index: -1;
+  color: #00FFFF;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
 .japan-glitch:hover {
-  animation: japan-main 0.5s ease-in-out both;
-  color: #FF003C;
+  color: #FF003C !important;
+  animation: glitch-skew 0.6s infinite;
   text-shadow:
-    0 0 8px rgba(255, 0, 60, 0.8),
-    0 0 16px rgba(255, 0, 60, 0.4);
+    2px 0 0 rgba(255, 0, 60, 0.5),
+    -2px 0 0 rgba(0, 255, 255, 0.5);
 }
 
 .japan-glitch:hover::before {
-  opacity: 0.7;
-  animation: japan-red 0.5s steps(2) both;
+  opacity: 0.9;
+  animation: glitch-anim-1 0.6s infinite;
 }
 
 .japan-glitch:hover::after {
-  opacity: 0.5;
-  animation: japan-green 0.5s steps(3) both;
+  opacity: 0.9;
+  animation: glitch-anim-2 0.6s infinite;
 }
 
-@keyframes japan-main {
-  0%, 100% { transform: translate(0) skewX(0); }
-  15% { transform: translate(-2px, 1px) skewX(2deg); }
-  30% { transform: translate(2px, -1px) skewX(-1deg); }
-  45% { transform: translate(-1px, 0) skewX(1deg); }
-  60% { transform: translate(1px, 1px) skewX(-0.5deg); }
-  75% { transform: translate(-1px, -1px) skewX(0.5deg); }
-  90% { transform: translate(1px, 0); }
+/* Continuous Navbar Glitch - Performance Optimized */
+.navbar-glitch {
+  position: relative;
+  display: inline-block;
+  will-change: transform;
+  animation: navbar-glitch-loop 8s infinite;
 }
 
-@keyframes japan-red {
-  0%, 100% { transform: translate(0); }
-  25% { transform: translate(-3px, 0); }
-  50% { transform: translate(3px, 0); }
-  75% { transform: translate(-2px, 0); }
+.navbar-glitch::before,
+.navbar-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
-@keyframes japan-green {
-  0%, 100% { transform: translate(0); }
-  33% { transform: translate(3px, 0); }
-  66% { transform: translate(-3px, 0); }
+.navbar-glitch::before {
+  color: #FF003C;
+  z-index: 1;
+  mix-blend-mode: screen;
+  animation: navbar-glitch-before 8s infinite;
+}
+
+.navbar-glitch::after {
+  color: #00FFFF;
+  z-index: 1;
+  mix-blend-mode: screen;
+  animation: navbar-glitch-after 8s infinite;
+}
+
+@keyframes navbar-glitch-loop {
+  0%, 90%, 100% {
+    transform: translate(0);
+  }
+  91% {
+    transform: translate(-1px, 0) skewX(1deg);
+  }
+  92% {
+    transform: translate(1px, 0) skewX(-1deg);
+  }
+  93% {
+    transform: translate(0);
+  }
+  94% {
+    transform: translate(1px, 0);
+  }
+  95% {
+    transform: translate(-1px, 0);
+  }
+}
+
+@keyframes navbar-glitch-before {
+  0%, 90%, 100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  91% {
+    opacity: 0.8;
+    transform: translate(-2px, 0);
+    clip-path: inset(40% 0 55% 0);
+  }
+  92% {
+    opacity: 0;
+  }
+  94% {
+    opacity: 0.8;
+    transform: translate(-1px, 0);
+    clip-path: inset(10% 0 80% 0);
+  }
+  95% {
+    opacity: 0;
+  }
+}
+
+@keyframes navbar-glitch-after {
+  0%, 90%, 100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  91% {
+    opacity: 0.8;
+    transform: translate(2px, 0);
+    clip-path: inset(55% 0 40% 0);
+  }
+  92% {
+    opacity: 0;
+  }
+  94% {
+    opacity: 0.8;
+    transform: translate(1px, 0);
+    clip-path: inset(80% 0 10% 0);
+  }
+  95% {
+    opacity: 0;
+  }
 }
