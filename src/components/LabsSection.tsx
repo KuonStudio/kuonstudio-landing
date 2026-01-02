@@ -56,7 +56,7 @@ const LabsSection = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <div className="mb-10 md:mb-16">
-          <h2 className="font-sans font-bold text-[clamp(1.5rem,5vw,3rem)] tracking-tight">
+          <h2 className="font-display font-bold text-[clamp(1.5rem,5vw,3rem)] tracking-tight uppercase">
             OPERATIONAL CAPABILITIES
           </h2>
           <p className="mt-2 font-mono text-sm text-muted-foreground tracking-widest">
@@ -83,7 +83,7 @@ const LabsSection = () => {
               </div>
 
               {/* Agent name */}
-              <h3 className="font-sans font-bold text-2xl tracking-wide mb-4">
+              <h3 className="font-display font-bold text-2xl tracking-wide mb-4 uppercase">
                 {agent.name}
               </h3>
 

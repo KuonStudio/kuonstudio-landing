@@ -28,12 +28,12 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto px-5">
         {/* Main headline */}
-        <h1 className="font-sans font-extrabold text-[clamp(2rem,8vw,6rem)] tracking-tight leading-[1.1] opacity-0 animate-fade-up">
+        <h1 className="hero-title font-display font-black text-[clamp(2rem,8vw,6rem)] tracking-tight leading-[1.1] opacity-0 animate-fade-up uppercase">
           WE FORGE INTELLIGENCE.
         </h1>
         
         {/* Japanese subtitle - Blood Red */}
-        <p className="mt-6 md:mt-8 text-[clamp(1.25rem,4vw,2.5rem)] text-accent tracking-[0.2em] opacity-0 animate-fade-up animation-delay-100 font-sans">
+        <p className="japan-text mt-6 md:mt-8 text-[clamp(1.25rem,4vw,2.5rem)] text-accent tracking-[0.2em] opacity-0 animate-fade-up animation-delay-100 font-display font-bold">
           久遠スタジオ
         </p>
         
