@@ -43,7 +43,7 @@ const Navbar = () => {
       >
         <div className="px-6 md:px-8 py-4 flex items-center justify-between gap-8 md:gap-16 lg:gap-24 flex-nowrap">
           <a href="#" className="font-display font-bold text-lg md:text-xl tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap uppercase" data-hover>
-            KUON STUDIOS
+            KUON STUDIO
           </a>
           
           {/* Desktop links */}

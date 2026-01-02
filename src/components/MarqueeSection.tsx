@@ -1,5 +1,5 @@
 const MarqueeSection = () => {
-  const text = "AUTONOMOUS INTELLIGENCE +++ KUON STUDIOS +++ PERPETUAL CODE +++ ";
+  const text = "AUTONOMOUS INTELLIGENCE +++ KUON STUDIO +++ PERPETUAL CODE +++ ";
   
   return (
     <section className="py-12 md:py-24 overflow-hidden border-y border-border/20">

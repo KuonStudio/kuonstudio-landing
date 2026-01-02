@@ -40,7 +40,7 @@ const HeroSection = () => {
         {/* Description */}
         <div className="mt-8 md:mt-12 max-w-xl mx-auto opacity-0 animate-fade-up animation-delay-200">
           <p className="font-mono text-sm md:text-base text-muted-foreground leading-relaxed tracking-wide">
-            Kuon Studios is a research facility for autonomous systems. 
+            Kuon Studio is a research facility for autonomous systems. 
             We automate the complex, defend the reputation, and predict the unseen.
           </p>
         </div>

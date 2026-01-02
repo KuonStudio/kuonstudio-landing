@@ -388,91 +388,84 @@ textarea:focus {
   background-color: hsl(var(--accent));
 }
 
-/* Hero title hover effect - brief glitch */
+/* Hero title hover effect - menacing red glitch */
 .hero-title {
   @apply transition-all duration-300;
   cursor: default;
 }
 
 .hero-title:hover {
+  color: hsl(0 100% 60%);
   text-shadow: 
-    0 0 20px hsl(var(--accent) / 0.5),
-    0 0 40px hsl(var(--accent) / 0.3);
-  animation: hero-glitch 0.2s ease-out;
+    0 0 10px hsl(0 100% 50% / 0.8),
+    0 0 20px hsl(0 100% 50% / 0.5),
+    2px 0 hsl(0 100% 50%),
+    -2px 0 hsl(120 100% 50% / 0.3);
+  animation: hero-breach 0.3s ease-out;
 }
 
-@keyframes hero-glitch {
+@keyframes hero-breach {
   0%, 100% {
     transform: translate(0);
-    filter: none;
-  }
-  25% {
-    transform: translate(-3px, 1px);
-    filter: hue-rotate(10deg);
-  }
-  50% {
-    transform: translate(2px, -2px);
-    filter: hue-rotate(-10deg);
-  }
-  75% {
-    transform: translate(-1px, 2px);
-    filter: hue-rotate(5deg);
-  }
-}
-
-/* Japanese text hack/glitch effect */
-.japan-text {
-  @apply transition-all duration-300;
-  cursor: default;
-  position: relative;
-}
-
-.japan-text:hover {
-  animation: japan-hack 0.5s steps(3) infinite;
-  text-shadow: 
-    2px 0 hsl(var(--accent)),
-    -2px 0 hsl(120 70% 50%);
-}
-
-@keyframes japan-hack {
-  0%, 100% {
-    transform: translate(0);
-    opacity: 1;
   }
   10% {
-    transform: translate(-2px, 1px) skewX(2deg);
-    opacity: 0.9;
+    transform: translate(-2px, 1px) skewX(1deg);
   }
   20% {
     transform: translate(2px, -1px) skewX(-1deg);
-    opacity: 1;
   }
   30% {
-    transform: translate(-1px, 0) skewX(1deg);
-    opacity: 0.95;
+    transform: translate(-1px, 0);
   }
   40% {
-    transform: translate(3px, 1px) skewX(-2deg);
-    opacity: 0.9;
+    transform: translate(1px, 1px) skewX(0.5deg);
   }
   50% {
-    transform: translate(-2px, -1px) skewX(2deg);
-    opacity: 1;
+    transform: translate(-1px, -1px) skewX(-0.5deg);
   }
   60% {
-    transform: translate(1px, 2px) skewX(-1deg);
-    opacity: 0.95;
+    transform: translate(2px, 0);
   }
   70% {
-    transform: translate(-3px, 0) skewX(1deg);
-    opacity: 0.9;
+    transform: translate(-2px, 1px);
   }
   80% {
-    transform: translate(2px, -2px) skewX(-2deg);
-    opacity: 1;
+    transform: translate(1px, -1px);
   }
   90% {
-    transform: translate(-1px, 1px) skewX(1deg);
-    opacity: 0.95;
+    transform: translate(-1px, 0);
+  }
+}
+
+/* Japanese text subtle red glitch effect */
+.japan-text {
+  @apply transition-all duration-300;
+  cursor: default;
+}
+
+.japan-text:hover {
+  color: hsl(0 100% 60%);
+  text-shadow: 
+    0 0 10px hsl(0 100% 50% / 0.6),
+    1px 0 hsl(0 100% 50%),
+    -1px 0 hsl(120 100% 50% / 0.2);
+  animation: japan-glitch 0.4s ease-out;
+}
+
+@keyframes japan-glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-1px, 0.5px);
+  }
+  40% {
+    transform: translate(1px, -0.5px);
+  }
+  60% {
+    transform: translate(-0.5px, 0);
+  }
+  80% {
+    transform: translate(0.5px, 0.5px);
   }
 }
