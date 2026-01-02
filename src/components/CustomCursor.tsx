@@ -4,8 +4,36 @@ const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Detect touch device
+    const checkTouchDevice = () => {
+      const hasTouch = 'ontouchstart' in window || 
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches;
+      setIsTouchDevice(hasTouch);
+      
+      // Restore default cursor on touch devices
+      if (hasTouch) {
+        document.body.style.cursor = 'auto';
+      }
+    };
+
+    checkTouchDevice();
+
+    // Also check on resize (for device orientation changes)
+    window.addEventListener('resize', checkTouchDevice);
+
+    return () => {
+      window.removeEventListener('resize', checkTouchDevice);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Don't set up mouse listeners on touch devices
+    if (isTouchDevice) return;
+
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
@@ -37,9 +65,10 @@ const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       observer.disconnect();
     };
-  }, []);
+  }, [isTouchDevice]);
 
-  if (!isVisible) return null;
+  // Don't render on touch devices
+  if (isTouchDevice || !isVisible) return null;
 
   return (
     <div
