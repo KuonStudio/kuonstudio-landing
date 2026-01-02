@@ -452,31 +452,26 @@ textarea:focus {
 
 .hero-glitch::before {
   color: #FF003C;
-  z-index: 1;
-  mix-blend-mode: screen;
+  z-index: -1;
 }
 
 .hero-glitch::after {
   color: #00FFFF;
-  z-index: 1;
-  mix-blend-mode: screen;
+  z-index: -1;
 }
 
 .hero-glitch:hover {
-  color: #FF003C !important;
+  color: #FFFFFF !important;
   animation: glitch-skew 0.6s infinite;
-  text-shadow:
-    2px 0 0 rgba(255, 0, 60, 0.5),
-    -2px 0 0 rgba(0, 255, 255, 0.5);
 }
 
 .hero-glitch:hover::before {
-  opacity: 0.9;
+  opacity: 0.7;
   animation: glitch-anim-1 0.6s infinite;
 }
 
 .hero-glitch:hover::after {
-  opacity: 0.9;
+  opacity: 0.7;
   animation: glitch-anim-2 0.6s infinite;
 }
 
@@ -610,31 +605,25 @@ textarea:focus {
 
 .japan-glitch::before {
   color: #FF003C;
-  z-index: 1;
-  mix-blend-mode: screen;
+  z-index: -1;
 }
 
 .japan-glitch::after {
   color: #00FFFF;
-  z-index: 1;
-  mix-blend-mode: screen;
+  z-index: -1;
 }
 
 .japan-glitch:hover {
-  color: #FF003C !important;
   animation: glitch-skew 0.6s infinite;
-  text-shadow:
-    2px 0 0 rgba(255, 0, 60, 0.5),
-    -2px 0 0 rgba(0, 255, 255, 0.5);
 }
 
 .japan-glitch:hover::before {
-  opacity: 0.9;
+  opacity: 0.7;
   animation: glitch-anim-1 0.6s infinite;
 }
 
 .japan-glitch:hover::after {
-  opacity: 0.9;
+  opacity: 0.7;
   animation: glitch-anim-2 0.6s infinite;
 }
 
