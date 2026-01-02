@@ -2,15 +2,15 @@ const Footer = () => {
   return (
     <footer className="py-16 md:py-24 px-5 md:px-6 border-t border-border/20">
       <div className="max-w-7xl mx-auto">
-        {/* Massive typographic lockup */}
-        <div className="mb-12 md:mb-16 group" data-hover>
-          {/* KUON - Extra large */}
-          <h2 className="font-display font-black text-[clamp(3rem,18vw,15rem)] tracking-[0.1em] md:tracking-[0.15em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 uppercase">
+        {/* Typographic lockup - Elegant size */}
+        <div className="mb-10 md:mb-12 group" data-hover>
+          {/* KUON - Reduced size */}
+          <h2 className="font-display font-black text-[clamp(2rem,10vw,6rem)] tracking-[0.15em] md:tracking-[0.2em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 uppercase">
             KUON
           </h2>
-          {/* STUDIOS - Stretched to match width */}
-          <p className="font-display font-bold text-[clamp(1rem,6vw,5rem)] tracking-[0.8em] md:tracking-[1.2em] lg:tracking-[1.5em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 -mt-1 md:-mt-4 uppercase">
-            STUDIOS
+          {/* STUDIO - Stretched to match width */}
+          <p className="font-display font-bold text-[clamp(0.75rem,3.5vw,2rem)] tracking-[0.6em] md:tracking-[0.9em] lg:tracking-[1.1em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 uppercase">
+            STUDIO
           </p>
         </div>
 
@@ -47,7 +47,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="font-mono text-xs text-muted-foreground">
-            © 2026 Kuon Studios. Jakarta, ID. All Systems Nominal.
+            © 2026 Kuon Studio. Jakarta, ID. All Systems Nominal.
           </p>
         </div>
       </div>
