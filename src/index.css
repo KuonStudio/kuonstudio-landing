@@ -198,25 +198,149 @@
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-500 { animation-delay: 0.5s; }
 
-/* Agent card hover */
+/* Agent card hover - Glassmorphism shine */
 .agent-card {
-  @apply border border-border/50 transition-all duration-300;
+  @apply border border-border/50 transition-all duration-300 ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--foreground) / 0.03),
+    transparent
+  );
+  transition: left 0.5s ease-out;
+  pointer-events: none;
+}
+
+.agent-card:hover::before {
+  left: 100%;
 }
 
 .agent-card:hover {
   border-color: hsl(var(--accent));
-  box-shadow: 0 0 30px hsl(var(--accent) / 0.2);
+  box-shadow: 0 0 40px hsl(var(--accent) / 0.15);
+  transform: translateY(-2px);
 }
 
-/* Button styles */
+/* Glass container with subtle hover */
+.glass-container {
+  @apply transition-all duration-300 ease-out;
+  position: relative;
+}
+
+.glass-container:hover {
+  border-color: hsl(var(--accent) / 0.5);
+  box-shadow: 0 0 60px hsl(var(--accent) / 0.1);
+}
+
+/* Primary action button - Neon glow effect */
+.btn-primary-action {
+  @apply px-8 py-4 border border-accent text-foreground font-mono text-sm tracking-widest transition-all duration-300 ease-out;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-action::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: hsl(var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+  z-index: -1;
+}
+
+.btn-primary-action:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-primary-action:hover {
+  color: hsl(var(--background));
+  box-shadow: 
+    0 0 20px hsl(var(--accent) / 0.5),
+    0 0 40px hsl(var(--accent) / 0.3),
+    0 0 60px hsl(var(--accent) / 0.2);
+  text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+}
+
+/* Glitch effect on hover for primary actions */
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.btn-primary-action:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Secondary button (outline only) */
 .btn-red-outline {
-  @apply px-8 py-4 border border-accent text-foreground font-mono text-sm tracking-widest transition-all duration-300;
+  @apply px-8 py-4 border border-accent text-foreground font-mono text-sm tracking-widest transition-all duration-300 ease-out;
   background: transparent;
 }
 
 .btn-red-outline:hover {
   background: hsl(var(--accent));
   color: hsl(var(--background));
+  box-shadow: 0 0 20px hsl(var(--accent) / 0.4);
+}
+
+/* Interactive link hover */
+.nav-link {
+  @apply transition-all duration-300 ease-out;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: hsl(var(--accent));
+  transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: hsl(var(--accent));
+  text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+}
+
+/* Input field focus states */
+input:focus,
+textarea:focus {
+  border-color: hsl(var(--accent)) !important;
+  box-shadow: 0 0 20px hsl(var(--accent) / 0.2);
 }
 
 /* Outline text */

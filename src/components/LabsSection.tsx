@@ -69,7 +69,7 @@ const LabsSection = () => {
           {agents.map((agent, index) => (
             <div
               key={agent.name}
-              className="agent-card relative p-6 md:p-8 bg-card/50 backdrop-blur-sm min-h-[260px] md:min-h-[300px] flex flex-col"
+              className="agent-card relative p-6 md:p-8 bg-card/50 backdrop-blur-sm min-h-[260px] md:min-h-[300px] flex flex-col cursor-pointer"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onTouchStart={() => setHoveredIndex(index)}
