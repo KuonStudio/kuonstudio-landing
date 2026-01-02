@@ -32,7 +32,7 @@ const VisionSection = () => {
               Traditional software waits for input. We build systems that act. 
             </p>
             <p className="font-mono text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed mt-4 md:mt-6 opacity-0 animate-fade-up animation-delay-400">
-              In a world of noise, Kuon Studios engineers the silence of perfect efficiency.
+              In a world of noise, Kuon Studio engineers the silence of perfect efficiency.
             </p>
 
             {/* Decorative element */}

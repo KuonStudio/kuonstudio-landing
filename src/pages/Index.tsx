@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
-    document.title = 'Kuon Studios | We Forge Intelligence';
+    document.title = 'Kuon Studio | We Forge Intelligence';
   }, []);
 
   return (
