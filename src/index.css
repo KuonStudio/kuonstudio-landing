@@ -451,11 +451,11 @@ textarea:focus {
 }
 
 .hero-glitch::before {
-  color: #00FFFF; /* Cyan layer - shifts left */
+  color: #8B0000; /* Dark blood red - shifts left */
 }
 
 .hero-glitch::after {
-  color: #FF00FF; /* Magenta layer - shifts right */
+  color: #FF003C; /* Kuon neon red - shifts right */
 }
 
 .hero-glitch:hover {
@@ -494,11 +494,11 @@ textarea:focus {
 }
 
 .japan-glitch::before {
-  color: #00FFFF; /* Cyan layer - shifts left */
+  color: #8B0000; /* Dark blood red - shifts left */
 }
 
 .japan-glitch::after {
-  color: #FF00FF; /* Magenta layer - shifts right */
+  color: #FF003C; /* Kuon neon red - shifts right */
 }
 
 .japan-glitch:hover {
@@ -516,7 +516,7 @@ textarea:focus {
   animation: slice-tear-right 0.3s steps(6) infinite;
 }
 
-/* Scanline Tearing - Left Shift (Cyan Layer) */
+/* Scanline Tearing - Left Shift (Dark Blood Red) - Softer */
 @keyframes slice-tear-left {
   0% {
     clip-path: inset(0 0 0 0);
@@ -524,31 +524,31 @@ textarea:focus {
   }
   16% {
     clip-path: inset(10% 0 75% 0);
-    transform: translateX(-3px);
+    transform: translateX(-2px);
   }
   32% {
     clip-path: inset(25% 0 60% 0);
-    transform: translateX(-2px);
+    transform: translateX(-1px);
   }
   48% {
     clip-path: inset(40% 0 45% 0);
-    transform: translateX(-4px);
+    transform: translateX(-2px);
   }
   64% {
     clip-path: inset(55% 0 30% 0);
-    transform: translateX(-2px);
+    transform: translateX(-1px);
   }
   80% {
     clip-path: inset(70% 0 15% 0);
-    transform: translateX(-3px);
+    transform: translateX(-2px);
   }
   100% {
     clip-path: inset(85% 0 5% 0);
-    transform: translateX(-2px);
+    transform: translateX(-1px);
   }
 }
 
-/* Scanline Tearing - Right Shift (Magenta Layer) */
+/* Scanline Tearing - Right Shift (Neon Red) - Softer */
 @keyframes slice-tear-right {
   0% {
     clip-path: inset(0 0 0 0);
@@ -556,27 +556,27 @@ textarea:focus {
   }
   16% {
     clip-path: inset(5% 0 80% 0);
-    transform: translateX(3px);
+    transform: translateX(2px);
   }
   32% {
     clip-path: inset(20% 0 65% 0);
-    transform: translateX(2px);
+    transform: translateX(1px);
   }
   48% {
     clip-path: inset(35% 0 50% 0);
-    transform: translateX(4px);
+    transform: translateX(2px);
   }
   64% {
     clip-path: inset(50% 0 35% 0);
-    transform: translateX(2px);
+    transform: translateX(1px);
   }
   80% {
     clip-path: inset(65% 0 20% 0);
-    transform: translateX(3px);
+    transform: translateX(2px);
   }
   100% {
     clip-path: inset(80% 0 10% 0);
-    transform: translateX(2px);
+    transform: translateX(1px);
   }
 }
 
