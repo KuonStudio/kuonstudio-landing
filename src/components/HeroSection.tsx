@@ -5,12 +5,13 @@ const HeroSection = () => {
         <div className="max-w-3xl">
           <p className="eyebrow animate-rise">Software studio in Jakarta</p>
           <h1 className="mt-4 font-display font-bold text-[clamp(2.25rem,6vw,4rem)] text-[#141413] animate-rise animation-delay-100">
-            Backends, web apps, and AI agents your team can run.
+            Software that removes your daily busywork.
           </h1>
           <p className="mt-6 text-lg text-[#141413]/70 animate-rise animation-delay-200">
-            Kuon Studio designs and builds production software with Go and React:
-            APIs that stay up, dashboards people actually use, and automations
-            with a human in the loop. You get the code, the docs, and the tests.
+            Kuon Studio builds the systems behind your operations: one place for
+            sales and stock, portals your customers can use themselves, and
+            follow-ups that draft themselves. You get the system, the guide, and
+            training for your team.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 animate-rise animation-delay-200">
             <a href="#contact" className="btn-primary">
@@ -30,8 +31,8 @@ const HeroSection = () => {
               <dd className="text-[#141413]/60">Working software every 1–2 weeks.</dd>
             </div>
             <div className="border-t-2 border-[#788c5d] pt-3">
-              <dt className="font-display font-semibold text-[#141413]">Handover included</dt>
-              <dd className="text-[#141413]/60">Docs, tests, and a walkthrough call.</dd>
+              <dt className="font-display font-semibold text-[#141413]">Training included</dt>
+              <dd className="text-[#141413]/60">Guide and walkthrough so your team can run it.</dd>
             </div>
           </dl>
         </div>

@@ -22,7 +22,7 @@ const Navbar = () => {
   const navLinks = [
     { label: 'Services', href: '#services' },
     { label: 'How we work', href: '#process' },
-    { label: 'Stack', href: '#stack' },
+    { label: 'Results', href: '#results' },
     { label: 'Contact', href: '#contact' },
   ];
 

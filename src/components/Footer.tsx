@@ -6,7 +6,7 @@ const Footer = () => {
           <div>
             <p className="font-display font-bold text-xl">Kuon Studio</p>
             <p className="mt-2 text-[#faf9f5]/70 max-w-md">
-              Software studio in Jakarta. Go backends, React apps, and AI agents.
+              Software studio in Jakarta. Systems, apps, and automations for daily operations.
             </p>
           </div>
           <nav className="flex flex-wrap gap-x-8 gap-y-4" aria-label="Footer">

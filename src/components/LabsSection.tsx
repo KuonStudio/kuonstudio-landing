@@ -1,31 +1,31 @@
 const services = [
   {
     accent: '#d97757',
-    title: 'Backend and infrastructure',
-    summary: 'Go APIs and workers that stay up when traffic spikes.',
-    includes: ['REST or gRPC API with auth and roles', 'Postgres schema, migrations, and backups', 'Docker deploy with logs and health checks'],
-    stack: 'Go · Postgres · Redis · Docker',
+    title: 'Systems behind the scenes',
+    summary: 'Order, stock, and payment records in one place, always up to date.',
+    includes: ['One record for orders, stock, and payments', 'Automatic backups every day', 'Access levels so staff only see their part'],
+    fit: 'Good if your data still lives in spreadsheets.',
   },
   {
     accent: '#6a9bcc',
-    title: 'Web apps and dashboards',
-    summary: 'React apps for operations, reporting, and customer portals.',
-    includes: ['Dashboard with search, filter, and export', 'Form flows with validation and states', 'Responsive layout that works on phones'],
-    stack: 'React · TypeScript · Tailwind',
+    title: 'Apps your team and customers use',
+    summary: 'Simple dashboards and portals that work on a phone.',
+    includes: ['Dashboard with search, filter, and Excel export', 'Forms that save halfway and validate input', 'Layout that works on small screens'],
+    fit: 'Good if operations run on chat and screenshots.',
   },
   {
     accent: '#788c5d',
-    title: 'AI agents and automation',
-    summary: 'Automations that draft the work and let your team approve it.',
-    includes: ['Inbox, lead, or document triage with review queue', 'RAG over your docs with cited answers', 'Usage and cost limits per workspace'],
-    stack: 'LLM APIs · Queues · Postgres',
+    title: 'Automation with human approval',
+    summary: 'Repetitive follow-ups and summaries drafted for you. Nothing sends itself.',
+    includes: ['Leads and messages triaged into one list', 'Answers drafted from your own documents', 'Your team approves everything before it goes out'],
+    fit: 'Good if your team retypes the same things daily.',
   },
   {
     accent: '#141413',
-    title: 'Rescue and consulting',
-    summary: 'For systems that are slow, fragile, or nobody wants to touch.',
-    includes: ['Code and infra audit with fix list by priority', 'Slow-query and cost pass with before/after numbers', 'Handover sessions so your team can own it'],
-    stack: 'Audit · Performance · Handover',
+    title: 'Fix and take over messy systems',
+    summary: 'For software that is slow, fragile, or nobody wants to touch.',
+    includes: ['Audit with a fix list sorted by priority', 'Speed and cost improvements with before-and-after numbers', 'Sessions so your team can own it after'],
+    fit: 'Good if every small change feels risky.',
   },
 ];
 
@@ -58,7 +58,7 @@ const LabsSection = () => {
                 ))}
               </ul>
               <p className="mt-6 pt-4 border-t border-[#e8e6dc] text-[15px] text-[#141413]/60">
-                {service.stack}
+                {service.fit}
               </p>
             </article>
           ))}

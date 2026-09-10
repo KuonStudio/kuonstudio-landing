@@ -7,7 +7,7 @@ const steps = [
   {
     period: 'Week 2 and onward',
     title: 'Build in slices',
-    text: 'Working software every 1–2 weeks on a staging link. You click, comment, and reprioritize. No big reveal at the end.',
+    text: 'Working software every 1–2 weeks on a preview link you can click. You try it, comment, and reprioritize. No big reveal at the end.',
   },
   {
     period: 'Final week',
@@ -18,16 +18,16 @@ const steps = [
 
 const principles = [
   {
-    title: 'Production first',
-    text: 'Auth, backups, logs, and error handling are part of the estimate, not extras.',
+    title: 'Ready for daily use',
+    text: 'Logins, backups, and error handling are part of the price, not extras.',
   },
   {
-    title: 'Boring where it counts',
-    text: 'Postgres, Docker, and React before exotic tools. We pick what your team can hire for.',
+    title: 'Simple where it counts',
+    text: 'Common, proven tools before exotic ones. Easy to find people who can maintain it.',
   },
   {
-    title: 'You own the code',
-    text: 'Your repo, your infra accounts, plain README to run it locally in under 15 minutes.',
+    title: 'You own everything',
+    text: 'Your accounts, your files, and a plain guide to run it in under 15 minutes.',
   },
 ];
 
