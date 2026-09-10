@@ -1,31 +1,6 @@
-<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Black background -->
-  <rect width="128" height="128" fill="#000000"/>
-
-  <!-- Red border frame [KS] -->
-  <rect x="8" y="8" width="112" height="112" stroke="#FF003C" stroke-width="2" fill="none"/>
-
-  <!-- K letter -->
-  <g transform="translate(28, 44)">
-    <!-- Vertical bar of K -->
-    <rect x="0" y="0" width="6" height="40" fill="#FF003C"/>
-    <!-- Top diagonal of K -->
-    <rect x="6" y="8" width="20" height="6" fill="#FF003C" transform="rotate(35 6 14)"/>
-    <!-- Bottom diagonal of K -->
-    <rect x="6" y="26" width="20" height="6" fill="#FF003C" transform="rotate(-35 6 26)"/>
-  </g>
-
-  <!-- S letter -->
-  <g transform="translate(70, 44)">
-    <!-- Top curve -->
-    <path d="M 0 8 Q 0 0, 8 0 L 20 0 Q 28 0, 28 8 Q 28 16, 20 16 L 8 16" stroke="#FF003C" stroke-width="6" fill="none" stroke-linecap="round"/>
-    <!-- Bottom curve -->
-    <path d="M 28 32 Q 28 40, 20 40 L 8 40 Q 0 40, 0 32 Q 0 24, 8 24 L 20 24" stroke="#FF003C" stroke-width="6" fill="none" stroke-linecap="round"/>
-  </g>
-
-  <!-- Corner brackets -->
-  <path d="M 12 12 L 16 12 M 12 12 L 12 16" stroke="#FF003C" stroke-width="1.5" stroke-linecap="square"/>
-  <path d="M 116 12 L 112 12 M 116 12 L 116 16" stroke="#FF003C" stroke-width="1.5" stroke-linecap="square"/>
-  <path d="M 12 116 L 16 116 M 12 116 L 12 112" stroke="#FF003C" stroke-width="1.5" stroke-linecap="square"/>
-  <path d="M 116 116 L 112 116 M 116 116 L 116 112" stroke="#FF003C" stroke-width="1.5" stroke-linecap="square"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="#141413"/>
+  <rect x="36" y="34" width="13" height="60" rx="6.5" fill="#FAF9F5"/>
+  <path d="M49 64 L85 35" stroke="#D97757" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M49 64 L83 93" stroke="#D97757" stroke-width="13" stroke-linecap="round" fill="none"/>
 </svg>
