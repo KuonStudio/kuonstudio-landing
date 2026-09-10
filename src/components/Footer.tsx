@@ -1,54 +1,39 @@
 const Footer = () => {
   return (
-    <footer className="py-16 md:py-24 px-5 md:px-6 border-t border-border/20">
-      <div className="max-w-7xl mx-auto">
-        {/* Typographic lockup - Professional size */}
-        <div className="mb-10 md:mb-12 group" data-hover>
-          {/* KUON - Professional size */}
-          <h2 className="font-display font-black text-[clamp(1.5rem,5vw,3rem)] tracking-[0.15em] md:tracking-[0.2em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 uppercase">
-            KUON
-          </h2>
-          {/* STUDIO - Matched to KUON width */}
-          <p className="font-display font-bold text-[clamp(0.625rem,2vw,1rem)] tracking-[0.6em] md:tracking-[0.9em] lg:tracking-[1.1em] leading-none text-muted-foreground/30 group-hover:text-accent transition-colors duration-500 uppercase">
-            STUDIO
-          </p>
-        </div>
-
-        {/* Footer info */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-8">
-          {/* Links */}
-          <div className="flex flex-wrap gap-6 md:gap-8">
-            <a
-              href="mailto:hello@kuonstudios.com"
-              className="font-mono text-xs tracking-widest text-muted-foreground hover:text-accent transition-colors duration-300 min-h-[44px] flex items-center"
-              data-hover
-            >
-              EMAIL
-            </a>
-            <a
-              href="https://github.com/kuonstudios"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs tracking-widest text-muted-foreground hover:text-accent transition-colors duration-300 min-h-[44px] flex items-center"
-              data-hover
-            >
-              GITHUB
-            </a>
-            <a
-              href="https://linkedin.com/company/kuonstudios"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs tracking-widest text-muted-foreground hover:text-accent transition-colors duration-300 min-h-[44px] flex items-center"
-              data-hover
-            >
-              LINKEDIN
-            </a>
+    <footer className="bg-[#141413] text-[#faf9f5] py-14 md:py-16">
+      <div className="wrap">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
+          <div>
+            <p className="font-display font-bold text-xl">Kuon Studio</p>
+            <p className="mt-2 text-[#faf9f5]/70 max-w-md">
+              Software studio in Jakarta. Go backends, React apps, and AI agents.
+            </p>
           </div>
-
-          {/* Copyright */}
-          <p className="font-mono text-xs text-muted-foreground">
-            © 2026 Kuon Studio. Jakarta, ID. All Systems Nominal.
-          </p>
+          <nav className="flex flex-wrap gap-x-8 gap-y-4" aria-label="Footer">
+            <a href="mailto:hello@kuonstudio.com" className="text-[#faf9f5]/80 hover:text-[#d97757] transition-colors">
+              Email
+            </a>
+            <a
+              href="https://github.com/KuonStudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#faf9f5]/80 hover:text-[#d97757] transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/company/kuonstudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#faf9f5]/80 hover:text-[#d97757] transition-colors"
+            >
+              LinkedIn
+            </a>
+          </nav>
+        </div>
+        <div className="mt-10 pt-6 border-t border-[#faf9f5]/15 flex flex-col sm:flex-row justify-between gap-2 text-[15px] text-[#faf9f5]/60">
+          <p>© 2026 Kuon Studio. Jakarta, Indonesia.</p>
+          <p>Docs, tests, and handover included in every project.</p>
         </div>
       </div>
     </footer>

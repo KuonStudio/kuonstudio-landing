@@ -1,117 +1,66 @@
-import { useState } from 'react';
-
-interface Agent {
-  name: string;
-  description: string;
-  status: string;
-  statusColor: string;
-  metrics: {
-    latency: string;
-    uptime: string;
-    threats: string;
-  };
-}
-
-const agents: Agent[] = [
+const services = [
   {
-    name: 'GUARDIAN',
-    description: 'Automated reputation management and crisis aversion. It never sleeps.',
-    status: 'ONLINE',
-    statusColor: 'text-accent',
-    metrics: {
-      latency: '12ms',
-      uptime: '99.99%',
-      threats: '0',
-    },
+    accent: '#d97757',
+    title: 'Backend and infrastructure',
+    summary: 'Go APIs and workers that stay up when traffic spikes.',
+    includes: ['REST or gRPC API with auth and roles', 'Postgres schema, migrations, and backups', 'Docker deploy with logs and health checks'],
+    stack: 'Go · Postgres · Redis · Docker',
   },
   {
-    name: 'SENTINEL',
-    description: '24/7 Market data scraping and competitor tracking. It sees everything.',
-    status: 'DEPLOYED',
-    statusColor: 'text-foreground',
-    metrics: {
-      latency: '8ms',
-      uptime: '99.97%',
-      threats: '3 BLOCKED',
-    },
+    accent: '#6a9bcc',
+    title: 'Web apps and dashboards',
+    summary: 'React apps for operations, reporting, and customer portals.',
+    includes: ['Dashboard with search, filter, and export', 'Form flows with validation and states', 'Responsive layout that works on phones'],
+    stack: 'React · TypeScript · Tailwind',
   },
   {
-    name: 'ORACLE',
-    description: 'Data-driven logic engines for forecasting trends. It knows before you do.',
-    status: 'CLASSIFIED',
-    statusColor: 'text-muted-foreground',
-    metrics: {
-      latency: '???',
-      uptime: '???',
-      threats: 'REDACTED',
-    },
+    accent: '#788c5d',
+    title: 'AI agents and automation',
+    summary: 'Automations that draft the work and let your team approve it.',
+    includes: ['Inbox, lead, or document triage with review queue', 'RAG over your docs with cited answers', 'Usage and cost limits per workspace'],
+    stack: 'LLM APIs · Queues · Postgres',
+  },
+  {
+    accent: '#141413',
+    title: 'Rescue and consulting',
+    summary: 'For systems that are slow, fragile, or nobody wants to touch.',
+    includes: ['Code and infra audit with fix list by priority', 'Slow-query and cost pass with before/after numbers', 'Handover sessions so your team can own it'],
+    stack: 'Audit · Performance · Handover',
   },
 ];
 
 const LabsSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
-    <section id="protocols" className="py-20 md:py-32 px-5 md:px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="mb-10 md:mb-16">
-          <h2 className="font-display font-bold text-[clamp(1.5rem,5vw,3rem)] tracking-tight uppercase">
-            OPERATIONAL CAPABILITIES
-          </h2>
-          <p className="mt-2 font-mono text-sm text-muted-foreground tracking-widest">
-            // プロトコル
-          </p>
-        </div>
+    <section id="services" className="py-16 md:py-24 bg-white border-y border-[#e8e6dc]">
+      <div className="wrap">
+        <p className="eyebrow">Services</p>
+        <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413]">
+          Four ways to work with us.
+        </h2>
+        <p className="mt-4 text-lg text-[#141413]/70">
+          Pick one. Every engagement ends with code, docs, and a walkthrough.
+        </p>
 
-        {/* Agent cards - single column on mobile, 3 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {agents.map((agent, index) => (
-            <div
-              key={agent.name}
-              className="agent-card relative p-6 md:p-8 bg-card/50 backdrop-blur-sm min-h-[260px] md:min-h-[300px] flex flex-col cursor-pointer"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onTouchStart={() => setHoveredIndex(index)}
-              data-hover
-            >
-              {/* Status indicator */}
-              <div className="absolute top-4 right-4">
-                <span className={`font-mono text-[10px] tracking-widest ${agent.statusColor}`}>
-                  [{agent.status}]
-                </span>
-              </div>
-
-              {/* Agent name */}
-              <h3 className="font-display font-bold text-2xl tracking-wide mb-4 uppercase">
-                {agent.name}
-              </h3>
-
-              {/* Description */}
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed mb-auto">
-                {agent.description}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {services.map((service) => (
+            <article key={service.title} className="card-studio">
+              <div className="card-accent" style={{ background: service.accent }} aria-hidden="true" />
+              <h3 className="font-display font-semibold text-xl text-[#141413]">{service.title}</h3>
+              <p className="mt-2 text-[#141413]/70">{service.summary}</p>
+              <ul className="mt-5 space-y-2.5">
+                {service.includes.map((item) => (
+                  <li key={item} className="flex gap-3 text-[#141413]">
+                    <span aria-hidden="true" style={{ color: service.accent }}>
+                      —
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 pt-4 border-t border-[#e8e6dc] text-[15px] text-[#141413]/60">
+                {service.stack}
               </p>
-
-              {/* System Metrics - show on hover */}
-              <div
-                className={`mt-6 pt-6 border-t border-border/30 transition-all duration-300 ${
-                  hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-                }`}
-              >
-                <p className="font-mono text-[10px] text-accent tracking-widest mb-3">
-                  SYSTEM METRICS
-                </p>
-                <div className="flex flex-wrap gap-x-6 gap-y-1 font-mono text-xs text-accent">
-                  <span>LATENCY: {agent.metrics.latency}</span>
-                  <span>UPTIME: {agent.metrics.uptime}</span>
-                  <span>THREATS: {agent.metrics.threats}</span>
-                </div>
-              </div>
-
-              {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-accent/50" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-accent/50" />
-            </div>
+            </article>
           ))}
         </div>
       </div>

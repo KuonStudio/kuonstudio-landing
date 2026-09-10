@@ -1,46 +1,66 @@
+const steps = [
+  {
+    period: 'Week 1',
+    title: 'Scope together',
+    text: 'Two calls and a short doc: goals, users, must-haves, and what we will not build. You get a fixed scope and price.',
+  },
+  {
+    period: 'Week 2 and onward',
+    title: 'Build in slices',
+    text: 'Working software every 1–2 weeks on a staging link. You click, comment, and reprioritize. No big reveal at the end.',
+  },
+  {
+    period: 'Final week',
+    title: 'Hand over',
+    text: 'Docs, tests, deploy notes, and a walkthrough call. Your team can run it without us. Support after that is optional.',
+  },
+];
+
+const principles = [
+  {
+    title: 'Production first',
+    text: 'Auth, backups, logs, and error handling are part of the estimate, not extras.',
+  },
+  {
+    title: 'Boring where it counts',
+    text: 'Postgres, Docker, and React before exotic tools. We pick what your team can hire for.',
+  },
+  {
+    title: 'You own the code',
+    text: 'Your repo, your infra accounts, plain README to run it locally in under 15 minutes.',
+  },
+];
+
 const VisionSection = () => {
   return (
-    <section id="vision" className="py-20 md:py-32 px-5 md:px-6 border-y border-border/20">
-      <div className="max-w-7xl mx-auto">
-        {/* Section label */}
-        <p className="font-mono text-sm text-accent tracking-widest mb-6 md:mb-8 opacity-0 animate-fade-up">
-          [ VISION ]
-        </p>
-
-        {/* Main headline */}
-        <h2 className="font-display font-black text-[clamp(1.75rem,6vw,4.5rem)] tracking-tight mb-10 md:mb-16 opacity-0 animate-fade-up animation-delay-100 uppercase">
-          THE ERA OF AUTONOMY.
+    <section id="process" className="py-16 md:py-24">
+      <div className="wrap">
+        <p className="eyebrow">How we work</p>
+        <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413]">
+          Small steps, working software.
         </h2>
 
-        {/* Split layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24">
-          {/* Left - Key quote */}
-          <div className="relative">
-            <blockquote className="font-display font-bold text-[clamp(1.5rem,5vw,3.5rem)] leading-tight text-foreground/90 opacity-0 animate-fade-up animation-delay-200 uppercase">
-              "FLESH DECAYS.
-              <br />
-              <span className="text-accent">CODE ENDURES."</span>
-            </blockquote>
-            
-            {/* Decorative line */}
-            <div className="absolute -left-6 top-0 h-full w-px bg-gradient-to-b from-accent via-accent/50 to-transparent hidden lg:block" />
-          </div>
+        <ol className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {steps.map((step, index) => (
+            <li key={step.title} className="card-studio">
+              <p className="font-display font-semibold text-sm text-[#d97757]">
+                {index + 1}. {step.period}
+              </p>
+              <h3 className="mt-2 font-display font-semibold text-lg text-[#141413]">{step.title}</h3>
+              <p className="mt-2 text-[#141413]/70">{step.text}</p>
+            </li>
+          ))}
+        </ol>
 
-          {/* Right - Body text */}
-          <div className="flex flex-col justify-center">
-            <p className="font-mono text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed opacity-0 animate-fade-up animation-delay-300">
-              Traditional software waits for input. We build systems that act. 
-            </p>
-            <p className="font-mono text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed mt-4 md:mt-6 opacity-0 animate-fade-up animation-delay-400">
-              In a world of noise, Kuon Studio engineers the silence of perfect efficiency.
-            </p>
-
-            {/* Decorative element */}
-            <div className="mt-8 md:mt-12 flex items-center gap-4 opacity-0 animate-fade-up animation-delay-500">
-              <div className="w-12 h-px bg-accent" />
-              <span className="font-mono text-xs text-accent tracking-widest">久遠</span>
-              <div className="w-12 h-px bg-accent" />
-            </div>
+        <div className="mt-12 bg-[#e8e6dc]/50 border border-[#e8e6dc] rounded-2xl p-7 md:p-10">
+          <h3 className="font-display font-semibold text-xl text-[#141413]">What you can expect</h3>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {principles.map((item) => (
+              <div key={item.title}>
+                <p className="font-display font-semibold text-[#141413]">{item.title}</p>
+                <p className="mt-1.5 text-[#141413]/70">{item.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

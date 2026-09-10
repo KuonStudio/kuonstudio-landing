@@ -2,117 +2,100 @@ import { useState } from 'react';
 
 const AccessSection = () => {
   const [formData, setFormData] = useState({
-    codename: '',
-    signal: '',
-    mission: '',
+    name: '',
+    email: '',
+    details: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`UPLINK REQUEST: ${formData.codename}`);
-    const body = encodeURIComponent(`CODENAME: ${formData.codename}\nSIGNAL: ${formData.signal}\n\nMISSION BRIEF:\n${formData.mission}`);
-    window.location.href = `mailto:hello@kuonstudios.com?subject=${subject}&body=${body}`;
+    const subject = encodeURIComponent(`Project inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nProject details:\n${formData.details}`
+    );
+    window.location.href = `mailto:hello@kuonstudio.com?subject=${subject}&body=${body}`;
   };
 
   return (
-    <section id="access" className="py-20 md:py-32 px-5 md:px-6">
-      <div className="max-w-2xl mx-auto">
-        {/* Terminal header */}
-        <div className="glass-container border border-border/50 bg-card/30 backdrop-blur-sm">
-          {/* Terminal title bar */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-card/50">
-            <div className="flex gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-accent/60" />
-              <div className="w-3 h-3 rounded-full bg-muted" />
-              <div className="w-3 h-3 rounded-full bg-muted" />
-            </div>
-            <span className="font-mono text-xs text-muted-foreground ml-4 tracking-wider">
-              SECURE_UPLINK.EXE
-            </span>
-          </div>
-
-          {/* Terminal content */}
-          <div className="p-5 md:p-8">
-            {/* Section label */}
-            <p className="font-mono text-sm text-accent tracking-widest mb-4">
-              [ ACCESS TERMINAL ]
-            </p>
-
-            {/* Main headline */}
-            <h2 className="font-display font-black text-[clamp(1.75rem,6vw,3rem)] tracking-tight mb-6 md:mb-8 uppercase">
-              INITIATE UPLINK
-            </h2>
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Codename field */}
-              <div>
-                <label className="block font-mono text-xs text-muted-foreground tracking-widest mb-2">
-                  CODENAME_
-                </label>
-                <input
-                  type="text"
-                  value={formData.codename}
-                  onChange={(e) => setFormData({ ...formData, codename: e.target.value })}
-                  required
-                  className="w-full bg-background border border-border/50 px-4 py-3 min-h-[48px] font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors"
-                  placeholder="Enter identifier..."
-                  data-hover
-                />
-              </div>
-
-              {/* Signal frequency field */}
-              <div>
-                <label className="block font-mono text-xs text-muted-foreground tracking-widest mb-2">
-                  SIGNAL_FREQUENCY_
-                </label>
-                <input
-                  type="email"
-                  value={formData.signal}
-                  onChange={(e) => setFormData({ ...formData, signal: e.target.value })}
-                  required
-                  className="w-full bg-background border border-border/50 px-4 py-3 min-h-[48px] font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors"
-                  placeholder="your@frequency.com"
-                  data-hover
-                />
-              </div>
-
-              {/* Mission brief field */}
-              <div>
-                <label className="block font-mono text-xs text-muted-foreground tracking-widest mb-2">
-                  MISSION_BRIEF_
-                </label>
-                <textarea
-                  value={formData.mission}
-                  onChange={(e) => setFormData({ ...formData, mission: e.target.value })}
-                  required
-                  rows={4}
-                  className="w-full bg-background border border-border/50 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-accent transition-colors resize-none"
-                  placeholder="Describe your mission parameters..."
-                  data-hover
-                />
-              </div>
-
-              {/* Submit button */}
-              <button
-                type="submit"
-                className="btn-primary-action w-full mt-4 min-h-[48px]"
-                data-hover
-              >
-                TRANSMIT DATA
-              </button>
-            </form>
-
-            {/* Status line */}
-            <div className="mt-8 pt-6 border-t border-border/30 flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="font-mono text-xs text-muted-foreground">
-                SECURE CHANNEL ACTIVE • ENCRYPTION: AES-256
-              </span>
-            </div>
-          </div>
+    <section id="contact" className="py-16 md:py-24">
+      <div className="wrap grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div>
+          <p className="eyebrow">Contact</p>
+          <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413]">
+            Tell us what you need built.
+          </h2>
+          <p className="mt-4 text-lg text-[#141413]/70">
+            Send 3–5 sentences: what it does, who uses it, and when you need it.
+            We reply within 2 business days with next steps or an honest no.
+          </p>
+          <ul className="mt-6 space-y-2 text-[#141413]/70">
+            <li>— Prefer email? hello@kuonstudio.com</li>
+            <li>— Based in Jakarta, working remotely across Indonesia.</li>
+            <li>— Current availability: 1 project slot per month.</li>
+          </ul>
         </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white border border-[#e8e6dc] rounded-2xl p-6 md:p-8 space-y-5"
+        >
+          <div>
+            <label htmlFor="name" className="block font-display font-semibold text-[15px] text-[#141413] mb-2">
+              Your name
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+              autoComplete="name"
+              className="field"
+              placeholder="Name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block font-display font-semibold text-[15px] text-[#141413] mb-2">
+              Work email
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+              autoComplete="email"
+              className="field"
+              placeholder="you@company.com"
+            />
+            <p className="mt-1.5 text-sm text-[#141413]/60">
+              Only used to reply to your inquiry.
+            </p>
+          </div>
+
+          <div>
+            <label htmlFor="details" className="block font-display font-semibold text-[15px] text-[#141413] mb-2">
+              Project details
+            </label>
+            <textarea
+              id="details"
+              value={formData.details}
+              onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+              required
+              rows={5}
+              className="field resize-y"
+              placeholder="What should it do, who uses it, and what is the deadline?"
+            />
+          </div>
+
+          <button type="submit" className="btn-primary w-full">
+            Send inquiry
+          </button>
+          <p className="text-sm text-[#141413]/60">
+            Opens your email app addressed to hello@kuonstudio.com.
+          </p>
+        </form>
       </div>
     </section>
   );

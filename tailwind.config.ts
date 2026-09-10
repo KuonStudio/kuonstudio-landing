@@ -14,11 +14,19 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Orbitron', 'sans-serif'],
-        mono: ['Space Mono', 'monospace'],
-        sans: ['Space Mono', 'monospace'],
+        display: ['Poppins', 'Arial', 'sans-serif'],
+        serif: ['Lora', 'Georgia', 'serif'],
+        sans: ['Lora', 'Georgia', 'serif'],
+        mono: ['Lora', 'Georgia', 'serif'],
       },
       colors: {
+        ink: '#141413',
+        paper: '#faf9f5',
+        stone: '#e8e6dc',
+        fog: '#b0aea5',
+        clay: '#d97757',
+        sky: '#6a9bcc',
+        moss: '#788c5d',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

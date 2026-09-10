@@ -6,98 +6,93 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 24);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [menuOpen]);
 
   const navLinks = [
-    { label: 'PROTOCOLS', href: '#protocols' },
-    { label: 'VISION', href: '#vision' },
-    { label: 'ACCESS', href: '#access' },
+    { label: 'Services', href: '#services' },
+    { label: 'How we work', href: '#process' },
+    { label: 'Stack', href: '#stack' },
+    { label: 'Contact', href: '#contact' },
   ];
-
-  const handleLinkClick = () => {
-    setMenuOpen(false);
-  };
 
   return (
     <>
-      <nav
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
-          scrolled ? 'glass' : 'bg-transparent'
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
+          scrolled || menuOpen
+            ? 'bg-[#faf9f5]/95 backdrop-blur border-b border-[#e8e6dc]'
+            : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <div className="px-6 md:px-8 py-4 flex items-center justify-between gap-8 md:gap-16 lg:gap-24 flex-nowrap">
-          <a href="#" className="navbar-glitch font-display font-bold text-lg md:text-xl tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap uppercase" data-hover data-text="KUON STUDIO">
-            KUON STUDIO
+        <div className="wrap flex items-center justify-between py-4">
+          <a href="#top" className="font-display font-bold text-lg tracking-tight text-[#141413]">
+            Kuon Studio
           </a>
-          
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-10 flex-nowrap">
+
+          <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
+            {navLinks.map((link) => (
+              <a key={link.label} href={link.href} className="nav-link">
+                {link.label}
+              </a>
+            ))}
+            <a href="#contact" className="btn-primary !px-5 !py-2.5 !text-sm">
+              Start a project
+            </a>
+          </nav>
+
+          <button
+            className="md:hidden inline-flex items-center justify-center w-11 h-11 text-[#141413]"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className="relative block w-6 h-6" aria-hidden="true">
+              <span
+                className={`absolute left-0 top-[7px] w-6 h-0.5 bg-current transition-transform duration-200 ${
+                  menuOpen ? 'translate-y-[5px] rotate-45' : ''
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-[17px] w-6 h-0.5 bg-current transition-transform duration-200 ${
+                  menuOpen ? '-translate-y-[5px] -rotate-45' : ''
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+      </header>
+
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 bg-[#faf9f5] pt-24">
+          <nav className="wrap flex flex-col gap-2" aria-label="Mobile">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="nav-link font-mono text-xs tracking-widest text-muted-foreground whitespace-nowrap"
-                data-hover
+                onClick={() => setMenuOpen(false)}
+                className="font-display font-semibold text-3xl py-3 text-[#141413] border-b border-[#e8e6dc]"
               >
-                [ {link.label} ]
+                {link.label}
               </a>
             ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden flex items-center justify-center w-11 h-11 -mr-2" 
-            onClick={() => setMenuOpen(!menuOpen)}
-            data-hover
-            aria-label="Toggle menu"
-          >
-            <span className={`menu-icon ${menuOpen ? 'open' : ''}`}>
-              <span className="menu-line" />
-              <span className="menu-line" />
-            </span>
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile fullscreen menu */}
-      <div 
-        className={`fixed inset-0 z-40 bg-background transition-opacity duration-300 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-12">
-          {navLinks.map((link, index) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={handleLinkClick}
-              className={`font-display font-bold text-4xl tracking-widest text-foreground hover:text-accent transition-all duration-300 uppercase ${
-                menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-              style={{ transitionDelay: menuOpen ? `${index * 100}ms` : '0ms' }}
-              data-hover
-            >
-              {link.label}
+            <a href="#contact" onClick={() => setMenuOpen(false)} className="btn-primary mt-6">
+              Start a project
             </a>
-          ))}
+            <p className="mt-4 text-[#141413]/60">We reply within 2 business days.</p>
+          </nav>
         </div>
-      </div>
+      )}
     </>
   );
 };
