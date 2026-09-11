@@ -22,6 +22,12 @@ const WorkSection = () => {
             <p className="mt-1 font-display text-[15px] text-[#141413]/60">
               Lead research for freelancers
             </p>
+            <img
+              src="/selisik-pipeline.png"
+              alt="Selisik app showing a saved pipeline of 44 scored leads"
+              loading="lazy"
+              className="mt-6 w-full rounded-xl border border-[#e8e6dc]"
+            />
             <p className="mt-3 text-[#141413]/70">
               Type a goal such as &ldquo;cafes in Bandung that need an ordering
               system&rdquo;. Selisik searches Indonesian company sites, scores
