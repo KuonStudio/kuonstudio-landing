@@ -31,8 +31,8 @@ const WorkSection = () => {
             <p className="mt-3 text-[#141413]/70">
               Type a goal such as &ldquo;cafes in Bandung that need an ordering
               system&rdquo;. Selisik searches Indonesian company sites, scores
-              each target 1&ndash;10 with quoted evidence, and drafts a first
-              message for the ones worth contacting.
+              each target 1&ndash;10 through the lens of your profession, and
+              drafts a first message for the ones worth contacting.
             </p>
             <ul className="mt-5 space-y-2.5">
               <li className="flex gap-3 text-[#141413]">
@@ -40,8 +40,9 @@ const WorkSection = () => {
                   —
                 </span>
                 <span>
-                  You approve 2&ndash;4 search queries before the paid scan runs, with the
-                  cost estimate above the Run button.
+                  In Automatic mode the AI proposes 2&ndash;4 search queries; you
+                  approve the ones that run, with the cost estimate above the Run
+                  button. Manual mode skips that and lets you pick the segments.
                 </span>
               </li>
               <li className="flex gap-3 text-[#141413]">
@@ -58,8 +59,19 @@ const WorkSection = () => {
                   —
                 </span>
                 <span>
-                  Results persist with statuses new, contacted, replied, deal, dead.
-                  A rescan refreshes the analysis and keeps your notes.
+                  Results persist with five statuses: new, contacted, replied, deal,
+                  dead. By default rescans skip leads you already have; refreshed
+                  analyses never overwrite your status or notes.
+                </span>
+              </li>
+              <li className="flex gap-3 text-[#141413]">
+                <span aria-hidden="true" style={{ color: '#d97757' }}>
+                  —
+                </span>
+                <span>
+                  Eleven professions built in, from software engineer to KOL
+                  scout, plus a form for your own: what you sell, your price
+                  range, and what marks a business that needs it.
                 </span>
               </li>
             </ul>
@@ -73,8 +85,8 @@ const WorkSection = () => {
                 Visit live app &rarr;
               </a>
               <p className="text-[15px] text-[#141413]/60">
-                selisik.kuonstudio.com. Indonesian UI. Free account, uses your own Exa
-                + LLM keys.
+                selisik.kuonstudio.com. Indonesian UI. Sign in with an email code.
+                No password, no API keys required from you.
               </p>
             </div>
           </article>
