@@ -13,7 +13,8 @@ const COPY = {
         accent: '#d97757',
         tagline: 'Agent pencari klien untuk freelancer dan tim sales',
         img: '/selisik-pipeline.png',
-        alt: 'Aplikasi Selisik menampilkan daftar 44 calon klien yang sudah diberi skor',
+        alt: 'Halaman Pipeline Selisik: delapan calon klien contoh dengan status dan skor 1–10',
+        caption: 'Tampilan aplikasi dengan data contoh fiktif.',
         imgClass: 'w-full',
         body: 'Tulis tujuan seperti "kafe di Bandung yang butuh sistem pemesanan". Selisik menelusuri situs bisnis di Indonesia, menilai tiap target 1–10 lewat lensa profesimu, lalu menyiapkan apa yang bisa kamu tawarkan beserta draf pesan pembukanya.',
         points: [
@@ -32,6 +33,7 @@ const COPY = {
         tagline: 'Agent ide dan naskah konten untuk akun media sosial',
         img: '/cadence-ide.png',
         alt: 'Halaman Cari ide di Cadence untuk profil Kuon Studio, dengan topik akun sebagai pilihan cepat',
+        caption: '',
         imgClass: 'w-full',
         body: 'Cadence membaca apa yang sedang dicari orang dan berita terbaru, lalu menawarkan ide konten yang cocok dengan profil akunmu. Ide yang dipilih diubah jadi naskah per adegan, siap diproduksi.',
         points: [
@@ -56,7 +58,8 @@ const COPY = {
         accent: '#d97757',
         tagline: 'Client-finding agent for freelancers and sales teams',
         img: '/selisik-pipeline.png',
-        alt: 'Selisik app showing a saved pipeline of 44 scored leads',
+        alt: 'Selisik Pipeline page: eight sample leads with status and a 1–10 score',
+        caption: 'App screenshot with fictional sample data.',
         imgClass: 'w-full',
         body: 'Type a goal such as "cafes in Bandung that need an ordering system". Selisik searches Indonesian business sites, scores each target 1–10 through the lens of your profession, then prepares what you can offer and a draft opening message.',
         points: [
@@ -75,6 +78,7 @@ const COPY = {
         tagline: 'Content idea and script agent for social accounts',
         img: '/cadence-ide.png',
         alt: 'Cadence idea search page for the Kuon Studio profile, with the account topics as quick picks',
+        caption: '',
         imgClass: 'w-full',
         body: 'Cadence reads what people are searching for and recent news, then offers content ideas that fit your account profile. A chosen idea becomes a scene-by-scene script, ready for production.',
         points: [
@@ -110,6 +114,7 @@ const WorkSection = () => {
               <div className="mt-6 w-full rounded-xl border border-[#e8e6dc] overflow-hidden bg-[#FAF8F5]">
                 <img src={p.img} alt={p.alt} loading="lazy" className={p.imgClass} />
               </div>
+              {p.caption && <p className="mt-2 text-sm text-[#141413]/60">{p.caption}</p>}
               <p className="mt-3 text-[#141413]/70">{p.body}</p>
               <ul className="mt-5 space-y-2.5">
                 {p.points.map((pt) => (
