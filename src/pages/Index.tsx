@@ -7,6 +7,7 @@ import UseCasesSection from '@/components/UseCasesSection';
 import ReadinessQuiz from '@/components/ReadinessQuiz';
 import WorkSection from '@/components/WorkSection';
 import ResultsSection from '@/components/ResultsSection';
+import DemoOffer from '@/components/DemoOffer';
 import PilotSection from '@/components/PilotSection';
 import AccessSection from '@/components/AccessSection';
 import Footer from '@/components/Footer';
@@ -37,6 +38,7 @@ const Page = () => {
         <ReadinessQuiz />
         <WorkSection />
         <ResultsSection />
+        <DemoOffer />
         <PilotSection />
         <AccessSection />
       </main>
