@@ -8,12 +8,12 @@ import type { Lang } from '@/lib/i18n';
 
 type Text = Record<Lang, string>;
 
-/** One line of the strip under the hero, e.g. { value: '1.284', label: { id: 'calon klien dinilai Selisik', ... } }. */
+/** One number in the strip under the hero. */
 export interface Counter {
-  value: string;
+  value: number;
   label: Text;
-  /** When the number was taken, shown as a footnote: '11 Okt 2026'. */
-  asOf: string;
+  /** Date of the data, shown as a footnote. */
+  asOf: Text;
 }
 
 /** A before/after result from a client pilot. */
@@ -40,6 +40,13 @@ export interface LogLine {
   note?: Text;
 }
 
-export const COUNTERS: Counter[] = [];
+// Selisik, main account, 18 scans from 14 Sep to 8 Oct 2026 (scripts/proof-stats.sh).
+// 2,623 search results; 342 leads scored, 14 of them above 5; 198 with a contact found on the source page.
+export const COUNTERS: Counter[] = [
+  { value: 2623, label: { id: 'halaman bisnis ditemukan Selisik', en: 'business pages found by Selisik' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
+  { value: 342, label: { id: 'bisnis dinilai satu per satu', en: 'businesses scored one by one' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
+  { value: 14, label: { id: 'yang cukup cocok untuk dibuatkan pesan', en: 'good enough fits to get a message' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
+  { value: 198, label: { id: 'kontak, semuanya tertulis di halaman sumber', en: 'contacts, every one written on its source page' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
+];
 export const RESULTS: Result[] = [];
 export const LOG: LogLine[] = [];

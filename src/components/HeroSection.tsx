@@ -11,7 +11,7 @@ const COPY = {
     primary: 'Cek kesiapan AI bisnismu',
     secondary: 'Lihat cara kerja agent',
     wa: 'Atau tanya langsung lewat WhatsApp',
-    asOf: 'Diambil dari database Selisik dan Cadence per',
+    asOf: 'Data pemakaian Selisik, 18 pencarian sampai',
     waText: 'Halo Kuon Studio, saya mau tanya soal AI agent untuk bisnis saya.',
     points: [
       { accent: '#d97757', t: 'Mulai dari satu alur kerja', d: 'Pilot 2 minggu, harga tetap setelah scope.' },
@@ -27,7 +27,7 @@ const COPY = {
     primary: 'Check your AI readiness',
     secondary: 'See how agents work',
     wa: 'Or ask us on WhatsApp',
-    asOf: 'Taken from the Selisik and Cadence databases on',
+    asOf: 'Selisik usage data, 18 searches up to',
     waText: 'Hi Kuon Studio, I would like to ask about AI agents for my business.',
     points: [
       { accent: '#d97757', t: 'Start with one workflow', d: 'A 2-week pilot, fixed price after scoping.' },
@@ -80,12 +80,12 @@ const HeroSection = () => {
                 {COUNTERS.map((n) => (
                   <div key={n.label.id}>
                     <dt className="sr-only">{n.label[lang]}</dt>
-                    <dd className="font-display font-bold text-3xl text-[#141413] tabular-nums">{n.value}</dd>
+                    <dd className="font-display font-bold text-3xl text-[#141413] tabular-nums">{n.value.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}</dd>
                     <dd className="mt-1 text-sm text-[#141413]/60">{n.label[lang]}</dd>
                   </div>
                 ))}
               </dl>
-              <p className="mt-4 text-xs text-[#141413]/50">{c.asOf} {COUNTERS[0].asOf}.</p>
+              <p className="mt-4 text-xs text-[#141413]/50">{c.asOf} {COUNTERS[0].asOf[lang]}.</p>
             </div>
           )}
         </div>
