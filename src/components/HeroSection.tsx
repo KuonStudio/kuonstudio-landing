@@ -1,15 +1,17 @@
-import { useCopy } from '@/lib/i18n';
+import { useCopy, useLang } from '@/lib/i18n';
 import { waLink } from '@/lib/contact';
+import { COUNTERS } from '@/lib/proof';
 
 const COPY = {
   id: {
     eyebrow: 'Software studio di Jakarta · AI agent untuk bisnis',
-    title: 'AI agent yang mengerjakan kerjaan berulang di bisnismu. Timmu tetap pegang kendali.',
+    title: 'Agent kami membuang nomor WhatsApp yang dikarang AI-nya sendiri.',
     body:
-      'Balas chat pesanan, rekap penjualan, follow-up leads, isi data dari dokumen: agent kami menyiapkan semuanya, timmu tinggal cek dan setujui. Tidak ada yang terkirim sendiri. Kami bangun di atas alat yang sudah kamu pakai, lalu serahkan lengkap dengan panduan dan pelatihan.',
+      'Kalau nomornya tidak tertulis di situs sumber, Selisik, agent pencari klien kami, tidak menyimpannya. Aturan sekecil ini yang kami pasang di setiap agent untuk bisnismu, dari balas chat pesanan, rekap penjualan, follow-up leads, sampai isi data dari dokumen. Hasil kerjanya bisa dicek ke sumber, dan tidak ada yang terkirim sebelum timmu setuju.',
     primary: 'Cek kesiapan AI bisnismu',
     secondary: 'Lihat cara kerja agent',
     wa: 'Atau tanya langsung lewat WhatsApp',
+    asOf: 'Diambil dari database Selisik dan Cadence per',
     waText: 'Halo Kuon Studio, saya mau tanya soal AI agent untuk bisnis saya.',
     points: [
       { accent: '#d97757', t: 'Mulai dari satu alur kerja', d: 'Pilot 2 minggu, harga tetap setelah scope.' },
@@ -19,12 +21,13 @@ const COPY = {
   },
   en: {
     eyebrow: 'Software studio in Jakarta · AI agents for business',
-    title: 'AI agents that do the repetitive work in your business. Your team stays in control.',
+    title: 'Our agent throws out WhatsApp numbers its own AI made up.',
     body:
-      'Order replies, sales recaps, lead follow-ups, data entry from documents: our agents prepare the work, your team checks and approves. Nothing sends itself. We build on the tools you already use, then hand everything over with a guide and training.',
+      'If a number is not written on the source website, Selisik, our client-finding agent, does not keep it. We put rules this small into every agent we build for your business, from order replies and sales recaps to lead follow-ups and data entry from documents. Every result can be checked against its source, and nothing goes out until your team approves it.',
     primary: 'Check your AI readiness',
     secondary: 'See how agents work',
     wa: 'Or ask us on WhatsApp',
+    asOf: 'Taken from the Selisik and Cadence databases on',
     waText: 'Hi Kuon Studio, I would like to ask about AI agents for my business.',
     points: [
       { accent: '#d97757', t: 'Start with one workflow', d: 'A 2-week pilot, fixed price after scoping.' },
@@ -36,6 +39,7 @@ const COPY = {
 
 const HeroSection = () => {
   const c = useCopy(COPY);
+  const { lang } = useLang();
   return (
     <section id="top" className="pt-32 md:pt-40 pb-16 md:pb-24">
       <div className="wrap">
@@ -70,6 +74,20 @@ const HeroSection = () => {
               </div>
             ))}
           </dl>
+          {COUNTERS.length > 0 && (
+            <div className="mt-10 border-t border-[#e8e6dc] pt-6">
+              <dl className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {COUNTERS.map((n) => (
+                  <div key={n.label.id}>
+                    <dt className="sr-only">{n.label[lang]}</dt>
+                    <dd className="font-display font-bold text-3xl text-[#141413] tabular-nums">{n.value}</dd>
+                    <dd className="mt-1 text-sm text-[#141413]/60">{n.label[lang]}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-4 text-xs text-[#141413]/50">{c.asOf} {COUNTERS[0].asOf}.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
