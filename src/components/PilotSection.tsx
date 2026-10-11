@@ -1,5 +1,4 @@
 import { useCopy } from '@/lib/i18n';
-import { waLink } from '@/lib/contact';
 
 const COPY = {
   id: {
@@ -22,9 +21,8 @@ const COPY = {
       ['Kode dan data', 'milikmu'],
     ],
     receiptTotal: ['Keputusan lanjut', 'di kamu'],
-    book: 'Booking pilot lewat WhatsApp',
-    bookText: 'Halo Kuon Studio, saya mau booking pilot 2 minggu. Pekerjaan yang mau saya serahkan ke agent: ',
-    trustTitle: 'Aman dipakai untuk bisnis',
+    book: 'Booking pilot',
+    trustTitle: 'Batas yang kami pasang',
     trust: [
       { title: 'Manusia yang menyetujui', text: 'Agent tidak mengirim, membayar, atau menghapus apa pun tanpa persetujuan staf.' },
       { title: 'Jejak lengkap', text: 'Setiap langkah agent tercatat: apa yang dibaca, apa yang diusulkan, siapa yang menyetujui.' },
@@ -52,9 +50,8 @@ const COPY = {
       ['Code and data', 'yours'],
     ],
     receiptTotal: ['Whether to continue', 'your call'],
-    book: 'Book a pilot on WhatsApp',
-    bookText: 'Hi Kuon Studio, I would like to book a 2-week pilot. The work I want to hand to the agent: ',
-    trustTitle: 'Safe to use in a business',
+    book: 'Book a pilot',
+    trustTitle: 'Limits we build in',
     trust: [
       { title: 'Humans approve', text: 'The agent does not send, pay, or delete anything without staff approval.' },
       { title: 'Full trail', text: 'Every agent step is logged: what it read, what it proposed, who approved it.' },
@@ -87,7 +84,7 @@ const PilotSection = () => {
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_22rem] gap-8 items-start">
           <div>
             <p className="font-display font-semibold text-[#141413]">{c.price}</p>
-            <a href={waLink(c.bookText)} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5">
+            <a href="#contact" className="btn-primary mt-5">
               {c.book}
             </a>
           </div>

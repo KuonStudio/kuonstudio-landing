@@ -1,39 +1,26 @@
 import { useCopy, useLang } from '@/lib/i18n';
-import { waLink } from '@/lib/contact';
 import { COUNTERS } from '@/lib/proof';
 
 const COPY = {
   id: {
     eyebrow: 'Software studio di Jakarta · AI agent untuk bisnis',
-    title: 'Agent kami membuang nomor WhatsApp yang dikarang AI-nya sendiri.',
+    title: 'Agent kami menilai 342 bisnis. Cuma 14 yang dibuatkan pesan.',
     body:
-      'Kalau nomornya tidak tertulis di situs sumber, Selisik, agent pencari klien kami, tidak menyimpannya. Aturan sekecil ini yang kami pasang di setiap agent untuk bisnismu, dari balas chat pesanan, rekap penjualan, follow-up leads, sampai isi data dari dokumen. Hasil kerjanya bisa dicek ke sumber, dan tidak ada yang terkirim sebelum timmu setuju.',
+      '328 sisanya ditolak sebelum satu kalimat pun ditulis. Itu Selisik, agent pencari klien yang kami pakai sendiri. Kami membangun agent seperti itu untuk kerjaan berulang di bisnismu, dan tidak ada yang terkirim sebelum timmu menekan setuju.',
     primary: 'Cek kesiapan AI bisnismu',
     secondary: 'Lihat cara kerja agent',
-    wa: 'Atau tanya langsung lewat WhatsApp',
+    contact: 'Atau ceritakan kerjaannya',
     asOf: 'Data pemakaian Selisik, 18 pencarian sampai',
-    waText: 'Halo Kuon Studio, saya mau tanya soal AI agent untuk bisnis saya.',
-    points: [
-      { accent: '#d97757', t: 'Mulai dari satu alur kerja', d: 'Pilot 2 minggu, harga tetap setelah scope.' },
-      { accent: '#6a9bcc', t: 'Manusia yang menyetujui', d: 'Agent menyiapkan, staf yang memutuskan.' },
-      { accent: '#788c5d', t: 'Milikmu sepenuhnya', d: 'Kode, akun, data, dan panduan jadi milikmu.' },
-    ],
   },
   en: {
     eyebrow: 'Software studio in Jakarta · AI agents for business',
-    title: 'Our agent throws out WhatsApp numbers its own AI made up.',
+    title: 'Our agent scored 342 businesses. It drafted a message for 14.',
     body:
-      'If a number is not written on the source website, Selisik, our client-finding agent, does not keep it. We put rules this small into every agent we build for your business, from order replies and sales recaps to lead follow-ups and data entry from documents. Every result can be checked against its source, and nothing goes out until your team approves it.',
+      'The other 328 were turned down before a single sentence was written. That is Selisik, the client-finding agent we run ourselves. We build agents like it for the repetitive work in your business, and nothing goes out until your team taps approve.',
     primary: 'Check your AI readiness',
     secondary: 'See how agents work',
-    wa: 'Or ask us on WhatsApp',
+    contact: 'Or tell us about the work',
     asOf: 'Selisik usage data, 18 searches up to',
-    waText: 'Hi Kuon Studio, I would like to ask about AI agents for my business.',
-    points: [
-      { accent: '#d97757', t: 'Start with one workflow', d: 'A 2-week pilot, fixed price after scoping.' },
-      { accent: '#6a9bcc', t: 'Humans approve', d: 'The agent prepares, your staff decides.' },
-      { accent: '#788c5d', t: 'You own all of it', d: 'Code, accounts, data, and the guide are yours.' },
-    ],
   },
 };
 
@@ -58,25 +45,15 @@ const HeroSection = () => {
             </a>
           </div>
           <a
-            href={waLink(c.waText)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="mt-5 inline-flex items-center gap-2 font-display font-semibold text-[15px] text-[#141413] hover:text-[#d97757] transition-colors"
           >
             <span className="inline-block w-2 h-2 rounded-full bg-[#788c5d]" aria-hidden="true" />
-            {c.wa} &rarr;
+            {c.contact} &rarr;
           </a>
-          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[15px]">
-            {c.points.map((p) => (
-              <div key={p.t} className="border-t-2 pt-3" style={{ borderColor: p.accent }}>
-                <dt className="font-display font-semibold text-[#141413]">{p.t}</dt>
-                <dd className="text-[#141413]/60">{p.d}</dd>
-              </div>
-            ))}
-          </dl>
           {COUNTERS.length > 0 && (
             <div className="mt-10 border-t border-[#e8e6dc] pt-6">
-              <dl className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <dl className="grid grid-cols-3 gap-6">
                 {COUNTERS.map((n) => (
                   <div key={n.label.id}>
                     <dt className="sr-only">{n.label[lang]}</dt>

@@ -41,12 +41,13 @@ export interface LogLine {
 }
 
 // Selisik, main account, 18 scans from 14 Sep to 8 Oct 2026 (scripts/proof-stats.sh).
-// 2,623 search results; 342 leads scored, 14 of them above 5; 198 with a contact found on the source page.
+// 2,623 search results, 640 rejected before scoring; 342 leads scored, 14 above 5 (the hero headline);
+// 198 leads with a phone or email found on the source page.
+const AS_OF = { id: '8 Okt 2026', en: '8 Oct 2026' };
 export const COUNTERS: Counter[] = [
-  { value: 2623, label: { id: 'halaman bisnis ditemukan Selisik', en: 'business pages found by Selisik' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
-  { value: 342, label: { id: 'bisnis dinilai satu per satu', en: 'businesses scored one by one' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
-  { value: 14, label: { id: 'yang cukup cocok untuk dibuatkan pesan', en: 'good enough fits to get a message' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
-  { value: 198, label: { id: 'kontak, semuanya tertulis di halaman sumber', en: 'contacts, every one written on its source page' }, asOf: { id: '8 Okt 2026', en: '8 Oct 2026' } },
+  { value: 2623, label: { id: 'halaman bisnis ditemukan', en: 'business pages found' }, asOf: AS_OF },
+  { value: 640, label: { id: 'dibuang sebelum dinilai', en: 'dropped before scoring' }, asOf: AS_OF },
+  { value: 198, label: { id: 'kontak, semuanya tertulis di halaman sumber', en: 'contacts, each one written on its source page' }, asOf: AS_OF },
 ];
 export const RESULTS: Result[] = [];
 export const LOG: LogLine[] = [];
