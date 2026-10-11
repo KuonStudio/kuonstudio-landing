@@ -13,7 +13,8 @@ docker run --rm -i -v "$SEL":/sel:ro -v "$CAD":/cad:ro python:3.12-alpine python
 import glob, sqlite3
 
 def q(db, sql):
-    con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    # immutable=1 reads a live WAL database from the read-only mount without creating -shm.
+    con = sqlite3.connect(f"file:{db}?mode=ro&immutable=1", uri=True)
     try:
         return con.execute(sql).fetchall()
     except sqlite3.Error as e:
