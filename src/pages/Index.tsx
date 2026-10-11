@@ -1,13 +1,10 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import RulesSection from '@/components/RulesSection';
 import AgentDemo from '@/components/AgentDemo';
 import LabsSection from '@/components/LabsSection';
 import UseCasesSection from '@/components/UseCasesSection';
 import ReadinessQuiz from '@/components/ReadinessQuiz';
 import WorkSection from '@/components/WorkSection';
-import ResultsSection from '@/components/ResultsSection';
-import DemoOffer from '@/components/DemoOffer';
 import PilotSection from '@/components/PilotSection';
 import AccessSection from '@/components/AccessSection';
 import Footer from '@/components/Footer';
@@ -31,14 +28,11 @@ const Page = () => {
 
       <main>
         <HeroSection />
-        <RulesSection />
         <AgentDemo />
         <LabsSection />
         <UseCasesSection />
         <ReadinessQuiz />
         <WorkSection />
-        <ResultsSection />
-        <DemoOffer />
         <PilotSection />
         <AccessSection />
       </main>

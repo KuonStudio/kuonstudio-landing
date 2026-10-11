@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCopy } from '@/lib/i18n';
-import { mailLink, waLink } from '@/lib/contact';
+import { waLink } from '@/lib/contact';
 
 type Tier = { title: string; text: string; next: string };
 
@@ -12,7 +12,6 @@ const COPY: Record<'id' | 'en', {
   answered: (n: number, total: number) => string;
   tiers: [Tier, Tier, Tier];
   send: string;
-  sendMail: string;
   reset: string;
   waIntro: string;
   waResult: string;
@@ -21,7 +20,7 @@ const COPY: Record<'id' | 'en', {
   id: {
     eyebrow: 'Cek kesiapan AI',
     title: 'Lima pertanyaan, satu menit. Lihat dari mana sebaiknya mulai.',
-    body: 'Kalau bisnismu belum butuh AI, hasilnya bilang begitu.',
+    body: 'Tidak ada jawaban benar atau salah. Hasilnya saran jujur, termasuk kalau AI belum perlu.',
     questions: [
       { q: 'Berapa jam sehari timmu habiskan untuk membalas, merekap, atau mengetik ulang hal yang sama?', options: ['Kurang dari 1 jam', '1 sampai 3 jam', 'Lebih dari 3 jam'] },
       { q: 'Data pesanan, stok, atau pelanggan saat ini ada di mana?', options: ['Chat dan kertas', 'Spreadsheet', 'Sudah di aplikasi atau sistem'] },
@@ -36,16 +35,15 @@ const COPY: Record<'id' | 'en', {
       { title: 'Siap untuk beberapa agent', text: 'Pekerjaan berulangnya banyak, datanya sudah di sistem, dan ada yang menyetujui. Mulai dari alur yang paling mahal waktunya, lalu tambah satu per satu.', next: 'Kirim hasil ini, kami susun urutan agent yang paling menguntungkan.' },
     ],
     send: 'Kirim hasil ke WhatsApp',
-    sendMail: 'Kirim lewat email',
     reset: 'Ulangi',
     waIntro: 'Halo Kuon Studio, ini hasil cek kesiapan AI bisnis saya:',
     waResult: 'Hasil',
-    note: 'Jawabanmu tidak disimpan di situs ini. Hanya terkirim kalau kamu menekan salah satu tombol kirim.',
+    note: 'Jawabanmu tidak disimpan di situs ini. Hanya terkirim kalau kamu menekan tombol WhatsApp.',
   },
   en: {
     eyebrow: 'AI readiness check',
     title: 'Five questions, one minute. See where to start.',
-    body: 'If your business does not need AI yet, the result says so.',
+    body: 'No right or wrong answers. You get an honest suggestion, including when AI is not needed yet.',
     questions: [
       { q: 'How many hours a day does your team spend replying, recapping, or retyping the same things?', options: ['Under 1 hour', '1 to 3 hours', 'Over 3 hours'] },
       { q: 'Where do your orders, stock, or customer records live today?', options: ['Chats and paper', 'Spreadsheets', 'Already in an app or system'] },
@@ -60,11 +58,10 @@ const COPY: Record<'id' | 'en', {
       { title: 'Ready for several agents', text: 'Lots of repetitive work, data already in a system, and someone to approve. Start with the workflow that costs the most time, then add one at a time.', next: 'Send this result and we will map the most valuable order of agents.' },
     ],
     send: 'Send result on WhatsApp',
-    sendMail: 'Send by email',
     reset: 'Start over',
     waIntro: 'Hi Kuon Studio, here is my AI readiness check:',
     waResult: 'Result',
-    note: 'Your answers are not stored on this site. They are only sent if you tap one of the send buttons.',
+    note: 'Your answers are not stored on this site. They are only sent if you tap the WhatsApp button.',
   },
 };
 
@@ -132,9 +129,6 @@ const ReadinessQuiz = () => {
                 <p className="mt-3 text-[#141413]">{result.next}</p>
                 <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className="btn-primary mt-6 w-full">
                   {c.send}
-                </a>
-                <a href={mailLink(c.waResult, message)} className="btn-secondary mt-3 w-full">
-                  {c.sendMail}
                 </a>
                 <button
                   type="button"

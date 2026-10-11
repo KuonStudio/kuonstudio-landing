@@ -17,7 +17,7 @@ const META: Record<Lang, { title: string; description: string }> = {
   },
 };
 
-/** ?lang=en wins, then the saved choice, then the browser language: Indonesian browsers get id, everyone else en. */
+/** ?lang=en wins, then the saved choice; Indonesian by default. */
 function initialLang(): Lang {
   try {
     const q = new URLSearchParams(window.location.search).get('lang');
@@ -27,8 +27,7 @@ function initialLang(): Lang {
   } catch {
     /* storage can be blocked; fall through */
   }
-  const nav = typeof navigator === 'undefined' ? [] : navigator.languages?.length ? navigator.languages : [navigator.language];
-  return nav.some((l) => l?.toLowerCase().startsWith('id') || l?.toLowerCase().startsWith('ms')) ? 'id' : 'en';
+  return 'id';
 }
 
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: 'id', setLang: () => {} });

@@ -142,21 +142,6 @@
     border-radius: 16px;
   }
 
-  .receipt {
-    @apply p-6 text-[13px] leading-snug;
-    font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    color: #141413;
-    background: #faf9f5;
-    border: 1px solid var(--stone);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
-    /* Torn bottom edge */
-    -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 8px) no-repeat,
-      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 16px 8px repeat-x;
-    mask: linear-gradient(#000 0 0) top / 100% calc(100% - 8px) no-repeat,
-      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 16px 8px repeat-x;
-    padding-bottom: 2rem;
-  }
-
   .card-studio:hover {
     box-shadow: 0 12px 32px rgba(20, 20, 19, 0.08);
   }

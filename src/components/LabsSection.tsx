@@ -5,7 +5,7 @@ const ACCENTS = ['#d97757', '#6a9bcc', '#788c5d', '#141413'];
 const COPY = {
   id: {
     eyebrow: 'Layanan',
-    title: 'Empat jenis proyek yang kami kerjakan.',
+    title: 'Empat cara kami membantu bisnismu pindah ke AI.',
     body: 'Pilih satu. Setiap proyek selesai dengan kode, dokumentasi, dan sesi serah terima.',
     services: [
       {
@@ -36,7 +36,7 @@ const COPY = {
   },
   en: {
     eyebrow: 'Services',
-    title: 'Four kinds of project we take on.',
+    title: 'Four ways we help your business move to AI.',
     body: 'Pick one. Every engagement ends with code, docs, and a handover session.',
     services: [
       {

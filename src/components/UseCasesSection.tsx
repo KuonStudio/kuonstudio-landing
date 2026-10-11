@@ -12,7 +12,7 @@ const COPY = {
     cases: [
       {
         name: 'F&B dan toko online',
-        agent: 'Membaca pesanan dari chat, email, dan marketplace, cek stok, menyiapkan balasan dan rekap harian.',
+        agent: 'Membaca pesanan dari WhatsApp dan marketplace, cek stok, menyiapkan balasan dan rekap harian.',
         human: 'Menyetujui balasan, menangani komplain, menentukan promo.',
       },
       {
@@ -40,7 +40,7 @@ const COPY = {
     cases: [
       {
         name: 'F&B and online shops',
-        agent: 'Reads orders from chat, email, and marketplaces, checks stock, prepares replies and a daily recap.',
+        agent: 'Reads orders from WhatsApp and marketplaces, checks stock, prepares replies and a daily recap.',
         human: 'Approving replies, handling complaints, deciding promotions.',
       },
       {

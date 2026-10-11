@@ -4,7 +4,6 @@ import { useLang, useCopy } from '@/lib/i18n';
 const COPY = {
   id: {
     links: [
-      { label: 'Aturan', href: '#rules' },
       { label: 'Cara kerja agent', href: '#agent' },
       { label: 'Layanan', href: '#services' },
       { label: 'Contoh', href: '#use-cases' },
@@ -19,7 +18,6 @@ const COPY = {
   },
   en: {
     links: [
-      { label: 'Rules', href: '#rules' },
       { label: 'How agents work', href: '#agent' },
       { label: 'Services', href: '#services' },
       { label: 'Use cases', href: '#use-cases' },

@@ -22,7 +22,7 @@ const COPY: Record<'id' | 'en', {
 }> = {
   id: {
     eyebrow: 'Cara kerja agent',
-    title: 'Agent mengerjakan langkahnya. Staf yang menekan setuju.',
+    title: 'Bukan chatbot. Agent mengerjakan langkahnya, manusia yang memutuskan.',
     body: 'Agent membaca pesan atau dokumen yang masuk, mengecek data di sistemmu, lalu menyiapkan tindakan. Staf melihat semuanya dalam satu layar dan menekan setuju, ubah, atau tolak.',
     labels: ['1. Masuk', '2. Agent menyiapkan', '3. Staf menyetujui'],
     approve: 'Setujui',
@@ -31,8 +31,8 @@ const COPY: Record<'id' | 'en', {
     note: 'Contoh ilustrasi. Alur, data, dan batasnya disesuaikan saat scope.',
     scenarios: [
       {
-        tab: 'Pesanan dari chat',
-        inbox: { from: 'Pelanggan · chat', text: 'Kak, keripik pedas 3 bungkus sama yang original 2, kirim ke Bekasi ya.' },
+        tab: 'Pesanan WhatsApp',
+        inbox: { from: 'Pelanggan · WhatsApp', text: 'Kak, keripik pedas 3 bungkus sama yang original 2, kirim ke Bekasi ya.' },
         steps: ['Baca pesanan: 3 pedas, 2 original', 'Cek stok di sistem: tersedia', 'Hitung ongkir ke Bekasi', 'Siapkan balasan + catatan pesanan'],
         draft: 'Siap kak! 3 pedas + 2 original, total sudah termasuk ongkir ke Bekasi. Mau transfer atau QRIS?',
         approved: 'Pesanan tercatat, balasan terkirim.',
@@ -55,7 +55,7 @@ const COPY: Record<'id' | 'en', {
   },
   en: {
     eyebrow: 'How agents work',
-    title: 'The agent does the steps. A person taps approve.',
+    title: 'Not a chatbot. The agent does the steps, a person makes the call.',
     body: 'The agent reads incoming messages or documents, checks your system, and prepares the action. Your staff sees it all on one screen and taps approve, edit, or reject.',
     labels: ['1. In', '2. Agent prepares', '3. Staff approves'],
     approve: 'Approve',
@@ -64,10 +64,10 @@ const COPY: Record<'id' | 'en', {
     note: 'Illustrative example. Flow, data, and limits are set during scoping.',
     scenarios: [
       {
-        tab: 'Chat orders',
-        inbox: { from: 'Customer · chat', text: 'Hi, 3 packs of spicy chips and 2 original, deliver to Riverside please.' },
-        steps: ['Read the order: 3 spicy, 2 original', 'Check stock in your system: available', 'Calculate delivery to Riverside', 'Prepare the reply + order record'],
-        draft: 'Sure! 3 spicy + 2 original, total includes delivery to Riverside. Card or bank transfer?',
+        tab: 'WhatsApp orders',
+        inbox: { from: 'Customer · WhatsApp', text: 'Hi, 3 packs of spicy chips and 2 original, deliver to Bekasi please.' },
+        steps: ['Read the order: 3 spicy, 2 original', 'Check stock in your system: available', 'Calculate delivery to Bekasi', 'Prepare the reply + order record'],
+        draft: 'Sure! 3 spicy + 2 original, total includes delivery to Bekasi. Bank transfer or QRIS?',
         approved: 'Order recorded, reply sent.',
       },
       {

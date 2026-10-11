@@ -1,32 +1,41 @@
-import { useCopy, useLang } from '@/lib/i18n';
-import { COUNTERS } from '@/lib/proof';
+import { useCopy } from '@/lib/i18n';
+import { waLink } from '@/lib/contact';
 
 const COPY = {
   id: {
     eyebrow: 'Software studio di Jakarta · AI agent untuk bisnis',
-    title: 'Agent kami menilai 342 bisnis. Cuma 14 yang dibuatkan pesan.',
+    title: 'AI agent yang mengerjakan kerjaan berulang di bisnismu. Timmu tetap pegang kendali.',
     body:
-      '328 sisanya ditolak sebelum satu kalimat pun ditulis. Itu Selisik, agent pencari klien yang kami pakai sendiri. Kami membangun agent seperti itu untuk kerjaan berulang di bisnismu, dan tidak ada yang terkirim sebelum timmu menekan setuju.',
+      'Balas chat pesanan, rekap penjualan, follow-up leads, isi data dari dokumen: agent kami menyiapkan semuanya, timmu tinggal cek dan setujui. Tidak ada yang terkirim sendiri. Kami bangun di atas alat yang sudah kamu pakai, lalu serahkan lengkap dengan panduan dan pelatihan.',
     primary: 'Cek kesiapan AI bisnismu',
     secondary: 'Lihat cara kerja agent',
-    contact: 'Atau ceritakan kerjaannya',
-    asOf: 'Data pemakaian Selisik, 18 pencarian sampai',
+    wa: 'Atau tanya langsung lewat WhatsApp',
+    waText: 'Halo Kuon Studio, saya mau tanya soal AI agent untuk bisnis saya.',
+    points: [
+      { accent: '#d97757', t: 'Mulai dari satu alur kerja', d: 'Pilot 2 minggu, harga tetap setelah scope.' },
+      { accent: '#6a9bcc', t: 'Manusia yang menyetujui', d: 'Agent menyiapkan, staf yang memutuskan.' },
+      { accent: '#788c5d', t: 'Milikmu sepenuhnya', d: 'Kode, akun, data, dan panduan jadi milikmu.' },
+    ],
   },
   en: {
     eyebrow: 'Software studio in Jakarta · AI agents for business',
-    title: 'Our agent scored 342 businesses. It drafted a message for 14.',
+    title: 'AI agents that do the repetitive work in your business. Your team stays in control.',
     body:
-      'The other 328 were turned down before a single sentence was written. That is Selisik, the client-finding agent we run ourselves. We build agents like it for the repetitive work in your business, and nothing goes out until your team taps approve.',
+      'Order replies, sales recaps, lead follow-ups, data entry from documents: our agents prepare the work, your team checks and approves. Nothing sends itself. We build on the tools you already use, then hand everything over with a guide and training.',
     primary: 'Check your AI readiness',
     secondary: 'See how agents work',
-    contact: 'Or tell us about the work',
-    asOf: 'Selisik usage data, 18 searches up to',
+    wa: 'Or ask us on WhatsApp',
+    waText: 'Hi Kuon Studio, I would like to ask about AI agents for my business.',
+    points: [
+      { accent: '#d97757', t: 'Start with one workflow', d: 'A 2-week pilot, fixed price after scoping.' },
+      { accent: '#6a9bcc', t: 'Humans approve', d: 'The agent prepares, your staff decides.' },
+      { accent: '#788c5d', t: 'You own all of it', d: 'Code, accounts, data, and the guide are yours.' },
+    ],
   },
 };
 
 const HeroSection = () => {
   const c = useCopy(COPY);
-  const { lang } = useLang();
   return (
     <section id="top" className="pt-32 md:pt-40 pb-16 md:pb-24">
       <div className="wrap">
@@ -45,26 +54,22 @@ const HeroSection = () => {
             </a>
           </div>
           <a
-            href="#contact"
+            href={waLink(c.waText)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-5 inline-flex items-center gap-2 font-display font-semibold text-[15px] text-[#141413] hover:text-[#d97757] transition-colors"
           >
             <span className="inline-block w-2 h-2 rounded-full bg-[#788c5d]" aria-hidden="true" />
-            {c.contact} &rarr;
+            {c.wa} &rarr;
           </a>
-          {COUNTERS.length > 0 && (
-            <div className="mt-10 border-t border-[#e8e6dc] pt-6">
-              <dl className="grid grid-cols-3 gap-6">
-                {COUNTERS.map((n) => (
-                  <div key={n.label.id}>
-                    <dt className="sr-only">{n.label[lang]}</dt>
-                    <dd className="font-display font-bold text-3xl text-[#141413] tabular-nums">{n.value.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}</dd>
-                    <dd className="mt-1 text-sm text-[#141413]/60">{n.label[lang]}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-4 text-xs text-[#141413]/50">{c.asOf} {COUNTERS[0].asOf[lang]}.</p>
-            </div>
-          )}
+          <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[15px]">
+            {c.points.map((p) => (
+              <div key={p.t} className="border-t-2 pt-3" style={{ borderColor: p.accent }}>
+                <dt className="font-display font-semibold text-[#141413]">{p.t}</dt>
+                <dd className="text-[#141413]/60">{p.d}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

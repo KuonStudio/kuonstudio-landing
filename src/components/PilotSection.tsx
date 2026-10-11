@@ -11,18 +11,7 @@ const COPY = {
       { period: 'Akhir pilot', title: 'Ukur, lalu putuskan', text: 'Laporan sebelum-sesudah dari data pilot: waktu yang dihemat, kesalahan, dan biaya AI per bulan. Lanjut, ubah, atau berhenti, keputusannya di kamu.' },
     ],
     price: 'Harga tetap setelah scope. Tidak ada tagihan yang membengkak di tengah jalan.',
-    receipt: 'Struk pilot',
-    receiptLines: [
-      ['Alur kerja', '1'],
-      ['Durasi', '2 minggu'],
-      ['Batas agent', 'minggu 1'],
-      ['Harga tetap', 'minggu 1'],
-      ['Laporan', 'sebelum vs sesudah'],
-      ['Kode dan data', 'milikmu'],
-    ],
-    receiptTotal: ['Keputusan lanjut', 'di kamu'],
-    book: 'Booking pilot',
-    trustTitle: 'Batas yang kami pasang',
+    trustTitle: 'Aman dipakai untuk bisnis',
     trust: [
       { title: 'Manusia yang menyetujui', text: 'Agent tidak mengirim, membayar, atau menghapus apa pun tanpa persetujuan staf.' },
       { title: 'Jejak lengkap', text: 'Setiap langkah agent tercatat: apa yang dibaca, apa yang diusulkan, siapa yang menyetujui.' },
@@ -40,18 +29,7 @@ const COPY = {
       { period: 'End of pilot', title: 'Measure, then decide', text: 'A before-and-after report from pilot data: time saved, errors, and monthly AI cost. Continue, adjust, or stop, the call is yours.' },
     ],
     price: 'Fixed price after scoping. No bills that grow halfway through.',
-    receipt: 'Pilot receipt',
-    receiptLines: [
-      ['Workflows', '1'],
-      ['Duration', '2 weeks'],
-      ['Agent limits', 'week 1'],
-      ['Fixed price', 'week 1'],
-      ['Report', 'before vs after'],
-      ['Code and data', 'yours'],
-    ],
-    receiptTotal: ['Whether to continue', 'your call'],
-    book: 'Book a pilot',
-    trustTitle: 'Limits we build in',
+    trustTitle: 'Safe to use in a business',
     trust: [
       { title: 'Humans approve', text: 'The agent does not send, pay, or delete anything without staff approval.' },
       { title: 'Full trail', text: 'Every agent step is logged: what it read, what it proposed, who approved it.' },
@@ -81,30 +59,7 @@ const PilotSection = () => {
             </li>
           ))}
         </ol>
-        <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1fr_22rem] gap-8 items-start">
-          <div>
-            <p className="font-display font-semibold text-[#141413]">{c.price}</p>
-            <a href="#contact" className="btn-primary mt-5">
-              {c.book}
-            </a>
-          </div>
-          <figure className="receipt mx-auto w-full max-w-sm lg:max-w-none" aria-label={c.receipt}>
-            <figcaption className="text-center font-semibold tracking-[0.2em] uppercase text-xs">Kuon Studio · {c.receipt}</figcaption>
-            <dl className="mt-4 border-t border-dashed border-[#141413]/30 pt-3 space-y-1.5">
-              {c.receiptLines.map(([k, v]) => (
-                <div key={k} className="flex items-baseline gap-2">
-                  <dt className="shrink-0">{k}</dt>
-                  <span className="flex-1 border-b border-dotted border-[#141413]/30 translate-y-[-3px]" aria-hidden="true" />
-                  <dd className="text-right whitespace-nowrap">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="mt-3 border-t border-dashed border-[#141413]/30 pt-3 flex items-baseline justify-between gap-2 font-semibold">
-              <span>{c.receiptTotal[0]}</span>
-              <span>{c.receiptTotal[1]}</span>
-            </div>
-          </figure>
-        </div>
+        <p className="mt-6 font-display font-semibold text-[#141413]">{c.price}</p>
 
         <div className="mt-12 bg-[#e8e6dc]/50 border border-[#e8e6dc] rounded-2xl p-7 md:p-10">
           <h3 className="font-display font-semibold text-xl text-[#141413]">{c.trustTitle}</h3>
