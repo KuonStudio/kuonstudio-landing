@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AgentDemo from '@/components/AgentDemo';
+import KuonChat from '@/components/KuonChat';
 import LabsSection from '@/components/LabsSection';
 import UseCasesSection from '@/components/UseCasesSection';
 import ReadinessQuiz from '@/components/ReadinessQuiz';
@@ -29,6 +30,7 @@ const Page = () => {
       <main>
         <HeroSection />
         <AgentDemo />
+        <KuonChat />
         <LabsSection />
         <UseCasesSection />
         <ReadinessQuiz />
