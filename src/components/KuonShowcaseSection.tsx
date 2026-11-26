@@ -51,39 +51,39 @@ interface PresetItem {
 
 const COPY = {
   id: {
-    eyebrow: "Kuon 1 · AI ringan siap pasang untuk bisnismu",
+    eyebrow: "Kuon AI · Asisten ringan siap pasang untuk bisnismu",
     title: "Coba dulu AI yang siap kami pasang di bisnismu.",
-    body: "Ini gambaran asisten AI yang bisa bekerja langsung di atas angka dan dokumenmu sendiri. Ringan di server biasa tanpa GPU mahal, menjawab dari bukti tanpa menebak, dan menjaga cash flow tetap aman karena bebas tagihan per token yang membengkak. Implementasinya sederhana, andal, dan tetap di bawah kendali timmu.",
+    body: "Ini gambaran asisten AI self-hosted yang bisa bekerja langsung di atas angka, dokumen, dan obrolan timmu. Ringan di server biasa tanpa GPU mahal, bisa diajak diskusi bebas sekaligus menghitung tabel dengan rumus pasti, dan menjaga cash flow tetap aman karena bebas tagihan per token yang membengkak.",
     stats: [
-      { accent: "#788c5d", value: "Ramah cash flow", label: "Jalan di CPU biasa, tanpa GPU atau biaya per token" },
+      { accent: "#788c5d", value: "Ramah cash flow", label: "Jalan di server CPU biasa, tanpa GPU atau biaya per token" },
       { accent: "#6a9bcc", value: "Implementasi mudah", label: "Mulai dari satu alur kerja tanpa bongkar sistem" },
-      { accent: "#d97757", value: "Andal & jujur", label: "Rumus pasti di tabel, mengaku saat data kurang" },
+      { accent: "#d97757", value: "Andal & terukur", label: "Diskusi luwes, dokumen terbaca, angka dihitung pasti" },
     ],
     ctaPrimary: "Hubungi Kuon Studio",
     ctaFullPage: "Buka layar penuh",
     ctaBackHome: "Kembali ke Kuon Studio",
     waLabel: "Atau tanya santai lewat WhatsApp",
-    waText: "Halo Kuon Studio, saya baru coba Kuon 1 di website dan tertarik bahas implementasi AI untuk bisnis saya.",
+    waText: "Halo Kuon Studio, saya baru coba Kuon AI di website dan tertarik bahas implementasi AI untuk bisnis saya.",
     footnote:
-      "Dijalankan langsung oleh Kuon 1, model bahasa 307 MB buatan Kuon Studio sendiri.",
-    playgroundTitle: "Coba Kuon 1 langsung",
+      "Asisten AI self-hosted racikan Kuon Studio — siap disesuaikan ke dokumen dan alur kerja bisnismu.",
+    playgroundTitle: "Coba Kuon AI langsung",
     statusChecking: "Memeriksa status…",
-    statusOnline: "Aktif · CPU INT8",
+    statusOnline: "Aktif · Self-hosted CPU",
     statusBusy: "Aktif · sedang memproses",
     statusStandby: "Standby",
     modeBusiness: "Business chat",
     modeGeneral: "General QA",
     modeBusinessDesc:
-      "Mode privat: cek tabel, hitung KPI dengan rumus pasti, tanpa pencarian web luar.",
+      "Mode privat: diskusi strategi, baca file lampiran, dan hitung tabel KPI dengan rumus pasti.",
     modeGeneralDesc:
-      "Mode pencarian web: cari sumber terbaru lalu rangkum beserta tautannya.",
+      "Mode terbuka: tanya apa saja secara bebas, otomatis cari sumber web terbaru untuk pertanyaan fakta.",
     reset: "Reset",
     welcomeBusiness:
-      "Halo! Tempel tabel penjualan, unggah file CSV/TSV/TXT, atau pilih contoh di atas. Kuon 1 menghitung dengan rumus pasti dan menolak menebak kalau datanya belum ada.",
+      "Halo! Tanya soal strategi bisnis, tempel tabel penjualan, unggah dokumen (.md/.csv/.txt), atau pilih contoh di atas. Semua angka tabel dihitung dengan rumus pasti.",
     welcomeGeneral:
-      "Mode General QA aktif. Tanyakan fakta atau berita terbaru, Kuon 1 akan mencari sumber langsung lewat web dan menyertakan tautannya.",
-    placeholderBusiness: "Tempel tabel omzet, unggah file, atau tanyakan KPI bisnis…",
-    placeholderGeneral: "Tanyakan fakta atau berita terbaru…",
+      "Halo! Tanya apa saja — mulai dari ide, tulisan, sampai berita terbaru lengkap dengan tautan sumbernya.",
+    placeholderBusiness: "Tanya soal bisnis, tempel tabel, atau unggah dokumen…",
+    placeholderGeneral: "Tanyakan apa saja atau cek info terbaru…",
     send: "Kirim",
     stop: "Hentikan",
     attachFile: "Lampirkan file (.csv, .tsv, .txt, .md)",
@@ -94,17 +94,17 @@ const COPY = {
     notesLabel: "Catatan hitungan",
     sourcesLabel: "Sumber",
     you: "Kamu",
-    kuon: "Kuon 1",
+    kuon: "Kuon AI",
     retry: "Coba lagi",
     wakingMsg:
-      "Kuon 1 sedang menyiapkan layanan. Tunggu beberapa detik lalu tekan Coba lagi.",
+      "Kuon AI sedang menyiapkan layanan. Tunggu beberapa detik lalu tekan Coba lagi.",
     rateLimitMsg:
       "Terlalu banyak permintaan dalam satu menit. Tunggu sebentar lalu coba lagi.",
     notConfiguredMsg:
-      "Layanan Kuon 1 belum terhubung ke kunci API di environment ini.",
+      "Layanan Kuon AI belum terhubung ke kunci API di environment ini.",
     contextLimitMsg:
       "Pesan terlalu panjang untuk satu percakapan. Coba ringkas teks atau tekan Reset.",
-    genericErrorMsg: "Kuon 1 belum bisa menjawab sekarang. Silakan coba lagi.",
+    genericErrorMsg: "Kuon AI belum bisa menjawab sekarang. Silakan coba lagi.",
     presetsBusiness: [
       {
         label: "Omzet 2 minggu",
@@ -147,39 +147,39 @@ const COPY = {
     ] as PresetItem[],
   },
   en: {
-    eyebrow: "Kuon 1 · Lightweight AI ready for your business",
+    eyebrow: "Kuon AI · Lightweight AI ready for your business",
     title: "Try the AI we can deploy into your business.",
-    body: "This is a live preview of the assistant we can run directly on your own numbers and documents. It runs on ordinary CPUs with no costly GPU, answers from real evidence instead of guessing, and protects your cash flow with zero runaway per-token bills. Easy to roll out, reliable every day, and always under your team's control.",
+    body: "This is a live preview of the self-hosted assistant we can run directly on your own numbers, documents, and team workflows. It runs on standard CPU servers with no costly GPU, thinks freely while calculating tables with exact math, and protects your cash flow with zero runaway per-token bills.",
     stats: [
-      { accent: "#788c5d", value: "Cash-flow safe", label: "Standard CPU, no GPU bills or per-token surprises" },
+      { accent: "#788c5d", value: "Cash-flow safe", label: "Standard CPU server, no GPU bills or per-token surprises" },
       { accent: "#6a9bcc", value: "Easy rollout", label: "Start with one workflow without rebuilding" },
-      { accent: "#d97757", value: "Reliable & honest", label: "Exact table math, says clearly when data is missing" },
+      { accent: "#d97757", value: "Reliable & exact", label: "Natural reasoning, reads docs, exact table math" },
     ],
     ctaPrimary: "Contact Kuon Studio",
     ctaFullPage: "Open full screen",
     ctaBackHome: "Back to Kuon Studio",
     waLabel: "Or chat casually on WhatsApp",
-    waText: "Hi Kuon Studio, I just tried Kuon 1 on your site and would like to discuss deploying AI for my business.",
+    waText: "Hi Kuon Studio, I just tried Kuon AI on your site and would like to discuss deploying AI for my business.",
     footnote:
-      "Powered directly by Kuon 1, Kuon Studio's own 307 MB language model.",
-    playgroundTitle: "Try Kuon 1 live",
+      "Self-hosted AI assistant crafted by Kuon Studio — ready to tailor to your documents and workflows.",
+    playgroundTitle: "Try Kuon AI live",
     statusChecking: "Checking status…",
-    statusOnline: "Live · CPU INT8",
+    statusOnline: "Live · Self-hosted CPU",
     statusBusy: "Live · processing",
     statusStandby: "Standby",
     modeBusiness: "Business chat",
     modeGeneral: "General QA",
     modeBusinessDesc:
-      "Private mode: reads tables, runs exact KPI formulas, no external web search.",
+      "Private mode: discuss strategy, analyze attached files, and run exact KPI formulas.",
     modeGeneralDesc:
-      "Web search mode: looks up live sources and answers with citations.",
+      "Open mode: ask anything freely, with automatic live web lookup for current facts.",
     reset: "Reset",
     welcomeBusiness:
-      "Hi! Paste a sales table, attach a CSV/TSV/TXT file, or pick an example above. Kuon 1 computes with exact formulas and refuses to guess when data is missing.",
+      "Hi! Ask about business strategy, paste a sales table, attach a file (.md/.csv/.txt), or pick an example above. Table figures are computed with exact formulas.",
     welcomeGeneral:
-      "General QA mode is on. Ask a current question and Kuon 1 will search the live web and attach clickable sources.",
-    placeholderBusiness: "Paste a revenue table, attach a file, or ask a KPI question…",
-    placeholderGeneral: "Ask a factual or current-events question…",
+      "Hi! Ask anything — from ideas and drafts to current news with clickable sources.",
+    placeholderBusiness: "Ask a business question, paste a table, or attach a file…",
+    placeholderGeneral: "Ask anything or look up current facts…",
     send: "Send",
     stop: "Stop",
     attachFile: "Attach file (.csv, .tsv, .txt, .md)",
@@ -190,16 +190,16 @@ const COPY = {
     notesLabel: "Calculation notes",
     sourcesLabel: "Sources",
     you: "You",
-    kuon: "Kuon 1",
+    kuon: "Kuon AI",
     retry: "Retry",
     wakingMsg:
-      "Kuon 1 is starting up. Wait a few seconds and click Retry.",
+      "Kuon AI is starting up. Wait a few seconds and click Retry.",
     rateLimitMsg: "Too many requests in one minute. Please pause briefly and try again.",
     notConfiguredMsg:
-      "The Kuon 1 proxy is missing its server-side API key in this environment.",
+      "The Kuon AI proxy is missing its server-side API key in this environment.",
     contextLimitMsg:
       "Message is too long for one turn. Shorten it or click Reset.",
-    genericErrorMsg: "Kuon 1 could not answer right now. Please try again.",
+    genericErrorMsg: "Kuon AI could not answer right now. Please try again.",
     presetsBusiness: [
       {
         label: "2-week revenue",
@@ -242,6 +242,47 @@ const COPY = {
     ] as PresetItem[],
   },
 };
+
+function renderFormattedInline(text: string): Array<string | JSX.Element> {
+  const parts: Array<string | JSX.Element> = [];
+  const tokenRe = /(\*\*[^*]+\*\*|`[^`]+`|\*[^*\n]+\*)/g;
+  let lastIdx = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  while ((match = tokenRe.exec(text)) !== null) {
+    if (match.index > lastIdx) {
+      parts.push(text.slice(lastIdx, match.index));
+    }
+    const tok = match[0];
+    if (tok.startsWith("**") && tok.endsWith("**")) {
+      parts.push(
+        <strong key={key++} className="font-semibold text-[#141413]">
+          {tok.slice(2, -2)}
+        </strong>
+      );
+    } else if (tok.startsWith("`") && tok.endsWith("`")) {
+      parts.push(
+        <code
+          key={key++}
+          className="rounded bg-[#faf9f5] border border-[#e8e6dc] px-1.5 py-0.5 font-mono text-[13px] text-[#141413]"
+        >
+          {tok.slice(1, -1)}
+        </code>
+      );
+    } else if (tok.startsWith("*") && tok.endsWith("*")) {
+      parts.push(
+        <em key={key++} className="italic">
+          {tok.slice(1, -1)}
+        </em>
+      );
+    }
+    lastIdx = match.index + tok.length;
+  }
+  if (lastIdx < text.length) {
+    parts.push(text.slice(lastIdx));
+  }
+  return parts;
+}
 
 function NotesDisclosure({ label, notes }: { label: string; notes: string }) {
   const [open, setOpen] = useState(true);
@@ -707,7 +748,13 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                           <span>{msg.attachmentName}</span>
                         </div>
                       )}
-                      {msg.attachmentName ? <div>{msg.content}</div> : (msg.content || (msg.streaming ? "…" : ""))}
+                      {msg.attachmentName ? (
+                        <div>{msg.content}</div>
+                      ) : msg.role === "assistant" && msg.content ? (
+                        renderFormattedInline(msg.content)
+                      ) : (
+                        msg.content || (msg.streaming ? "…" : "")
+                      )}
                       {msg.streaming && (
                         <span
                           className="ml-1 inline-block h-3.5 w-1.5 animate-pulse bg-[#788c5d] align-middle"

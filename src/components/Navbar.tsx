@@ -5,7 +5,7 @@ import { useLang, useCopy } from '@/lib/i18n';
 const COPY = {
   id: {
     links: [
-      { label: 'Kuon 1', hash: '#kuon' },
+      { label: 'Kuon AI', hash: '#kuon' },
       { label: 'Cara kerja agent', hash: '#agent' },
       { label: 'Layanan', hash: '#services' },
       { label: 'Contoh', hash: '#use-cases' },
@@ -20,7 +20,7 @@ const COPY = {
   },
   en: {
     links: [
-      { label: 'Kuon 1', hash: '#kuon' },
+      { label: 'Kuon AI', hash: '#kuon' },
       { label: 'How agents work', hash: '#agent' },
       { label: 'Services', hash: '#services' },
       { label: 'Use cases', hash: '#use-cases' },

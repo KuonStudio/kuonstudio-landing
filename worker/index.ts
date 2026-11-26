@@ -201,13 +201,13 @@ async function handleChat(request: Request, env: Env): Promise<Response> {
 
   const mode = body.mode === "general" ? "general" : "business";
   const wantsStream = body.stream !== false;
-  const maxTokens = mode === "general" ? 96 : 180;
+  const maxTokens = 360;
 
   const upstreamPayload: Record<string, unknown> = {
     model: "kuon-1",
     messages,
     stream: wantsStream,
-    temperature: 0.0,
+    temperature: 0.4,
     max_tokens: maxTokens,
   };
   if (mode === "business") {
