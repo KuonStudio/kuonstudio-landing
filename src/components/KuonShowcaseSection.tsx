@@ -243,9 +243,9 @@ const COPY = {
   },
 };
 
-function renderFormattedInline(text: string): Array<string | JSX.Element> {
+function renderInlineTokens(text: string, keyPrefix: string): Array<string | JSX.Element> {
   const parts: Array<string | JSX.Element> = [];
-  const tokenRe = /(\*\*[^*]+\*\*|`[^`]+`|\*[^*\n]+\*)/g;
+  const tokenRe = /(\*\*[^*]+\*\*|`[^`\n]+`|\*[^*\n]+\*)/g;
   let lastIdx = 0;
   let match: RegExpExecArray | null;
   let key = 0;
@@ -256,14 +256,14 @@ function renderFormattedInline(text: string): Array<string | JSX.Element> {
     const tok = match[0];
     if (tok.startsWith("**") && tok.endsWith("**")) {
       parts.push(
-        <strong key={key++} className="font-semibold text-[#141413]">
+        <strong key={`${keyPrefix}-b-${key++}`} className="font-semibold text-[#141413]">
           {tok.slice(2, -2)}
         </strong>
       );
     } else if (tok.startsWith("`") && tok.endsWith("`")) {
       parts.push(
         <code
-          key={key++}
+          key={`${keyPrefix}-c-${key++}`}
           className="rounded bg-[#faf9f5] border border-[#e8e6dc] px-1.5 py-0.5 font-mono text-[13px] text-[#141413]"
         >
           {tok.slice(1, -1)}
@@ -271,7 +271,7 @@ function renderFormattedInline(text: string): Array<string | JSX.Element> {
       );
     } else if (tok.startsWith("*") && tok.endsWith("*")) {
       parts.push(
-        <em key={key++} className="italic">
+        <em key={`${keyPrefix}-i-${key++}`} className="italic">
           {tok.slice(1, -1)}
         </em>
       );
@@ -282,6 +282,38 @@ function renderFormattedInline(text: string): Array<string | JSX.Element> {
     parts.push(text.slice(lastIdx));
   }
   return parts;
+}
+
+function renderFormattedContent(text: string): Array<string | JSX.Element> {
+  const blocks: Array<string | JSX.Element> = [];
+  const fenceRe = /```([a-zA-Z0-9_-]*)\n?([\s\S]*?)```/g;
+  let lastIdx = 0;
+  let match: RegExpExecArray | null;
+  let idx = 0;
+  while ((match = fenceRe.exec(text)) !== null) {
+    if (match.index > lastIdx) {
+      blocks.push(...renderInlineTokens(text.slice(lastIdx, match.index), `t-${idx}`));
+    }
+    const langTag = match[1]?.trim();
+    const codeBody = match[2].replace(/\n$/, "");
+    blocks.push(
+      <div key={`code-${idx++}`} className="my-2 overflow-hidden rounded-xl border border-[#e8e6dc] bg-[#141413] text-[#faf9f5]">
+        {langTag && (
+          <div className="border-b border-[#faf9f5]/15 px-3 py-1 font-display text-[11px] uppercase tracking-wide text-[#faf9f5]/65">
+            {langTag}
+          </div>
+        )}
+        <pre className="overflow-x-auto p-3 font-mono text-[12.5px] leading-relaxed whitespace-pre">
+          <code>{codeBody}</code>
+        </pre>
+      </div>
+    );
+    lastIdx = match.index + match[0].length;
+  }
+  if (lastIdx < text.length) {
+    blocks.push(...renderInlineTokens(text.slice(lastIdx), `t-${idx}`));
+  }
+  return blocks;
 }
 
 function NotesDisclosure({ label, notes }: { label: string; notes: string }) {
@@ -751,7 +783,7 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                       {msg.attachmentName ? (
                         <div>{msg.content}</div>
                       ) : msg.role === "assistant" && msg.content ? (
-                        renderFormattedInline(msg.content)
+                        renderFormattedContent(msg.content)
                       ) : (
                         msg.content || (msg.streaming ? "…" : "")
                       )}
