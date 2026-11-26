@@ -1,15 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowUp,
   ChevronDown,
   ChevronUp,
   ExternalLink,
+  FileText,
+  Paperclip,
   RefreshCw,
   RotateCcw,
   Square,
+  X,
 } from "lucide-react";
 import { useCopy, useLang } from "@/lib/i18n";
+import { waLink } from "@/lib/contact";
 import {
   checkKuonHealth,
   KuonApiError,
@@ -19,15 +23,26 @@ import {
   type KuonSource,
 } from "@/lib/kuonClient";
 
+interface AttachedFile {
+  name: string;
+  content: string;
+  truncated: boolean;
+}
+
 interface DisplayMessage {
   id: string;
   role: "user" | "assistant";
   content: string;
+  apiContent?: string;
+  attachmentName?: string;
   notes?: string;
   sources?: KuonSource[];
   streaming?: boolean;
   errorCode?: string;
 }
+
+const MAX_ATTACHMENT_CHARS = 24_000;
+const ACCEPTED_FILE_TYPES = ".csv,.tsv,.txt,.md,.json,text/plain,text/csv,text/tab-separated-values";
 
 interface PresetItem {
   label: string;
@@ -36,55 +51,60 @@ interface PresetItem {
 
 const COPY = {
   id: {
-    eyebrow: "Kuon 1 · Model bahasa buatan sendiri",
-    title: "Model bahasa 307 MB buatan sendiri. Jawab dari bukti, bukan menebak.",
-    body: "Kuon 1 kami latih sendiri dari nol untuk bahasa Indonesia dan Inggris. Jalan di CPU 4 core tanpa GPU, menghitung tabel dengan rumus pasti, dan mengaku terus terang saat data tidak cukup.",
+    eyebrow: "Kuon 1 · AI ringan siap pasang untuk bisnismu",
+    title: "Coba dulu AI yang siap kami pasang di bisnismu.",
+    body: "Ini gambaran asisten AI yang bisa bekerja langsung di atas angka dan dokumenmu sendiri. Ringan di server biasa tanpa GPU mahal, menjawab dari bukti tanpa menebak, dan menjaga cash flow tetap aman karena bebas tagihan per token yang membengkak. Implementasinya sederhana, andal, dan tetap di bawah kendali timmu.",
     stats: [
-      { accent: "#788c5d", value: "307 MB INT8", label: "CPU 4 core, tanpa GPU" },
-      { accent: "#6a9bcc", value: "100% jujur", label: "8/8 data kosong ditolak" },
-      { accent: "#d97757", value: "15/16 tepat", label: "6,2% halusinasi uji" },
+      { accent: "#788c5d", value: "Ramah cash flow", label: "Jalan di CPU biasa, tanpa GPU atau biaya per token" },
+      { accent: "#6a9bcc", value: "Implementasi mudah", label: "Mulai dari satu alur kerja tanpa bongkar sistem" },
+      { accent: "#d97757", value: "Andal & jujur", label: "Rumus pasti di tabel, mengaku saat data kurang" },
     ],
-    ctaPrimary: "Lihat layanan AI agent",
-    ctaFullPage: "Buka halaman penuh",
+    ctaPrimary: "Hubungi Kuon Studio",
+    ctaFullPage: "Buka layar penuh",
     ctaBackHome: "Kembali ke Kuon Studio",
+    waLabel: "Atau tanya santai lewat WhatsApp",
+    waText: "Halo Kuon Studio, saya baru coba Kuon 1 di website dan tertarik bahas implementasi AI untuk bisnis saya.",
     footnote:
-      "Dijalankan langsung oleh model Kuon 1 (295,8 juta parameter). Tanpa LLM pihak ketiga di balik layar.",
+      "Dijalankan langsung oleh Kuon 1, model bahasa 307 MB buatan Kuon Studio sendiri.",
     playgroundTitle: "Coba Kuon 1 langsung",
     statusChecking: "Memeriksa status…",
     statusOnline: "Aktif · CPU INT8",
     statusBusy: "Aktif · sedang memproses",
-    statusStandby: "Standby (auto-pause)",
+    statusStandby: "Standby",
     modeBusiness: "Business chat",
     modeGeneral: "General QA",
     modeBusinessDesc:
       "Mode privat: cek tabel, hitung KPI dengan rumus pasti, tanpa pencarian web luar.",
     modeGeneralDesc:
-      "Mode pencarian web: cari sumber terbaru lewat Exa AI lalu rangkum beserta tautannya.",
+      "Mode pencarian web: cari sumber terbaru lalu rangkum beserta tautannya.",
     reset: "Reset",
     welcomeBusiness:
-      "Halo! Tempel tabel penjualan, angka KPI, atau pilih contoh di atas. Kuon 1 menghitung dengan rumus pasti dan menolak menebak kalau datanya belum ada.",
+      "Halo! Tempel tabel penjualan, unggah file CSV/TSV/TXT, atau pilih contoh di atas. Kuon 1 menghitung dengan rumus pasti dan menolak menebak kalau datanya belum ada.",
     welcomeGeneral:
       "Mode General QA aktif. Tanyakan fakta atau berita terbaru, Kuon 1 akan mencari sumber langsung lewat web dan menyertakan tautannya.",
-    placeholderBusiness: "Tempel tabel omzet atau tanyakan KPI bisnis…",
+    placeholderBusiness: "Tempel tabel omzet, unggah file, atau tanyakan KPI bisnis…",
     placeholderGeneral: "Tanyakan fakta atau berita terbaru…",
     send: "Kirim",
     stop: "Hentikan",
+    attachFile: "Lampirkan file (.csv, .tsv, .txt, .md)",
+    removeFile: "Hapus lampiran",
+    fileTruncated: "dipotong agar pas konteks",
+    fileError: "File tidak bisa dibaca. Gunakan file teks seperti .csv, .tsv, .txt, atau .md.",
+    defaultFilePrompt: "Ringkas poin utama dan angka penting dari dokumen ini.",
     notesLabel: "Catatan hitungan",
     sourcesLabel: "Sumber",
     you: "Kamu",
     kuon: "Kuon 1",
     retry: "Coba lagi",
     wakingMsg:
-      "Server demo Kuon 1 sedang menyala dari mode hemat (auto-pause). Tunggu beberapa detik lalu tekan Coba lagi.",
+      "Kuon 1 sedang menyiapkan layanan. Tunggu beberapa detik lalu tekan Coba lagi.",
     rateLimitMsg:
       "Terlalu banyak permintaan dalam satu menit. Tunggu sebentar lalu coba lagi.",
     notConfiguredMsg:
-      "Server demo Kuon 1 belum terhubung ke kunci API di environment ini.",
+      "Layanan Kuon 1 belum terhubung ke kunci API di environment ini.",
     contextLimitMsg:
-      "Pesan melebihi batas konteks 1.024 token. Coba ringkas teks atau tekan Reset.",
+      "Pesan terlalu panjang untuk satu percakapan. Coba ringkas teks atau tekan Reset.",
     genericErrorMsg: "Kuon 1 belum bisa menjawab sekarang. Silakan coba lagi.",
-    scopeNote:
-      "Batas konteks 1.024 token. Dirancang untuk tabel, KPI, dan dokumen bisnis ringkas. Server demo tidur otomatis setelah 30 menit tidak dipakai.",
     presetsBusiness: [
       {
         label: "Omzet 2 minggu",
@@ -127,54 +147,59 @@ const COPY = {
     ] as PresetItem[],
   },
   en: {
-    eyebrow: "Kuon 1 · Built from scratch",
-    title: "A 307 MB language model built from scratch. Answers from evidence, never guesses.",
-    body: "We trained Kuon 1 from scratch for Indonesian and English. It runs on a 4-core CPU with no GPU, checks tables with exact math, and says clearly when the data is missing.",
+    eyebrow: "Kuon 1 · Lightweight AI ready for your business",
+    title: "Try the AI we can deploy into your business.",
+    body: "This is a live preview of the assistant we can run directly on your own numbers and documents. It runs on ordinary CPUs with no costly GPU, answers from real evidence instead of guessing, and protects your cash flow with zero runaway per-token bills. Easy to roll out, reliable every day, and always under your team's control.",
     stats: [
-      { accent: "#788c5d", value: "307 MB INT8", label: "4-core CPU, no GPU" },
-      { accent: "#6a9bcc", value: "100% honest", label: "8/8 missing-data checks" },
-      { accent: "#d97757", value: "15/16 exact", label: "6.2% eval hallucination" },
+      { accent: "#788c5d", value: "Cash-flow safe", label: "Standard CPU, no GPU bills or per-token surprises" },
+      { accent: "#6a9bcc", value: "Easy rollout", label: "Start with one workflow without rebuilding" },
+      { accent: "#d97757", value: "Reliable & honest", label: "Exact table math, says clearly when data is missing" },
     ],
-    ctaPrimary: "See AI agent services",
-    ctaFullPage: "Open full playground",
+    ctaPrimary: "Contact Kuon Studio",
+    ctaFullPage: "Open full screen",
     ctaBackHome: "Back to Kuon Studio",
+    waLabel: "Or chat casually on WhatsApp",
+    waText: "Hi Kuon Studio, I just tried Kuon 1 on your site and would like to discuss deploying AI for my business.",
     footnote:
-      "Served directly by Kuon 1 (295.8M parameters). No third-party LLM behind the curtain.",
+      "Powered directly by Kuon 1, Kuon Studio's own 307 MB language model.",
     playgroundTitle: "Try Kuon 1 live",
     statusChecking: "Checking status…",
     statusOnline: "Live · CPU INT8",
     statusBusy: "Live · processing",
-    statusStandby: "Standby (auto-pause)",
+    statusStandby: "Standby",
     modeBusiness: "Business chat",
     modeGeneral: "General QA",
     modeBusinessDesc:
       "Private mode: reads tables, runs exact KPI formulas, no external web search.",
     modeGeneralDesc:
-      "Web search mode: looks up live sources via Exa AI and answers with citations.",
+      "Web search mode: looks up live sources and answers with citations.",
     reset: "Reset",
     welcomeBusiness:
-      "Hi! Paste a sales table, KPI numbers, or pick an example above. Kuon 1 computes with exact formulas and refuses to guess when data is missing.",
+      "Hi! Paste a sales table, attach a CSV/TSV/TXT file, or pick an example above. Kuon 1 computes with exact formulas and refuses to guess when data is missing.",
     welcomeGeneral:
       "General QA mode is on. Ask a current question and Kuon 1 will search the live web and attach clickable sources.",
-    placeholderBusiness: "Paste a revenue table or ask a business KPI question…",
+    placeholderBusiness: "Paste a revenue table, attach a file, or ask a KPI question…",
     placeholderGeneral: "Ask a factual or current-events question…",
     send: "Send",
     stop: "Stop",
+    attachFile: "Attach file (.csv, .tsv, .txt, .md)",
+    removeFile: "Remove attachment",
+    fileTruncated: "trimmed to fit",
+    fileError: "Could not read that file. Use a plain text file such as .csv, .tsv, .txt, or .md.",
+    defaultFilePrompt: "Summarize the key points and numbers from this document.",
     notesLabel: "Calculation notes",
     sourcesLabel: "Sources",
     you: "You",
     kuon: "Kuon 1",
     retry: "Retry",
     wakingMsg:
-      "The Kuon 1 demo server is waking up from standby (auto-pause). Wait a few seconds and click Retry.",
+      "Kuon 1 is starting up. Wait a few seconds and click Retry.",
     rateLimitMsg: "Too many requests in one minute. Please pause briefly and try again.",
     notConfiguredMsg:
-      "The Kuon 1 demo proxy is missing its server-side API key in this environment.",
+      "The Kuon 1 proxy is missing its server-side API key in this environment.",
     contextLimitMsg:
-      "Message exceeds the 1,024-token context budget. Shorten it or click Reset.",
+      "Message is too long for one turn. Shorten it or click Reset.",
     genericErrorMsg: "Kuon 1 could not answer right now. Please try again.",
-    scopeNote:
-      "1,024-token context limit. Built for tables, KPIs, and concise business docs. Demo server auto-pauses after 30 minutes idle.",
     presetsBusiness: [
       {
         label: "2-week revenue",
@@ -251,10 +276,13 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
   const [status, setStatus] = useState<"checking" | "online" | "busy" | "standby">("checking");
   const [messages, setMessages] = useState<DisplayMessage[]>([]);
   const [input, setInput] = useState("");
+  const [attachedFile, setAttachedFile] = useState<AttachedFile | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
   const [isStreaming, setIsStreaming] = useState(false);
   const [lastPrompt, setLastPrompt] = useState<string | null>(null);
 
   const listRef = useRef<HTMLDivElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -281,6 +309,25 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
     };
   }, []);
 
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    setFileError(null);
+    try {
+      const text = (await file.text()).trim();
+      if (!text || text.includes("\u0000")) {
+        setFileError(c.fileError);
+        return;
+      }
+      const truncated = text.length > MAX_ATTACHMENT_CHARS;
+      const content = truncated ? text.slice(0, MAX_ATTACHMENT_CHARS).trimEnd() : text;
+      setAttachedFile({ name: file.name, content, truncated });
+    } catch {
+      setFileError(c.fileError);
+    }
+  };
+
   const handleModeChange = (nextMode: KuonMode) => {
     if (nextMode === mode) return;
     abortRef.current?.abort();
@@ -288,6 +335,7 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
     setMode(nextMode);
     setMessages([]);
     setLastPrompt(null);
+    setFileError(null);
   };
 
   const handleReset = () => {
@@ -295,6 +343,8 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
     setIsStreaming(false);
     setMessages([]);
     setLastPrompt(null);
+    setAttachedFile(null);
+    setFileError(null);
   };
 
   const handleStop = () => {
@@ -313,28 +363,41 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
     return c.genericErrorMsg;
   };
 
-  const sendMessage = async (rawPrompt: string, isRetry = false) => {
-    const prompt = rawPrompt.trim();
-    if (!prompt || isStreaming) return;
+  const sendMessage = async (
+    rawPrompt: string,
+    isRetry = false,
+    overrideAttachment: AttachedFile | null = null
+  ) => {
+    const fileToUse = isRetry ? null : (overrideAttachment ?? attachedFile);
+    const trimmedInput = rawPrompt.trim();
+    if (!trimmedInput && !fileToUse) return;
+    if (isStreaming) return;
+
+    const displayPrompt = trimmedInput || c.defaultFilePrompt;
+    const apiPrompt = fileToUse
+      ? `[Attachment: ${fileToUse.name}]\n${fileToUse.content}\n[/Attachment]\n${displayPrompt}`
+      : trimmedInput;
 
     const historyForApi: KuonChatMessage[] = messages
-      .filter((m) => !m.errorCode && m.content.trim().length > 0)
-      .map((m) => ({ role: m.role, content: m.content }));
+      .filter((m) => !m.errorCode && (m.apiContent || m.content).trim().length > 0)
+      .map((m) => ({ role: m.role, content: m.apiContent || m.content }));
 
     const nextHistory: KuonChatMessage[] = isRetry
       ? [
           ...historyForApi.filter(
-            (m, i) => !(i === historyForApi.length - 1 && m.role === "user" && m.content === prompt)
+            (m, i) => !(i === historyForApi.length - 1 && m.role === "user" && m.content === apiPrompt)
           ),
-          { role: "user", content: prompt },
+          { role: "user", content: apiPrompt },
         ]
-      : [...historyForApi, { role: "user", content: prompt }];
+      : [...historyForApi, { role: "user", content: apiPrompt }];
 
     const userMsgId = `u-${Date.now()}`;
     const assistantMsgId = `a-${Date.now() + 1}`;
 
-    setLastPrompt(prompt);
+    setLastPrompt(apiPrompt);
     setInput("");
+    setAttachedFile(null);
+    setFileError(null);
     setIsStreaming(true);
 
     setMessages((prev) => {
@@ -342,7 +405,16 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
       const base =
         isRetry && cleaned[cleaned.length - 1]?.role === "user"
           ? cleaned
-          : [...cleaned, { id: userMsgId, role: "user" as const, content: prompt }];
+          : [
+              ...cleaned,
+              {
+                id: userMsgId,
+                role: "user" as const,
+                content: displayPrompt,
+                apiContent: apiPrompt,
+                attachmentName: fileToUse?.name,
+              },
+            ];
       return [
         ...base,
         {
@@ -470,7 +542,7 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
             <div className="mt-7 flex flex-wrap items-center gap-3 animate-rise animation-delay-200">
               {standalone ? (
                 <>
-                  <Link to="/#services" className="btn-primary !px-5 !py-3 !text-[15px]">
+                  <Link to="/#contact" className="btn-primary !px-5 !py-3 !text-[15px]">
                     {c.ctaPrimary}
                   </Link>
                   <Link to="/" className="btn-secondary !px-5 !py-3 !text-[15px]">
@@ -479,7 +551,7 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                 </>
               ) : (
                 <>
-                  <a href="#services" className="btn-primary !px-5 !py-3 !text-[15px]">
+                  <a href="#contact" className="btn-primary !px-5 !py-3 !text-[15px]">
                     {c.ctaPrimary}
                   </a>
                   <Link to="/kuon" className="btn-secondary !px-5 !py-3 !text-[15px]">
@@ -489,7 +561,17 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
               )}
             </div>
 
-            <p className="mt-4 text-sm text-[#141413]/60">{c.footnote}</p>
+            <a
+              href={waLink(c.waText)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 font-display font-semibold text-[14.5px] text-[#141413] hover:text-[#d97757] transition-colors"
+            >
+              <span className="inline-block w-2 h-2 rounded-full bg-[#788c5d]" aria-hidden="true" />
+              {c.waLabel} &rarr;
+            </a>
+
+            <p className="mt-3 text-sm text-[#141413]/60">{c.footnote}</p>
           </div>
 
           {/* Right column: Live Kuon 1 chat playground */}
@@ -619,7 +701,13 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                             : "rounded-tl-sm border border-[#e8e6dc] bg-white text-[#141413]"
                       }`}
                     >
-                      {msg.content || (msg.streaming ? "…" : "")}
+                      {msg.attachmentName && (
+                        <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-lg bg-[#faf9f5]/15 px-2.5 py-1 font-display text-xs text-[#faf9f5]">
+                          <FileText className="h-3.5 w-3.5 shrink-0" />
+                          <span>{msg.attachmentName}</span>
+                        </div>
+                      )}
+                      {msg.attachmentName ? <div>{msg.content}</div> : (msg.content || (msg.streaming ? "…" : ""))}
                       {msg.streaming && (
                         <span
                           className="ml-1 inline-block h-3.5 w-1.5 animate-pulse bg-[#788c5d] align-middle"
@@ -675,6 +763,30 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                 ))}
               </div>
 
+              {/* Attached file preview / error */}
+              {attachedFile && (
+                <div className="mt-3 flex items-center justify-between gap-2 rounded-xl border border-[#788c5d]/40 bg-[#788c5d]/10 px-3 py-2 text-xs font-display text-[#141413]">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <FileText className="h-4 w-4 shrink-0 text-[#5f7148]" />
+                    <span className="truncate font-semibold">{attachedFile.name}</span>
+                    {attachedFile.truncated && (
+                      <span className="text-[#141413]/60 shrink-0">({c.fileTruncated})</span>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setAttachedFile(null)}
+                    aria-label={c.removeFile}
+                    className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[#141413]/70 hover:bg-[#141413]/10 hover:text-[#141413] shrink-0"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              )}
+              {fileError && (
+                <p className="mt-2 text-xs font-display text-[#b4532f]">{fileError}</p>
+              )}
+
               {/* Composer */}
               <form
                 onSubmit={(e) => {
@@ -683,6 +795,23 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                 }}
                 className="mt-3 flex items-end gap-2"
               >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept={ACCEPTED_FILE_TYPES}
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  disabled={isStreaming}
+                  onClick={() => fileInputRef.current?.click()}
+                  title={c.attachFile}
+                  aria-label={c.attachFile}
+                  className="inline-flex h-[54px] w-[46px] items-center justify-center rounded-xl border border-[#e8e6dc] bg-white text-[#141413]/70 transition-colors hover:border-[#788c5d] hover:text-[#141413] disabled:opacity-40 shrink-0"
+                >
+                  <Paperclip className="h-4 w-4" />
+                </button>
                 <textarea
                   rows={2}
                   maxLength={2000}
@@ -711,7 +840,7 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                 ) : (
                   <button
                     type="submit"
-                    disabled={!input.trim()}
+                    disabled={!input.trim() && !attachedFile}
                     aria-label={c.send}
                     className="inline-flex h-[54px] items-center justify-center gap-1.5 rounded-xl bg-[#141413] px-4 font-display text-sm font-semibold text-[#faf9f5] transition-colors hover:bg-[#788c5d] disabled:opacity-40 disabled:hover:bg-[#141413] shrink-0"
                   >
@@ -720,10 +849,6 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
                   </button>
                 )}
               </form>
-
-              <p className="mt-2.5 text-[12.5px] leading-snug text-[#141413]/55 max-w-none">
-                {c.scopeNote}
-              </p>
             </div>
           </div>
         </div>

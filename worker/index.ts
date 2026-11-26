@@ -24,11 +24,12 @@ const DEFAULT_KUON_API_URL =
 
 const MAX_MESSAGES = 12;
 const MAX_LATEST_CHARS = 2000;
+const MAX_ATTACHMENT_MSG_CHARS = 26_000;
 const MAX_HISTORY_CHARS = 1200;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 14;
 const HEALTH_TIMEOUT_MS = 8_000;
-const CHAT_TIMEOUT_MS = 45_000;
+const CHAT_TIMEOUT_MS = 90_000;
 
 const rateLimitBuckets = new Map<string, number[]>();
 
@@ -99,13 +100,18 @@ function sanitizeMessages(raw: unknown): ChatMessage[] | null {
   const sliced = cleaned.slice(-MAX_MESSAGES);
   const last = sliced[sliced.length - 1];
   if (last.role !== "user") return null;
-  if (last.content.length > MAX_LATEST_CHARS) return null;
+  const maxForLast = last.content.startsWith("[Attachment:")
+    ? MAX_ATTACHMENT_MSG_CHARS
+    : MAX_LATEST_CHARS;
+  if (last.content.length > maxForLast) return null;
 
-  return sliced.map((msg, idx) =>
-    idx === sliced.length - 1
-      ? msg
-      : { role: msg.role, content: msg.content.slice(0, MAX_HISTORY_CHARS) }
-  );
+  return sliced.map((msg, idx) => {
+    if (idx === sliced.length - 1) return msg;
+    const cap = msg.content.startsWith("[Attachment:")
+      ? MAX_ATTACHMENT_MSG_CHARS
+      : MAX_HISTORY_CHARS;
+    return { role: msg.role, content: msg.content.slice(0, cap) };
+  });
 }
 
 async function handleHealth(env: Env): Promise<Response> {
