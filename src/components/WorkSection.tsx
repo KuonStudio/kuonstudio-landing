@@ -1,13 +1,60 @@
+import { Link } from 'react-router-dom';
 import { useCopy } from '@/lib/i18n';
 
-const COPY = {
+interface WorkProduct {
+  name: string;
+  accent: string;
+  tagline: string;
+  img?: string;
+  alt?: string;
+  caption?: string;
+  imgClass?: string;
+  specs?: Array<{ label: string; value: string }>;
+  body: string;
+  points: string[];
+  url: string;
+  internal?: boolean;
+  ctaLabel?: string;
+  host: string;
+}
+
+const COPY: Record<'id' | 'en', {
+  eyebrow: string;
+  title: string;
+  body: string;
+  live: string;
+  visit: string;
+  products: WorkProduct[];
+}> = {
   id: {
     eyebrow: 'Karya',
-    title: 'Agent yang kami pakai dan jalankan sendiri.',
+    title: 'Agent dan model yang kami bangun dan jalankan sendiri.',
     body: 'Masih berjalan sekarang. Buka dan coba sendiri.',
     live: 'Live',
     visit: 'Buka aplikasi',
     products: [
+      {
+        name: 'Kuon 1',
+        accent: '#788c5d',
+        tagline: 'Model bahasa 295,8 juta parameter buatan sendiri, ukuran 307 MB INT8',
+        specs: [
+          { label: 'Ukuran bobot', value: '307 MB INT8' },
+          { label: 'Perangkat keras', value: 'CPU 4 core, tanpa GPU' },
+          { label: 'Menahan diri saat data kosong', value: '100% (8/8 uji)' },
+          { label: 'Akurasi bukti & deliverable', value: '15/16 · 94,4%' },
+        ],
+        body: 'Kami tidak hanya merangkai API LLM pihak ketiga. Kuon 1 dilatih 100% dari nol untuk bahasa Indonesia dan Inggris agar bisnis bisa menjalankan asisten data di server sendiri tanpa biaya per token.',
+        points: [
+          'Membaca tabel penjualan (TSV/CSV) dan menghitung margin, perubahan persentase, total, rata-rata, serta porsi dengan rumus pasti, bukan tebakan teks.',
+          'Menolak mengarang angka: 8 dari 8 pertanyaan tanpa bukti dijawab jujur meminta data yang kurang (tingkat halusinasi 6,2% pada uji publik).',
+          'Dua mode siap pakai: Business chat privat untuk angka dan dokumen internal, serta General QA dengan pencarian web langsung dan tautan sumber.',
+          'Tersedia endpoint kompatibel OpenAI (/v1/chat/completions) dengan streaming token dan proteksi kunci API di sisi server.',
+        ],
+        url: '/kuon',
+        internal: true,
+        ctaLabel: 'Buka playground Kuon 1',
+        host: 'kuonstudio.com/kuon · langsung dicoba gratis tanpa login.',
+      },
       {
         name: 'Selisik',
         accent: '#d97757',
@@ -48,11 +95,33 @@ const COPY = {
   },
   en: {
     eyebrow: 'Work',
-    title: 'Agents we build and run ourselves.',
+    title: 'Agents and models we build and run ourselves.',
     body: 'Running now. Open them and click around.',
     live: 'Live',
     visit: 'Visit live app',
     products: [
+      {
+        name: 'Kuon 1',
+        accent: '#788c5d',
+        tagline: '295.8M-parameter language model built from scratch, 307 MB INT8',
+        specs: [
+          { label: 'Model size', value: '307 MB INT8' },
+          { label: 'Hardware', value: '4-core CPU, no GPU' },
+          { label: 'Missing-data restraint', value: '100% (8/8 eval)' },
+          { label: 'Grounded accuracy & deliverables', value: '15/16 · 94.4%' },
+        ],
+        body: 'We do not only wire up third-party LLM APIs. Kuon 1 is trained 100% from scratch in Indonesian and English so businesses can run an evidence-first assistant on their own server with zero per-token bills.',
+        points: [
+          'Reads sales tables (TSV/CSV) and computes margin, percentage change, totals, averages, and shares with deterministic formulas instead of text guesses.',
+          'Refuses to invent numbers: 8 out of 8 unanswerable prompts are met with an honest request for missing data (6.2% overall hallucination rate on evaluation).',
+          'Two built-in modes: private Business chat for internal numbers and docs, plus General QA with live web search and clickable citations.',
+          'Exposes an OpenAI-compatible /v1/chat/completions endpoint with token streaming and server-side API key protection.',
+        ],
+        url: '/kuon',
+        internal: true,
+        ctaLabel: 'Open Kuon 1 playground',
+        host: 'kuonstudio.com/kuon · try live now, no sign-in required.',
+      },
       {
         name: 'Selisik',
         accent: '#d97757',
@@ -111,11 +180,26 @@ const WorkSection = () => {
                 <span className="font-display text-xs font-semibold px-3 py-1 rounded-full bg-[#788c5d]/15 text-[#5f7148]">{c.live}</span>
               </div>
               <p className="mt-1 font-display text-[15px] text-[#141413]/60">{p.tagline}</p>
-              <div className="mt-6 w-full rounded-xl border border-[#e8e6dc] overflow-hidden bg-[#FAF8F5]">
-                <img src={p.img} alt={p.alt} loading="lazy" className={p.imgClass} />
-              </div>
+
+              {p.img && (
+                <div className="mt-6 w-full rounded-xl border border-[#e8e6dc] overflow-hidden bg-[#FAF8F5]">
+                  <img src={p.img} alt={p.alt || p.name} loading="lazy" className={p.imgClass} />
+                </div>
+              )}
+
+              {p.specs && (
+                <dl className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 rounded-xl border border-[#e8e6dc] bg-[#faf9f5] p-4">
+                  {p.specs.map((spec) => (
+                    <div key={spec.label}>
+                      <dt className="font-display text-xs text-[#141413]/60">{spec.label}</dt>
+                      <dd className="mt-1 font-display font-semibold text-[15px] text-[#141413]">{spec.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+
               {p.caption && <p className="mt-2 text-sm text-[#141413]/60">{p.caption}</p>}
-              <p className="mt-3 text-[#141413]/70">{p.body}</p>
+              <p className="mt-4 text-[#141413]/70">{p.body}</p>
               <ul className="mt-5 space-y-2.5">
                 {p.points.map((pt) => (
                   <li key={pt} className="flex gap-3 text-[#141413]">
@@ -127,14 +211,23 @@ const WorkSection = () => {
                 ))}
               </ul>
               <div className="mt-6 pt-4 border-t border-[#e8e6dc] flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-display font-semibold text-[#141413] hover:text-[#d97757] transition-colors"
-                >
-                  {c.visit} &rarr;
-                </a>
+                {p.internal ? (
+                  <Link
+                    to={p.url}
+                    className="font-display font-semibold text-[#141413] hover:text-[#d97757] transition-colors"
+                  >
+                    {p.ctaLabel || c.visit} &rarr;
+                  </Link>
+                ) : (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-display font-semibold text-[#141413] hover:text-[#d97757] transition-colors"
+                  >
+                    {p.ctaLabel || c.visit} &rarr;
+                  </a>
+                )}
                 <p className="text-[15px] text-[#141413]/60">{p.host}</p>
               </div>
             </article>

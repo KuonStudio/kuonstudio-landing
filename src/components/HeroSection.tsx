@@ -37,15 +37,15 @@ const COPY = {
 const HeroSection = () => {
   const c = useCopy(COPY);
   return (
-    <section id="top" className="pt-32 md:pt-40 pb-16 md:pb-24">
+    <section id="studio" className="py-16 md:py-24 bg-white border-y border-[#e8e6dc]">
       <div className="wrap">
         <div className="max-w-3xl">
-          <p className="eyebrow animate-rise">{c.eyebrow}</p>
-          <h1 className="mt-4 font-display font-bold text-[clamp(2.1rem,5.5vw,3.6rem)] text-[#141413] animate-rise animation-delay-100">
+          <p className="eyebrow">{c.eyebrow}</p>
+          <h2 className="mt-4 font-display font-bold text-[clamp(1.85rem,4.4vw,3rem)] text-[#141413]">
             {c.title}
-          </h1>
-          <p className="mt-6 text-lg text-[#141413]/70 animate-rise animation-delay-200">{c.body}</p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 animate-rise animation-delay-200">
+          </h2>
+          <p className="mt-6 text-lg text-[#141413]/70">{c.body}</p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <a href="#readiness" className="btn-primary">
               {c.primary}
             </a>

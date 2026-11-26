@@ -1,7 +1,14 @@
 {
   "name": "kuonstudio-landing",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-01-02",
+  "vars": {
+    "KUON_API_URL": "https://8000-agrbr7h3tj3mllx3kbndcqyuwm.instabox.tech"
+  },
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
   }
 }

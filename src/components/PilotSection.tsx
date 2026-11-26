@@ -15,7 +15,7 @@ const COPY = {
     trust: [
       { title: 'Manusia yang menyetujui', text: 'Agent tidak mengirim, membayar, atau menghapus apa pun tanpa persetujuan staf.' },
       { title: 'Jejak lengkap', text: 'Setiap langkah agent tercatat: apa yang dibaca, apa yang diusulkan, siapa yang menyetujui.' },
-      { title: 'Data tetap milikmu', text: 'Data disimpan di akunmu. Kami memakai layanan AI yang kebijakannya tidak melatih model dari data API, dan menunjukkan kebijakan itu saat scope.' },
+      { title: 'Data tetap milikmu', text: 'Data disimpan di akunmu. Kami memakai layanan AI yang kebijakannya tidak melatih model dari data API, dan tersedia opsi self-hosted Kuon 1 di servermu sendiri untuk data sensitif.' },
       { title: 'Biaya terbuka', text: 'Perkiraan biaya AI per bulan diberikan sebelum dibangun, lalu dipantau di dashboard.' },
     ],
   },
@@ -33,7 +33,7 @@ const COPY = {
     trust: [
       { title: 'Humans approve', text: 'The agent does not send, pay, or delete anything without staff approval.' },
       { title: 'Full trail', text: 'Every agent step is logged: what it read, what it proposed, who approved it.' },
-      { title: 'Your data stays yours', text: 'Data lives in your accounts. We use AI services whose policies exclude API data from model training, and show you those policies during scoping.' },
+      { title: 'Your data stays yours', text: 'Data lives in your accounts. We use AI services whose policies exclude API data from model training, and offer Kuon 1 self-hosted on your own server for sensitive data.' },
       { title: 'Open costs', text: 'Estimated monthly AI cost before we build, then tracked on a dashboard.' },
     ],
   },

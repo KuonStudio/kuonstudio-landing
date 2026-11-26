@@ -17,7 +17,12 @@ const COPY = {
       {
         title: 'Asisten dari dokumenmu sendiri',
         summary: 'Tanya-jawab yang menjawab dari SOP, katalog, dan kontrak milikmu, lengkap dengan rujukan.',
-        includes: ['Jawaban menunjuk dokumen sumbernya', 'Hanya membaca dokumen yang kamu izinkan', 'Bilang "tidak tahu" kalau jawabannya tidak ada'],
+        includes: [
+          'Jawaban menunjuk dokumen sumbernya',
+          'Hanya membaca dokumen yang kamu izinkan',
+          'Bilang "tidak tahu" kalau jawabannya tidak ada',
+          'Bisa dipasang di servermu sendiri lewat Kuon 1 (307 MB, jalan di CPU) tanpa biaya per token',
+        ],
         fit: 'Cocok kalau pertanyaan staf baru selalu jatuh ke orang yang sama.',
       },
       {
@@ -48,7 +53,12 @@ const COPY = {
       {
         title: 'Assistant built on your documents',
         summary: 'Q&A that answers from your own SOPs, catalog, and contracts, with references.',
-        includes: ['Answers point to the source document', 'Reads only the documents you allow', 'Says "I don’t know" when the answer is not there'],
+        includes: [
+          'Answers point to the source document',
+          'Reads only the documents you allow',
+          'Says "I don’t know" when the answer is not there',
+          'Can run on your own server via Kuon 1 (307 MB, CPU-only) with no per-token API bill',
+        ],
         fit: 'Good if new-staff questions always land on the same person.',
       },
       {

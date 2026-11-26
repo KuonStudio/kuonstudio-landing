@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useLang, useCopy } from '@/lib/i18n';
 
 const COPY = {
   id: {
     links: [
-      { label: 'Cara kerja agent', href: '#agent' },
-      { label: 'Layanan', href: '#services' },
-      { label: 'Contoh', href: '#use-cases' },
-      { label: 'Karya', href: '#work' },
-      { label: 'Kontak', href: '#contact' },
+      { label: 'Kuon 1', hash: '#kuon' },
+      { label: 'Cara kerja agent', hash: '#agent' },
+      { label: 'Layanan', hash: '#services' },
+      { label: 'Contoh', hash: '#use-cases' },
+      { label: 'Karya', hash: '#work' },
+      { label: 'Kontak', hash: '#contact' },
     ],
     cta: 'Cek kesiapan AI',
     reply: 'Kami balas dalam 2 hari kerja.',
@@ -18,11 +20,12 @@ const COPY = {
   },
   en: {
     links: [
-      { label: 'How agents work', href: '#agent' },
-      { label: 'Services', href: '#services' },
-      { label: 'Use cases', href: '#use-cases' },
-      { label: 'Work', href: '#work' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Kuon 1', hash: '#kuon' },
+      { label: 'How agents work', hash: '#agent' },
+      { label: 'Services', hash: '#services' },
+      { label: 'Use cases', hash: '#use-cases' },
+      { label: 'Work', hash: '#work' },
+      { label: 'Contact', hash: '#contact' },
     ],
     cta: 'Check AI readiness',
     reply: 'We reply within 2 business days.',
@@ -57,7 +60,10 @@ const LangSwitch = () => {
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
   const c = useCopy(COPY);
+  const isHome = location.pathname === '/';
+  const resolveHref = (hash: string) => (isHome ? hash : `/${hash}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,18 +90,24 @@ const Navbar = () => {
         }`}
       >
         <div className="wrap flex items-center justify-between gap-4 py-4">
-          <a href="#top" className="font-display font-bold text-lg tracking-tight text-[#141413]">
-            Kuon Studio
-          </a>
+          {isHome ? (
+            <a href="#top" className="font-display font-bold text-lg tracking-tight text-[#141413]">
+              Kuon Studio
+            </a>
+          ) : (
+            <Link to="/" className="font-display font-bold text-lg tracking-tight text-[#141413]">
+              Kuon Studio
+            </Link>
+          )}
 
-          <nav className="hidden lg:flex items-center gap-7" aria-label="Primary">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
             {c.links.map((link) => (
-              <a key={link.href} href={link.href} className="nav-link">
+              <a key={link.hash} href={resolveHref(link.hash)} className="nav-link">
                 {link.label}
               </a>
             ))}
             <LangSwitch />
-            <a href="#readiness" className="btn-primary !px-5 !py-2.5 !text-sm">
+            <a href={resolveHref('#readiness')} className="btn-primary !px-5 !py-2.5 !text-sm">
               {c.cta}
             </a>
           </nav>
@@ -130,15 +142,15 @@ const Navbar = () => {
           <nav className="wrap flex flex-col gap-2 pb-10" aria-label="Mobile">
             {c.links.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.hash}
+                href={resolveHref(link.hash)}
                 onClick={() => setMenuOpen(false)}
                 className="font-display font-semibold text-3xl py-3 text-[#141413] border-b border-[#e8e6dc]"
               >
                 {link.label}
               </a>
             ))}
-            <a href="#readiness" onClick={() => setMenuOpen(false)} className="btn-primary mt-6">
+            <a href={resolveHref('#readiness')} onClick={() => setMenuOpen(false)} className="btn-primary mt-6">
               {c.cta}
             </a>
             <p className="mt-4 text-[#141413]/60">{c.reply}</p>
