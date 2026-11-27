@@ -6,14 +6,14 @@ const KEY = 'kuon_lang';
 
 const META: Record<Lang, { title: string; description: string }> = {
   id: {
-    title: 'Kuon Studio — AI agent untuk kerjaan berulang di bisnismu',
+    title: 'Kuon Studio — AI agent untuk penjualan, layanan pelanggan, dan operasional',
     description:
-      'Software studio di Jakarta. Kami membangun AI agent dan sistem yang mengambil alih kerjaan berulang, dengan timmu tetap menyetujui setiap langkah. Harga tetap setelah scope.',
+      'Software studio di Jakarta. Kami membuat AI agent untuk kerjaan berulang di bisnis, dengan staf yang menyetujui setiap langkah. Kuon AI, model bahasa buatan kami, bisa dicoba langsung.',
   },
   en: {
-    title: 'Kuon Studio — AI agents for the repetitive work in your business',
+    title: 'Kuon Studio — AI agents for sales, customer service and operations',
     description:
-      'Software studio in Jakarta. We build AI agents and systems that take over repetitive work while your team approves every step. Fixed price after scoping.',
+      'Software studio in Jakarta. We build AI agents for repetitive business work, with staff approving every step. Kuon AI, our own language model, is free to try.',
   },
 };
 

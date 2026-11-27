@@ -51,13 +51,13 @@ interface PresetItem {
 
 const COPY = {
   id: {
-    eyebrow: "Kuon AI · Asisten ringan siap pasang untuk bisnismu",
-    title: "Coba dulu AI yang siap kami pasang di bisnismu.",
-    body: "Ini gambaran asisten AI self-hosted yang bisa bekerja langsung di atas angka, dokumen, dan obrolan timmu. Ringan di server biasa tanpa GPU mahal, bisa diajak diskusi bebas sekaligus menghitung tabel dengan rumus pasti, dan menjaga cash flow tetap aman karena bebas tagihan per token yang membengkak.",
+    eyebrow: "Kuon AI · Model bahasa buatan Kuon Studio",
+    title: "Kuon AI, model bahasa yang kami latih sendiri.",
+    body: "Kami melatih Kuon untuk bahasa Indonesia dan Inggris. Coba beri Kuon dua angka penjualan, lalu bandingkan jawabannya dengan hitunganmu sendiri. Kuon berjalan di server biasa tanpa GPU dan tanpa biaya per token.",
     stats: [
-      { accent: "#788c5d", value: "Ramah cash flow", label: "Jalan di server CPU biasa, tanpa GPU atau biaya per token" },
-      { accent: "#6a9bcc", value: "Implementasi mudah", label: "Mulai dari satu alur kerja tanpa bongkar sistem" },
-      { accent: "#d97757", value: "Andal & terukur", label: "Diskusi luwes, dokumen terbaca, angka dihitung pasti" },
+      { accent: "#788c5d", value: "Hitungan pasti", label: "Angka tabel dihitung dengan rumus, bukan tebakan teks" },
+      { accent: "#6a9bcc", value: "Bertanya dulu", label: "Kalau data kurang, Kuon meminta data tambahan" },
+      { accent: "#d97757", value: "Bisa di servermu", label: "Untuk data sensitif, Kuon dipasang di tempatmu sendiri" },
     ],
     ctaPrimary: "Hubungi Kuon Studio",
     ctaFullPage: "Buka layar penuh",
@@ -65,7 +65,7 @@ const COPY = {
     waLabel: "Atau tanya santai lewat WhatsApp",
     waText: "Halo Kuon Studio, saya baru coba Kuon AI di website dan tertarik bahas implementasi AI untuk bisnis saya.",
     footnote:
-      "Asisten AI self-hosted racikan Kuon Studio — siap disesuaikan ke dokumen dan alur kerja bisnismu.",
+      "Kuon masih model kecil. Periksa angka dan keputusan penting sebelum dipakai.",
     playgroundTitle: "Coba Kuon AI langsung",
     statusChecking: "Memeriksa status…",
     statusOnline: "Aktif · Self-hosted CPU",
@@ -147,13 +147,13 @@ const COPY = {
     ] as PresetItem[],
   },
   en: {
-    eyebrow: "Kuon AI · Lightweight AI ready for your business",
-    title: "Try the AI we can deploy into your business.",
-    body: "This is a live preview of the self-hosted assistant we can run directly on your own numbers, documents, and team workflows. It runs on standard CPU servers with no costly GPU, thinks freely while calculating tables with exact math, and protects your cash flow with zero runaway per-token bills.",
+    eyebrow: "Kuon AI · A language model built by Kuon Studio",
+    title: "Kuon AI, a language model we trained ourselves.",
+    body: "We trained Kuon in Indonesian and English. Give it two weeks of sales figures, then check its answer against your own. Kuon runs on an ordinary server with no GPU and no per-token bill.",
     stats: [
-      { accent: "#788c5d", value: "Cash-flow safe", label: "Standard CPU server, no GPU bills or per-token surprises" },
-      { accent: "#6a9bcc", value: "Easy rollout", label: "Start with one workflow without rebuilding" },
-      { accent: "#d97757", value: "Reliable & exact", label: "Natural reasoning, reads docs, exact table math" },
+      { accent: "#788c5d", value: "Exact arithmetic", label: "Table figures use formulas, not text guesses" },
+      { accent: "#6a9bcc", value: "Asks first", label: "When data is missing, Kuon asks for it" },
+      { accent: "#d97757", value: "On your server", label: "For sensitive data, Kuon is deployed in your own environment" },
     ],
     ctaPrimary: "Contact Kuon Studio",
     ctaFullPage: "Open full screen",
@@ -161,7 +161,7 @@ const COPY = {
     waLabel: "Or chat casually on WhatsApp",
     waText: "Hi Kuon Studio, I just tried Kuon AI on your site and would like to discuss deploying AI for my business.",
     footnote:
-      "Self-hosted AI assistant crafted by Kuon Studio — ready to tailor to your documents and workflows.",
+      "Kuon is still a small model. Check important numbers and decisions before you rely on it.",
     playgroundTitle: "Try Kuon AI live",
     statusChecking: "Checking status…",
     statusOnline: "Live · Self-hosted CPU",
@@ -581,16 +581,22 @@ const KuonShowcaseSection = ({ standalone = false }: KuonShowcaseSectionProps) =
   return (
     <section
       id="kuon"
-      className={standalone ? "pt-28 md:pt-36 pb-16 md:pb-24" : "pt-28 md:pt-36 pb-16 md:pb-20"}
+      className={standalone ? "pt-28 md:pt-36 pb-16 md:pb-24" : "py-16 md:py-24 bg-white border-b border-[#e8e6dc]"}
     >
       <div className="wrap">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left column: Kuon 1 story, benchmarks, and navigation */}
           <div className="lg:col-span-5">
             <p className="eyebrow !text-[#5f7148] animate-rise">{c.eyebrow}</p>
-            <h1 className="mt-3 font-display font-bold text-[clamp(2rem,4.3vw,3.1rem)] text-[#141413] animate-rise animation-delay-100">
-              {c.title}
-            </h1>
+            {standalone ? (
+              <h1 className="mt-3 font-display font-bold text-[clamp(2rem,4.3vw,3.1rem)] text-[#141413] animate-rise animation-delay-100">
+                {c.title}
+              </h1>
+            ) : (
+              <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413] animate-rise animation-delay-100">
+                {c.title}
+              </h2>
+            )}
             <p className="mt-5 text-[17px] text-[#141413]/75 animate-rise animation-delay-200">
               {c.body}
             </p>

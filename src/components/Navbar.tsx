@@ -6,14 +6,13 @@ const COPY = {
   id: {
     links: [
       { label: 'Kuon AI', hash: '#kuon' },
-      { label: 'Cara kerja agent', hash: '#agent' },
-      { label: 'Layanan', hash: '#services' },
-      { label: 'Contoh', hash: '#use-cases' },
+      { label: 'Contoh agent', hash: '#agent' },
       { label: 'Karya', hash: '#work' },
       { label: 'Kontak', hash: '#contact' },
     ],
-    cta: 'Cek kesiapan AI',
+    cta: 'Bahas proyek',
     reply: 'Kami balas dalam 2 hari kerja.',
+    quiz: 'Cek kesiapan AI bisnismu',
     open: 'Buka menu',
     close: 'Tutup menu',
     langLabel: 'Bahasa',
@@ -21,14 +20,13 @@ const COPY = {
   en: {
     links: [
       { label: 'Kuon AI', hash: '#kuon' },
-      { label: 'How agents work', hash: '#agent' },
-      { label: 'Services', hash: '#services' },
-      { label: 'Use cases', hash: '#use-cases' },
-      { label: 'Work', hash: '#work' },
+      { label: 'Agent example', hash: '#agent' },
+      { label: 'Our work', hash: '#work' },
       { label: 'Contact', hash: '#contact' },
     ],
-    cta: 'Check AI readiness',
+    cta: 'Start a project',
     reply: 'We reply within 2 business days.',
+    quiz: 'Check your AI readiness',
     open: 'Open menu',
     close: 'Close menu',
     langLabel: 'Language',
@@ -107,7 +105,7 @@ const Navbar = () => {
               </a>
             ))}
             <LangSwitch />
-            <a href={resolveHref('#readiness')} className="btn-primary !px-5 !py-2.5 !text-sm">
+            <a href={resolveHref('#contact')} className="btn-primary !px-5 !py-2.5 !text-sm">
               {c.cta}
             </a>
           </nav>
@@ -150,9 +148,20 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a href={resolveHref('#readiness')} onClick={() => setMenuOpen(false)} className="btn-primary mt-6">
+            <a
+              href={resolveHref('#contact')}
+              onClick={() => setMenuOpen(false)}
+              className="btn-primary mt-6"
+            >
               {c.cta}
             </a>
+            <Link
+              to="/cek-kesiapan"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 font-display text-sm font-semibold text-[#141413]/70 hover:text-[#141413]"
+            >
+              {c.quiz}
+            </Link>
             <p className="mt-4 text-[#141413]/60">{c.reply}</p>
           </nav>
         </div>

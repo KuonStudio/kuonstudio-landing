@@ -21,9 +21,9 @@ const COPY: Record<'id' | 'en', {
   scenarios: Scenario[];
 }> = {
   id: {
-    eyebrow: 'Cara kerja agent',
-    title: 'Bukan chatbot. Agent mengerjakan langkahnya, manusia yang memutuskan.',
-    body: 'Agent membaca pesan atau dokumen yang masuk, mengecek data di sistemmu, lalu menyiapkan tindakan. Staf melihat semuanya dalam satu layar dan menekan setuju, ubah, atau tolak.',
+    eyebrow: 'Contoh agent',
+    title: 'Satu pesanan masuk, satu balasan siap dikirim.',
+    body: 'Agent membaca pesanan, mengecek stok, lalu menyiapkan balasan dan catatan pesanan. Staf toko bisa mengubah balasan sebelum mengirimnya. Pilih contoh lain untuk melihat alur yang berbeda.',
     labels: ['1. Masuk', '2. Agent menyiapkan', '3. Staf menyetujui'],
     approve: 'Setujui',
     edit: 'Ubah',
@@ -54,9 +54,9 @@ const COPY: Record<'id' | 'en', {
     ],
   },
   en: {
-    eyebrow: 'How agents work',
-    title: 'Not a chatbot. The agent does the steps, a person makes the call.',
-    body: 'The agent reads incoming messages or documents, checks your system, and prepares the action. Your staff sees it all on one screen and taps approve, edit, or reject.',
+    eyebrow: 'Agent example',
+    title: 'One order comes in, one reply is ready to send.',
+    body: 'The agent reads the order, checks stock, then drafts a reply and an order record. Someone at the shop can edit the reply before sending it. Pick another example to see a different flow.',
     labels: ['1. In', '2. Agent prepares', '3. Staff approves'],
     approve: 'Approve',
     edit: 'Edit',
@@ -129,7 +129,7 @@ const AgentDemo = () => {
   const label = TEXT[tab];
 
   return (
-    <section id="agent" className="py-16 md:py-24">
+    <section id="agent" className="py-16 md:py-24 bg-white border-y border-[#e8e6dc]">
       <div className="wrap">
         <p className="eyebrow">{c.eyebrow}</p>
         <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413] max-w-3xl">{c.title}</h2>

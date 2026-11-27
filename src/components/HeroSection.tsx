@@ -3,33 +3,33 @@ import { waLink } from '@/lib/contact';
 
 const COPY = {
   id: {
-    eyebrow: 'Software studio di Jakarta · AI agent untuk bisnis',
-    title: 'AI agent yang mengerjakan kerjaan berulang di bisnismu. Timmu tetap pegang kendali.',
+    eyebrow: 'Software studio · Jakarta',
+    title: 'Kami membuat AI agent untuk tim penjualan, layanan pelanggan, dan operasional.',
     body:
-      'Balas chat pesanan, rekap penjualan, follow-up leads, isi data dari dokumen: agent kami menyiapkan semuanya, timmu tinggal cek dan setujui. Tidak ada yang terkirim sendiri. Kami bangun di atas alat yang sudah kamu pakai, lalu serahkan lengkap dengan panduan dan pelatihan.',
-    primary: 'Cek kesiapan AI bisnismu',
-    secondary: 'Lihat cara kerja agent',
-    wa: 'Atau tanya langsung lewat WhatsApp',
-    waText: 'Halo Kuon Studio, saya mau tanya soal AI agent untuk bisnis saya.',
+      'Kalau pesanan masuk lewat WhatsApp, siapa yang menyalinnya ke daftar pesanan? Kami membuat agent yang mencatat pesanan dan menyiapkan balasan di alat yang sudah timmu pakai.',
+    primary: 'Bahas proyek lewat WhatsApp',
+    primaryText: 'Halo Kuon Studio, saya mau bahas proyek AI agent untuk bisnis saya.',
+    secondary: 'Coba Kuon AI',
+    secondaryHref: '#kuon',
     points: [
-      { accent: '#d97757', t: 'Mulai dari satu alur kerja', d: 'Pilot 2 minggu, harga tetap setelah scope.' },
-      { accent: '#6a9bcc', t: 'Manusia yang menyetujui', d: 'Agent menyiapkan, staf yang memutuskan.' },
-      { accent: '#788c5d', t: 'Milikmu sepenuhnya', d: 'Kode, akun, data, dan panduan jadi milikmu.' },
+      { accent: '#d97757', t: 'Pilot 2 minggu', d: 'Harga tetap setelah lingkup kerja disepakati.' },
+      { accent: '#6a9bcc', t: 'Staf yang menyetujui', d: 'Agent menyiapkan, timmu memutuskan.' },
+      { accent: '#788c5d', t: 'Kode dan data milikmu', d: 'Serah terima lengkap dengan panduan.' },
     ],
   },
   en: {
-    eyebrow: 'Software studio in Jakarta · AI agents for business',
-    title: 'AI agents that do the repetitive work in your business. Your team stays in control.',
+    eyebrow: 'Software studio · Jakarta',
+    title: 'We build AI agents for sales, customer service and operations teams.',
     body:
-      'Order replies, sales recaps, lead follow-ups, data entry from documents: our agents prepare the work, your team checks and approves. Nothing sends itself. We build on the tools you already use, then hand everything over with a guide and training.',
-    primary: 'Check your AI readiness',
-    secondary: 'See how agents work',
-    wa: 'Or ask us on WhatsApp',
-    waText: 'Hi Kuon Studio, I would like to ask about AI agents for my business.',
+      'When an order comes in on WhatsApp, who copies it into the order sheet? We build agents that log the order and draft a reply in the tools your team already uses.',
+    primary: 'Discuss a project on WhatsApp',
+    primaryText: 'Hi Kuon Studio, I would like to discuss an AI agent project for my business.',
+    secondary: 'Try Kuon AI',
+    secondaryHref: '#kuon',
     points: [
-      { accent: '#d97757', t: 'Start with one workflow', d: 'A 2-week pilot, fixed price after scoping.' },
-      { accent: '#6a9bcc', t: 'Humans approve', d: 'The agent prepares, your staff decides.' },
-      { accent: '#788c5d', t: 'You own all of it', d: 'Code, accounts, data, and the guide are yours.' },
+      { accent: '#d97757', t: '2-week pilot', d: 'Fixed price once the scope is agreed.' },
+      { accent: '#6a9bcc', t: 'Your staff approve', d: 'The agent prepares, your team decides.' },
+      { accent: '#788c5d', t: 'You own the code', d: 'Handover includes code and a guide.' },
     ],
   },
 };
@@ -37,31 +37,27 @@ const COPY = {
 const HeroSection = () => {
   const c = useCopy(COPY);
   return (
-    <section id="studio" className="py-16 md:py-24 bg-white border-y border-[#e8e6dc]">
+    <section className="pt-28 md:pt-36 pb-10 md:pb-14 bg-white border-b border-[#e8e6dc]">
       <div className="wrap">
         <div className="max-w-3xl">
           <p className="eyebrow">{c.eyebrow}</p>
-          <h2 className="mt-4 font-display font-bold text-[clamp(1.85rem,4.4vw,3rem)] text-[#141413]">
+          <h1 className="mt-4 font-display font-bold text-[clamp(1.85rem,4.4vw,3rem)] text-[#141413]">
             {c.title}
-          </h2>
+          </h1>
           <p className="mt-6 text-lg text-[#141413]/70">{c.body}</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="#readiness" className="btn-primary">
+            <a
+              href={waLink(c.primaryText)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               {c.primary}
             </a>
-            <a href="#agent" className="btn-secondary">
-              {c.secondary}
+            <a href={c.secondaryHref} className="btn-secondary">
+              {c.secondary} &rarr;
             </a>
           </div>
-          <a
-            href={waLink(c.waText)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 font-display font-semibold text-[15px] text-[#141413] hover:text-[#d97757] transition-colors"
-          >
-            <span className="inline-block w-2 h-2 rounded-full bg-[#788c5d]" aria-hidden="true" />
-            {c.wa} &rarr;
-          </a>
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[15px]">
             {c.points.map((p) => (
               <div key={p.t} className="border-t-2 pt-3" style={{ borderColor: p.accent }}>

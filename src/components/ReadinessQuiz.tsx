@@ -65,7 +65,7 @@ const COPY: Record<'id' | 'en', {
   },
 };
 
-const ReadinessQuiz = () => {
+const ReadinessQuiz = ({ standalone = false }: { standalone?: boolean }) => {
   const c = useCopy(COPY);
   const [answers, setAnswers] = useState<(number | null)[]>(() => c.questions.map(() => null));
   const done = answers.filter((a) => a !== null).length;
@@ -83,10 +83,14 @@ const ReadinessQuiz = () => {
   ].join('\n');
 
   return (
-    <section id="readiness" className="py-16 md:py-24">
+    <section id="readiness" className={standalone ? "py-10 md:py-14" : "py-16 md:py-24"}>
       <div className="wrap">
         <p className="eyebrow">{c.eyebrow}</p>
-        <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413] max-w-3xl">{c.title}</h2>
+        {standalone ? (
+          <h1 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413] max-w-3xl">{c.title}</h1>
+        ) : (
+          <h2 className="mt-3 font-display font-bold text-[clamp(1.75rem,4vw,2.75rem)] text-[#141413] max-w-3xl">{c.title}</h2>
+        )}
         <p className="mt-4 text-lg text-[#141413]/70">{c.body}</p>
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 items-start">

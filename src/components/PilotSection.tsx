@@ -1,41 +1,42 @@
+import { Link } from 'react-router-dom';
 import { useCopy } from '@/lib/i18n';
 
 const COPY = {
   id: {
-    eyebrow: 'Mulai kecil',
-    title: 'Pilot AI 2 minggu: satu alur kerja, hasilnya diukur.',
-    body: 'Tidak perlu langsung mengubah semuanya. Kita pilih satu pekerjaan berulang, bangun agent-nya, dan ukur hasilnya di lapangan sebelum memutuskan langkah berikutnya.',
+    eyebrow: 'Pilot 2 minggu',
+    title: 'Mulai dari satu pekerjaan. Ukur hasilnya sebelum lanjut.',
+    body: 'Kita pilih satu pekerjaan berulang, bangun agent-nya, lalu ukur hasilnya di lapangan. Kamu yang memutuskan lanjut, ubah, atau berhenti.',
     steps: [
-      { period: 'Minggu 1', title: 'Scope bersama', text: 'Dua panggilan dan dokumen singkat: alur yang dipilih, data yang dibutuhkan, batas yang tidak boleh dilewati agent, dan cara mengukur hasil. Kamu dapat scope dan harga tetap.' },
-      { period: 'Minggu 2', title: 'Agent dipakai tim', text: 'Agent jalan di alat yang sudah kamu pakai, dengan tombol setuju/ubah. Kami pantau bersama timmu dan perbaiki setiap hari.' },
-      { period: 'Akhir pilot', title: 'Ukur, lalu putuskan', text: 'Laporan sebelum-sesudah dari data pilot: waktu yang dihemat, kesalahan, dan biaya AI per bulan. Lanjut, ubah, atau berhenti, keputusannya di kamu.' },
+      { period: 'Minggu 1', title: 'Sepakati lingkup', text: 'Dua panggilan dan dokumen singkat: alur yang dipilih, data yang dibutuhkan, batas yang tidak boleh dilewati agent, dan cara mengukur hasil. Kamu dapat lingkup dan harga tetap.' },
+      { period: 'Minggu 2', title: 'Agent dipakai tim', text: 'Agent jalan di alat yang sudah kamu pakai, dengan tombol setuju dan ubah. Kami memantau bersama timmu dan memperbaiki setiap hari.' },
+      { period: 'Akhir pilot', title: 'Ukur, lalu putuskan', text: 'Laporan sebelum dan sesudah dari data pilot: waktu yang dihemat, kesalahan, dan biaya AI per bulan.' },
     ],
-    price: 'Harga tetap setelah scope. Tidak ada tagihan yang membengkak di tengah jalan.',
+    price: 'Harga tetap setelah lingkup kerja disepakati.',
     trustTitle: 'Aman dipakai untuk bisnis',
     trust: [
-      { title: 'Manusia yang menyetujui', text: 'Agent tidak mengirim, membayar, atau menghapus apa pun tanpa persetujuan staf.' },
+      { title: 'Staf yang menyetujui', text: 'Agent tidak mengirim, membayar, atau menghapus apa pun tanpa persetujuan staf.' },
       { title: 'Jejak lengkap', text: 'Setiap langkah agent tercatat: apa yang dibaca, apa yang diusulkan, siapa yang menyetujui.' },
-      { title: 'Data tetap milikmu', text: 'Data disimpan di akunmu. Kami memakai layanan AI yang kebijakannya tidak melatih model dari data API, dan tersedia opsi self-hosted Kuon 1 di servermu sendiri untuk data sensitif.' },
-      { title: 'Biaya terbuka', text: 'Perkiraan biaya AI per bulan diberikan sebelum dibangun, lalu dipantau di dashboard.' },
+      { title: 'Data tetap milikmu', text: 'Data disimpan di akunmu. Untuk data sensitif, Kuon bisa dipasang di servermu sendiri.' },
     ],
+    quizLink: 'Belum yakin mulai dari mana? Cek kesiapan AI bisnismu',
   },
   en: {
-    eyebrow: 'Start small',
-    title: 'A 2-week AI pilot: one workflow, measured results.',
-    body: 'No need to change everything at once. We pick one repetitive task, build the agent, and measure it in real use before you decide the next step.',
+    eyebrow: '2-week pilot',
+    title: 'Start with one job. Measure it before you go further.',
+    body: 'We pick one repetitive task, build the agent, and measure it in real use. You decide whether to continue, adjust, or stop.',
     steps: [
-      { period: 'Week 1', title: 'Scope together', text: 'Two calls and a short doc: the workflow, the data it needs, the limits the agent must not cross, and how we measure results. You get a fixed scope and price.' },
-      { period: 'Week 2', title: 'Your team uses it', text: 'The agent runs in the tools you already use, with approve/edit buttons. We watch it with your team and improve it daily.' },
-      { period: 'End of pilot', title: 'Measure, then decide', text: 'A before-and-after report from pilot data: time saved, errors, and monthly AI cost. Continue, adjust, or stop, the call is yours.' },
+      { period: 'Week 1', title: 'Agree the scope', text: 'Two calls and a short doc: the workflow, the data it needs, the limits the agent must not cross, and how we measure results. You get a fixed scope and price.' },
+      { period: 'Week 2', title: 'Your team uses it', text: 'The agent runs in the tools you already use, with approve and edit buttons. We watch it with your team and improve it daily.' },
+      { period: 'End of pilot', title: 'Measure, then decide', text: 'A before-and-after report from pilot data: time saved, errors, and monthly AI cost.' },
     ],
-    price: 'Fixed price after scoping. No bills that grow halfway through.',
+    price: 'Fixed price once the scope is agreed.',
     trustTitle: 'Safe to use in a business',
     trust: [
-      { title: 'Humans approve', text: 'The agent does not send, pay, or delete anything without staff approval.' },
+      { title: 'Your staff approve', text: 'The agent does not send, pay, or delete anything without staff approval.' },
       { title: 'Full trail', text: 'Every agent step is logged: what it read, what it proposed, who approved it.' },
-      { title: 'Your data stays yours', text: 'Data lives in your accounts. We use AI services whose policies exclude API data from model training, and offer Kuon 1 self-hosted on your own server for sensitive data.' },
-      { title: 'Open costs', text: 'Estimated monthly AI cost before we build, then tracked on a dashboard.' },
+      { title: 'Your data stays yours', text: 'Data lives in your accounts. For sensitive data, Kuon can run on your own server.' },
     ],
+    quizLink: 'Not sure where to start? Check your AI readiness',
   },
 };
 
@@ -63,7 +64,7 @@ const PilotSection = () => {
 
         <div className="mt-12 bg-[#e8e6dc]/50 border border-[#e8e6dc] rounded-2xl p-7 md:p-10">
           <h3 className="font-display font-semibold text-xl text-[#141413]">{c.trustTitle}</h3>
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {c.trust.map((item) => (
               <div key={item.title}>
                 <p className="font-display font-semibold text-[#141413]">{item.title}</p>
@@ -71,6 +72,12 @@ const PilotSection = () => {
               </div>
             ))}
           </div>
+          <Link
+            to="/cek-kesiapan"
+            className="mt-6 inline-flex items-center gap-2 font-display font-semibold text-[15px] text-[#141413] hover:text-[#d97757] transition-colors"
+          >
+            {c.quizLink} &rarr;
+          </Link>
         </div>
       </div>
     </section>
